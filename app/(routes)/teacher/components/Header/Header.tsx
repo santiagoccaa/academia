@@ -29,7 +29,6 @@ const Header = () => {
           </DialogContent>
         </Dialog>
       </div>
-
     </div>
   )
 }
