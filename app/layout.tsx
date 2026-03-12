@@ -6,6 +6,7 @@ import { SidebarProvider } from "@/components/ui/sidebar"
 import { AppSidebar } from "./(routes)/(root)/components";
 import Navbar from "@/components/Shared/Navbar/Navbar";
 import Footer from "@/components/Shared/Footer/Footer";
+import { Toaster } from "@/components/ui/sonner";
 
 const fontPrimary = Space_Grotesk({
   variable: "--font-space-grotest",
@@ -37,6 +38,7 @@ export default function RootLayout({
               </main>
               <Footer />
             </div>
+            <Toaster />
           </SidebarProvider>
         </body>
       </html>
