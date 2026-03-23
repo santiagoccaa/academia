@@ -1,0 +1,1 @@
+export {default as HeaderCourse} from './HeaderCourse'

@@ -33,10 +33,10 @@ export const FormCreateCourse = () => {
 
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
         try {
-            await axios.post('/api/course', values)
+            const course = await axios.post('/api/course', values)
             toast("Curso creado correctamente")
 
-            router.refresh()
+            router.push(`/teacher/${course.data.id}`)
         } catch (error) {
             console.log(error);
             toast.error("Ha ocurrido un error")
