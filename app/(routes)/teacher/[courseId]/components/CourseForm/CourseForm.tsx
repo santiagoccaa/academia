@@ -27,6 +27,8 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
+import axios from "axios"
+import { toast } from "sonner"
 
 export const CourseForm = ({ course }: CourseFormProps) => {
     const form = useForm<z.infer<typeof formSchema>>({
@@ -42,9 +44,10 @@ export const CourseForm = ({ course }: CourseFormProps) => {
 
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
         try {
-
+            axios.patch(`/api/course/${course.id}`, values)
+            toast('Curso actualizado correctamente')
         } catch (error) {
-            console.log(error);
+           toast.error('Ups, algo salio mal')
         }
     }
     return (
