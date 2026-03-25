@@ -1,6 +1,7 @@
 import prisma from "@/lib/prisma"
 import { auth } from "@clerk/nextjs/server"
 import { CourseForm, CourseImage, CoursePrice, HeaderCourse } from "./components"
+import { CourseChapter } from "./components/CourseChapter"
 
 interface Params {
     params: Promise<{ courseId: string }>
@@ -39,7 +40,7 @@ export default async function CoursePage({ params }: Params) {
                 <CoursePrice idCourse={course.id} priceCourse={course.price} />
             </div>
 
-            <p>course chaters</p>
+            <CourseChapter idCourse={course.id} chapters={course.chapters} />
         </div>
     )
 }

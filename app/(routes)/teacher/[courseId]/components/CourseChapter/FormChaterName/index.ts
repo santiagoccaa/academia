@@ -1,0 +1,1 @@
+export {default as FormChaterName} from './FormChaterName'
