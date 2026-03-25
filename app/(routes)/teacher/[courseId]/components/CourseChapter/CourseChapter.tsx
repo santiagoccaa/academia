@@ -1,16 +1,60 @@
 "use client"
 
-import { ListCheck, PlusCircle } from "lucide-react"
+import { GripVertical, ListCheck, Loader2, Pencil, PlusCircle } from "lucide-react"
 import { TitleBlock } from "../TitleBlock"
 import { CourseChapterProps } from "./CourseChapter.type"
 import { Button } from "@/components/ui/button"
 import { useState } from "react"
 import { FormChaterName } from "./FormChaterName"
+import { DragDropContext, Droppable, DropResult, Draggable } from "@hello-pangea/dnd"
+import { useRouter } from "next/navigation"
+import axios from "axios"
+import { toast } from "sonner"
 
 export const CourseChapter = ({ chapters, idCourse }: CourseChapterProps) => {
 
+    const router = useRouter()
+
     const [chapterList, setChapterList] = useState(chapters ?? [])
     const [showInputChapter, setShowInputChapter] = useState(false)
+    const [isUpdating, setIsUpdating] = useState(false)
+
+    const onDragEnd = (result: DropResult) => {
+        if (!result.destination) return
+
+        const items = Array.from(chapterList)
+        const [reorderItem] = items.splice(result.source.index, 1)
+        items.splice(result.destination.index, 0, reorderItem)
+
+        setChapterList(items)
+
+        const bulkUpdate = items.map((chapter, index) => ({
+            id: chapter.id,
+            position: index
+        }))
+
+        onReorder(bulkUpdate)
+    }
+
+    const onReorder = async (updateData: { id: string, position: number }[]) => {
+        try {
+            setIsUpdating(true)
+            await axios.put(`/api/course/${idCourse}/chapter/reorder`, {
+                list: updateData
+            })
+
+            toast("Order actualizado")
+            router.refresh()
+        } catch (error) {
+            toast.error("Algo salio mal")
+        }finally{
+            setIsUpdating(false)
+        }
+    }
+
+    const onEditChapter = (chapterId: string) => {
+        router.push(`/teacher/${idCourse}/${chapterId}`)
+    }
 
     return (
         <div className="p-6 bg-white rounded-md h-fit relative">
@@ -27,12 +71,56 @@ export const CourseChapter = ({ chapters, idCourse }: CourseChapterProps) => {
             {showInputChapter && <FormChaterName setShowInputChapter={setShowInputChapter} idCourse={idCourse} />}
 
             {
-                chapterList?.map((chapter, index) => (
-                    <p key={index} className="">{chapter.title}</p>
-                ))
+                isUpdating && (
+                    <div className="absolute top-0 right-0 flex items-center justify-center w-full h-full bg-slate-500/20">
+                        <Loader2 className="w-6 h-6 animate-spin  text-violet-500" />
+                    </div>
+                )
             }
-
-            4:06:44
+            <DragDropContext onDragEnd={onDragEnd}>
+                <Droppable droppableId="chapters">
+                    {
+                        (provider) => (
+                            <div {...provider.droppableProps} ref={provider.innerRef} className="flex flex-col gap-2">
+                                {
+                                    chapterList?.map((chapter, index) => (
+                                        <Draggable key={chapter.id} draggableId={chapter.id} index={index}>
+                                            {(provider) => (
+                                                <div
+                                                    ref={provider.innerRef}
+                                                    {...provider.draggableProps}
+                                                    {...provider.dragHandleProps}
+                                                    className="flex gap-2 items-center bg-slate-200 rounded-md py-2 px-4 text-sm justify-between"
+                                                >
+                                                    <div className="flex gap-2 items-center">
+                                                        <GripVertical className="w-4 h-4 text-gray-500" />
+                                                        <p>{chapter.title}</p>
+                                                    </div>
+                                                    <div className="flex gap-2 items-center px-2 py-1">
+                                                        {chapter.isPublised
+                                                            ?
+                                                            (
+                                                                <p className="py-1 px-2 text-emerald-600">Publicado</p>
+                                                            )
+                                                            :
+                                                            (
+                                                                <p className="py-1 px-2 text-gray-700">Sin publicar</p>
+                                                            )
+                                                        }
+                                                        <div className="cursor-pointer" onClick={() => onEditChapter(chapter.id)}>
+                                                            <Pencil className="w-4 h-4 text-gray-500" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            )}
+                                        </Draggable>
+                                    ))
+                                }
+                            </div>
+                        )
+                    }
+                </Droppable>
+            </DragDropContext>
         </div>
     )
 }
