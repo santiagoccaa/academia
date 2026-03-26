@@ -1,0 +1,80 @@
+"use client"
+
+import { Button } from "@/components/ui/button"
+import { ChapterFormProps } from "./ChapterForm.types"
+import { ArrowLeft, Cog, Trash } from "lucide-react"
+import { useRouter } from "next/navigation"
+import { TitleBlock } from "../../../components"
+import axios from "axios"
+import { toast } from "sonner"
+import { ChapterTitleForm } from "./ChapterTitleForm"
+import { ChapterVideoForm } from "./ChapterVideoForm"
+
+export const ChapterForm = ({ chapter, courseId }: ChapterFormProps) => {
+    const router = useRouter()
+    if (!chapter) {
+        return null
+    }
+
+    const onPublis = async (state: boolean) => {
+        try {
+            axios.patch(`/api/course/${courseId}/chapter/${chapter.id}`, {
+                isPublised: state
+            })
+            toast(state ? "Capitulo publicado" : "Capitulo oculto")
+            router.refresh()
+        } catch (error) {
+            toast("Algo ha salido mal")
+        }
+    }
+
+    const onRemoveChapter = async () =>{
+        try {
+            axios.delete(`/api/course/${courseId}/chapter/${chapter.id}`)
+            toast("Capitulo eliminado con existo")
+            router.push(`/teacher/${courseId}`)
+        } catch (error) {
+            toast("Ocurrio un error al momento de intenter eliminar el capitulo")
+        }
+    }
+    
+    return (
+        <>
+            <div className="p-6 bg-white rounded-md">
+                <Button className="mb-4" variant="outline" onClick={() => router.push(`/teacher/${courseId}`)}>
+                    <ArrowLeft />
+                    Volver a la edicion del cursor
+                </Button>
+            </div>
+            <div className="p-6 my-4 bg-white rounded-md flex justify-between items-center">
+                <TitleBlock title="Configuracion del capitulo" icon={Cog} />
+                <div className="flex items-center gap-2">
+                    {chapter.isPublised
+                        ?
+                        (
+                            <Button variant={"outline"} onClick={() => onPublis(false)}>
+                                Ocultar
+                            </Button>
+                        )
+                        :
+                        (
+                            <Button onClick={() => onPublis(true)}>
+                                Publicar
+                            </Button>
+                        )
+                    }
+
+                    <Button variant={"destructive"} onClick={onRemoveChapter}>
+                        <Trash />
+                    </Button>
+                </div>
+            </div>
+
+            <ChapterTitleForm courseId={courseId} chapter={chapter} />
+
+            <ChapterVideoForm chapterId={chapter.id} courseId={courseId} videoUrl={chapter.videoUrl} />
+        </>
+    )
+}
+
+export default ChapterForm

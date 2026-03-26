@@ -4,7 +4,7 @@ import { GripVertical, ListCheck, Loader2, Pencil, PlusCircle } from "lucide-rea
 import { TitleBlock } from "../TitleBlock"
 import { CourseChapterProps } from "./CourseChapter.type"
 import { Button } from "@/components/ui/button"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { FormChaterName } from "./FormChaterName"
 import { DragDropContext, Droppable, DropResult, Draggable } from "@hello-pangea/dnd"
 import { useRouter } from "next/navigation"
@@ -19,6 +19,10 @@ export const CourseChapter = ({ chapters, idCourse }: CourseChapterProps) => {
     const [showInputChapter, setShowInputChapter] = useState(false)
     const [isUpdating, setIsUpdating] = useState(false)
 
+    useEffect(() => {
+        setChapterList(chapters ?? [])
+    }, [chapters])
+
     const onDragEnd = (result: DropResult) => {
         if (!result.destination) return
 
@@ -32,7 +36,6 @@ export const CourseChapter = ({ chapters, idCourse }: CourseChapterProps) => {
             id: chapter.id,
             position: index
         }))
-
         onReorder(bulkUpdate)
     }
 
@@ -47,7 +50,7 @@ export const CourseChapter = ({ chapters, idCourse }: CourseChapterProps) => {
             router.refresh()
         } catch (error) {
             toast.error("Algo salio mal")
-        }finally{
+        } finally {
             setIsUpdating(false)
         }
     }
@@ -79,46 +82,44 @@ export const CourseChapter = ({ chapters, idCourse }: CourseChapterProps) => {
             }
             <DragDropContext onDragEnd={onDragEnd}>
                 <Droppable droppableId="chapters">
-                    {
-                        (provider) => (
-                            <div {...provider.droppableProps} ref={provider.innerRef} className="flex flex-col gap-2">
-                                {
-                                    chapterList?.map((chapter, index) => (
-                                        <Draggable key={chapter.id} draggableId={chapter.id} index={index}>
-                                            {(provider) => (
-                                                <div
-                                                    ref={provider.innerRef}
-                                                    {...provider.draggableProps}
-                                                    {...provider.dragHandleProps}
-                                                    className="flex gap-2 items-center bg-slate-200 rounded-md py-2 px-4 text-sm justify-between"
-                                                >
-                                                    <div className="flex gap-2 items-center">
-                                                        <GripVertical className="w-4 h-4 text-gray-500" />
-                                                        <p>{chapter.title}</p>
-                                                    </div>
-                                                    <div className="flex gap-2 items-center px-2 py-1">
-                                                        {chapter.isPublised
-                                                            ?
-                                                            (
-                                                                <p className="py-1 px-2 text-emerald-600">Publicado</p>
-                                                            )
-                                                            :
-                                                            (
-                                                                <p className="py-1 px-2 text-gray-700">Sin publicar</p>
-                                                            )
-                                                        }
-                                                        <div className="cursor-pointer" onClick={() => onEditChapter(chapter.id)}>
-                                                            <Pencil className="w-4 h-4 text-gray-500" />
-                                                        </div>
+                    {(provider) => (
+                        <div {...provider.droppableProps} ref={provider.innerRef} className="flex flex-col gap-2">
+                            {
+                                chapterList?.map((chapter, index) => (
+                                    <Draggable key={chapter.id} draggableId={chapter.id} index={index}>
+                                        {(provider) => (
+                                            <div
+                                                ref={provider.innerRef}
+                                                {...provider.draggableProps}
+                                                {...provider.dragHandleProps}
+                                                className="flex gap-2 items-center bg-slate-200 rounded-md py-2 px-4 text-sm justify-between"
+                                            >
+                                                <div className="flex gap-2 items-center">
+                                                    <GripVertical className="w-4 h-4 text-gray-500" />
+                                                    <p>{chapter.title}</p>
+                                                </div>
+                                                <div className="flex gap-2 items-center px-2 py-1">
+                                                    {chapter.isPublised
+                                                        ?
+                                                        (
+                                                            <p className="py-1 px-2 text-emerald-600">Publicado</p>
+                                                        )
+                                                        :
+                                                        (
+                                                            <p className="py-1 px-2 text-gray-700">Sin publicar</p>
+                                                        )
+                                                    }
+                                                    <div className="cursor-pointer" onClick={() => onEditChapter(chapter.id)}>
+                                                        <Pencil className="w-4 h-4 text-gray-500" />
                                                     </div>
                                                 </div>
-                                            )}
-                                        </Draggable>
-                                    ))
-                                }
-                            </div>
-                        )
-                    }
+                                            </div>
+                                        )}
+                                    </Draggable>
+                                ))}
+                            {provider.placeholder}
+                        </div>
+                    )}
                 </Droppable>
             </DragDropContext>
         </div>

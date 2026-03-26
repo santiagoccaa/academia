@@ -23,7 +23,11 @@ export default async function CoursePage({ params }: Params) {
             userID: userId
         },
         include: {
-            chapters: true
+            chapters: {
+                orderBy: {
+                    position: "asc"
+                }
+            }
         }
     })
 
