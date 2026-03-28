@@ -1,3 +1,5 @@
+"use client"
+
 import prisma from "@/lib/prisma"
 
 export const getUserProgreesByCourse = async (courseId: string, userId: string): Promise<number> => {
@@ -33,7 +35,9 @@ export const getUserProgreesByCourse = async (courseId: string, userId: string):
             }
         })
 
-        const progressPercentaje = Math.round(completedChapters / totalChapters) * 100
+        const progressPercentaje = Math.round(
+            (completedChapters / totalChapters) * 100
+        )
 
         return progressPercentaje
     } catch (error) {
