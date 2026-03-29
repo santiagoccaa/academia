@@ -28,7 +28,7 @@ export const HeroBlockCourse = ({ course, purchase }: HeroBlockCourseProps) => {
       </div>
 
       <Image
-        src={imageUrl || 'image-default-course'}
+        src={imageUrl || '/image-default-course'}
         alt={title}
         width={500}
         height={400}

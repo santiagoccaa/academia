@@ -1,18 +1,30 @@
-import { currentUser } from '@clerk/nextjs/server'
+"use client"
+
 import { ProgressCourseProps } from './ProgressCourse.types'
 import { Progress } from '@/components/ui/progress'
 import { formatPrice } from '@/lib/formatPrice'
-import { getUserProgreesByCourse } from '@/actios/getUserProgreesByCourse'
+import { useUser } from '@clerk/nextjs'
+import { useEffect, useState } from 'react'
 
-export const ProgressCourse = async ({ courseId, price, totalChapters }: ProgressCourseProps) => {
+export const ProgressCourse = ({ courseId, price, totalChapters }: ProgressCourseProps) => {
 
-    const user = await currentUser()
+    const { user } = useUser()
     if (!user) {
         return <p className='text-xs mt-2'>Not Signed in</p>
     }
 
-    const progress = await getUserProgreesByCourse(courseId, user.id)
-    
+    const [progress, setProgress] = useState(0)
+
+    useEffect(() => {
+        const fetchProgress = async () => {
+            const res = await fetch(`/api/progress/${courseId}`)
+            const data = await res.json()
+            setProgress(data.progress)
+        }
+
+        fetchProgress()
+    }, [])
+
     return (
         <div className='mt-5'>
             {

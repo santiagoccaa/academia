@@ -6,7 +6,6 @@ interface Params {
     params: Promise<{ courseId: string, chapterId: string }>
 }
 
-
 export default async function ChapterPage({ params }: Params) {
 
     const { courseId, chapterId } = await params
