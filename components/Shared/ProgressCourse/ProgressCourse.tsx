@@ -1,39 +1,25 @@
-"use client"
-
-import { getUserProgreesByCourse } from '@/actios/getUserProgreesByCourse'
+import { currentUser } from '@clerk/nextjs/server'
 import { ProgressCourseProps } from './ProgressCourse.types'
 import { Progress } from '@/components/ui/progress'
 import { formatPrice } from '@/lib/formatPrice'
-import { useUser } from '@clerk/nextjs'
-import { useEffect, useState } from 'react'
+import { getUserProgreesByCourse } from '@/actios/getUserProgreesByCourse'
 
-export const ProgressCourse = ({ courseId, price, totalChapters }: ProgressCourseProps) => {
+export const ProgressCourse = async ({ courseId, price, totalChapters }: ProgressCourseProps) => {
 
-    const { user } = useUser()
-    
+    const user = await currentUser()
     if (!user) {
         return <p className='text-xs mt-2'>Not Signed in</p>
     }
 
-    const [progressCourse, setProgressCourse] = useState<number>(0)
-
-    useEffect(() => {
-        const fetchProgress = async () => {
-            if (user.id) {
-                const progress = await getUserProgreesByCourse(courseId, user.id)
-                setProgressCourse(progress)
-            }
-        }
-
-        fetchProgress()
-    }, [])
+    const progress = await getUserProgreesByCourse(courseId, user.id)
+    
     return (
         <div className='mt-5'>
             {
-                totalChapters > 0 && progressCourse > 0 ? (
+                totalChapters > 0 && progress > 0 ? (
                     <div>
-                        <Progress value={progressCourse} className='*:bg-violet-300' />
-                        <p className='text-xs mt-1'>{progressCourse}% Completado</p>
+                        <Progress value={progress} className='*:bg-violet-300' />
+                        <p className='text-xs mt-1'>{progress}% Completado</p>
                     </div>
                 ) :
                     (

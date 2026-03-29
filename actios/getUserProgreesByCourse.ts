@@ -1,5 +1,3 @@
-"use client"
-
 import prisma from "@/lib/prisma"
 
 export const getUserProgreesByCourse = async (courseId: string, userId: string): Promise<number> => {
