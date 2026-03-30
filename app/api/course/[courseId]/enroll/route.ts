@@ -24,7 +24,7 @@ export async function POST(req: Request, { params }: Params) {
         })
 
         if (existingPurchase) {
-            return new NextResponse("Allready enrroled", { status: 400 })
+            return new NextResponse("Already enrolled", { status: 409 })
         }
 
         await prisma.purchase.create({
@@ -35,7 +35,7 @@ export async function POST(req: Request, { params }: Params) {
             }
         })
 
-        return new NextResponse("Enrrole", { status: 400 })
+        return NextResponse.json({ message: "Enrolled" }, { status: 201 })
     } catch (error) {
         console.log("ENRROLE COURSE", error);
         return new NextResponse("Internal server error", { status: 500 })

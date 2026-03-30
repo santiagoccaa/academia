@@ -9,11 +9,8 @@ import { useEffect, useState } from 'react'
 export const ProgressCourse = ({ courseId, price, totalChapters }: ProgressCourseProps) => {
 
     const { user } = useUser()
-    if (!user) {
-        return <p className='text-xs mt-2'>Not Signed in</p>
-    }
 
-    const [progress, setProgress] = useState(0)
+    const [progress, setProgress] = useState<number>(0)
 
     useEffect(() => {
         const fetchProgress = async () => {
@@ -24,6 +21,10 @@ export const ProgressCourse = ({ courseId, price, totalChapters }: ProgressCours
 
         fetchProgress()
     }, [])
+
+    if (!user) {
+        return <p className='text-xs mt-2'>Not Signed in</p>
+    }
 
     return (
         <div className='mt-5'>

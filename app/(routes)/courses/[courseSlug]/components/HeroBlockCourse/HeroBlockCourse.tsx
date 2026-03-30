@@ -24,11 +24,11 @@ export const HeroBlockCourse = ({ course, purchase }: HeroBlockCourseProps) => {
         </div>
 
         <h2 className='text-xl font-semibold my-4'>{formatPrice(price)}</h2>
-        <PurchaseButtons purchase={false} slug={slug} chapters={chapters} price={price} id={id} />
+        <PurchaseButtons purchase={purchase} slug={slug} chapters={chapters} price={price} id={id} />
       </div>
 
       <Image
-        src={imageUrl || '/image-default-course'}
+        src={imageUrl || '/image-default-course.webp'}
         alt={title}
         width={500}
         height={400}
