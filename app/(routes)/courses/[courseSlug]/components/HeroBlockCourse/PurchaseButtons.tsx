@@ -33,13 +33,23 @@ export const PurchaseButtons = ({ purchase, slug, chapters, price, id }: Purchas
             } finally {
                 setIsloading(false)
             }
+        } else {
+            try {
+                const res = await axios.post(`/api/course/${id}/checkout`)
+
+                window.location.assign(res.data.url)
+            } catch (error) {
+                toast("Error al inscribirse")
+            } finally {
+                setIsloading(false)
+            }
         }
     }
 
     const redirectToCourse = () => {
         router.push(`/courses/${slug}/${chapters[0].id}`)
     }
-    
+
     return (
         <>
             {
@@ -50,6 +60,7 @@ export const PurchaseButtons = ({ purchase, slug, chapters, price, id }: Purchas
                         onClick={redirectToCourse}
                     >
                         Ver curso
+
                     </Button>
                 ) :
                     (
