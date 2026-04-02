@@ -37,7 +37,7 @@ export const PurchaseButtons = ({ purchase, slug, chapters, price, id }: Purchas
             try {
                 const res = await axios.post(`/api/course/${id}/checkout`)
 
-                window.location.assign(res.data.url)
+                window.location.assign(res.data.message)
             } catch (error) {
                 toast("Error al inscribirse")
             } finally {
