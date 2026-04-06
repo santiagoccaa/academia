@@ -11,12 +11,19 @@ export const ProgressCourse = ({ courseId, price, totalChapters }: ProgressCours
     const { user } = useUser()
 
     const [progress, setProgress] = useState<number>(0)
+    const [loading, setLoading] = useState<boolean>(true)
 
     useEffect(() => {
         const fetchProgress = async () => {
-            const res = await fetch(`/api/progress/${courseId}`)
-            const data = await res.json()
-            setProgress(data.progress)
+            try {
+                const res = await fetch(`/api/progress/${courseId}`)
+                const data = await res.json()
+                setProgress(data.progress)
+            } catch (error) {
+                console.log(error);
+            } finally {
+                setLoading(false)
+            }
         }
 
         fetchProgress()
@@ -26,6 +33,9 @@ export const ProgressCourse = ({ courseId, price, totalChapters }: ProgressCours
         return <p className='text-xs mt-2'>Not Signed in</p>
     }
 
+    if (loading) {
+        return <p className='text-sm mt-2'>Cargando...</p>
+    }
     return (
         <div className='mt-5'>
             {
