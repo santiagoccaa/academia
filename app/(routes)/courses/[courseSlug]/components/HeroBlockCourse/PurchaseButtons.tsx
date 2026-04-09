@@ -26,8 +26,8 @@ export const PurchaseButtons = ({ purchase, slug, chapters, price, id }: Purchas
         if (price === 'Gratis') {
             try {
                 await axios.post(`/api/course/${id}/enroll`)
-                toast("Inscripcion exitosa")
                 router.push(`/courses/${slug}/${chapters[0].id}`)
+                toast("Inscripcion exitosa")
             } catch (error) {
                 toast.error("Ocurrio un error al momento de intentar suscribirte")
             } finally {
@@ -36,7 +36,6 @@ export const PurchaseButtons = ({ purchase, slug, chapters, price, id }: Purchas
         } else {
             try {
                 const res = await axios.post(`/api/course/${id}/checkout`)
-
                 window.location.assign(res.data.message)
             } catch (error) {
                 toast("Error al inscribirse")

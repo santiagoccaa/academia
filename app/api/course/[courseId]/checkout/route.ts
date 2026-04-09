@@ -34,7 +34,7 @@ export async function POST(req: Request, { params }: Params) {
         })
 
         if (!course) {
-            return NextResponse.json({ message: "CURSO NOT FOUND" }, { status: 400 })
+            return NextResponse.json({ message: "CURSE_NOT_FOUND" }, { status: 404 })
         }
 
         const purchase = await prisma.purchase.findUnique({
@@ -47,7 +47,7 @@ export async function POST(req: Request, { params }: Params) {
         })
 
         if (purchase) {
-            return NextResponse.json({ message: "ALRREADY PURCHASED" }, { status: 409 })
+            return NextResponse.json({ message: "ALRREADY_PURCHASED" }, { status: 409 })
         }
 
         const priceCourse = course.price ? Number(course.price.replace(",", ".")) : 0
@@ -96,7 +96,7 @@ export async function POST(req: Request, { params }: Params) {
             metadata: {
                 courseId: course.id,
                 userId,
-                prisma: course.price ? course.price.toString() : "0"
+                price: course.price ? course.price.toString() : "0"
             }
         })
         return NextResponse.json({ message: session.url }, { status: 200 },)

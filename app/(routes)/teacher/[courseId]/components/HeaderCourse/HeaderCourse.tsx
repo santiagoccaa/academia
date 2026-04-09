@@ -27,10 +27,10 @@ export const HeaderCourse = ({ idCourse, isPublished }: HeaderCourseProps) => {
         setIsLoading(false)
     }
 
-    const onRemoveCourse = async () =>{
+    const onRemoveCourse = async () => {
         axios.delete(`/api/course/${idCourse}`)
-        toast('Curso eliminado correctamente')
         router.push('/teacher')
+        toast('Curso eliminado correctamente')
     }
 
     return (

@@ -1,6 +1,6 @@
 "use client"
 
-import { FileImage, Pencil } from "lucide-react"
+import { FileImage, ImageUp, Pencil } from "lucide-react"
 import { TitleBlock } from "../TitleBlock"
 import { CourseImageProps } from "./CourseImage.type"
 import { useState } from "react"
@@ -25,15 +25,24 @@ export const CourseImage = ({ idCourse, imageCourse }: CourseImageProps) => {
             toast.error("No se pudo actualizar la imagen")
         }
     }
+
     return (
         <div className="p-4 rounded-lg bg-white h-fit ">
             <TitleBlock icon={FileImage} title="Imagen del curso" />
 
             {
                 isEditing ?
-                    <div className="bg-slate-300 p-4 mt-2 rounded-lg">
+                    <div className="bg-slate-300 p-4 mt-2 rounded-lg flex flex-col items-center">
+                        <ImageUp className="text-white" size={40} strokeWidth={1} />
                         <UploadButton
                             endpoint="imageUploader"
+                            content={{
+                                button({ ready }) {
+                                    if (ready) return "Selecciona una imagen";
+                                    return "Cargando..."
+                                },
+                                allowedContent: "(PNG, JPG, SVG, WEBP)",
+                            }}
                             onClientUploadComplete={(res) => {
                                 onChangeImage(res[0]?.ufsUrl)
                                 setImage(res[0]?.ufsUrl)

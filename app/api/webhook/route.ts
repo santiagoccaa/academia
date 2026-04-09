@@ -4,7 +4,6 @@ import { stripe } from "@/lib/stripe";
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 
-
 export async function POST(req: Request) {
     const body = await req.text()
     const headerList = await headers()
@@ -59,5 +58,5 @@ export async function POST(req: Request) {
         }
     }
 
-    return NextResponse.json({ message: null }, { status: 200 })
+    return NextResponse.json({ message: "WebHook Done!" }, { status: 200 })
 }

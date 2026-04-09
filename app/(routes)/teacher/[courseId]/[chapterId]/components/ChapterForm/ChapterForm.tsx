@@ -28,16 +28,16 @@ export const ChapterForm = ({ chapter, courseId }: ChapterFormProps) => {
         }
     }
 
-    const onRemoveChapter = async () =>{
+    const onRemoveChapter = async () => {
         try {
             axios.delete(`/api/course/${courseId}/chapter/${chapter.id}`)
-            toast("Capitulo eliminado con existo")
             router.push(`/teacher/${courseId}`)
+            toast("Capitulo eliminado con existo")
         } catch (error) {
             toast("Ocurrio un error al momento de intenter eliminar el capitulo")
         }
     }
-    
+
     return (
         <>
             <div className="p-6 bg-white rounded-md">

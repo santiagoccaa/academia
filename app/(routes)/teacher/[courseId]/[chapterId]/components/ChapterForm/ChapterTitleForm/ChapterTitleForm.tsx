@@ -39,9 +39,8 @@ export const ChapterTitleForm = ({ chapter, courseId }: ChapterTitleFormProps) =
                 description: values.description,
                 isFree: values.isFree
             })
-
-            toast("Capitulo modificado")
             router.refresh()
+            toast("Capitulo modificado")
         } catch (error) {
             console.log(error);
             toast.error("Algo ha ido mal")

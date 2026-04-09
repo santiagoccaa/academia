@@ -29,8 +29,15 @@ import {
 } from "@/components/ui/select"
 import axios from "axios"
 import { toast } from "sonner"
+import { useState } from "react"
+import { useRouter } from "next/navigation"
 
 export const CourseForm = ({ course }: CourseFormProps) => {
+
+    const router = useRouter()
+
+    const [charactersDescription, setCharactersDescription] = useState(0)
+
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -46,10 +53,12 @@ export const CourseForm = ({ course }: CourseFormProps) => {
         try {
             axios.patch(`/api/course/${course.id}`, values)
             toast('Curso actualizado correctamente')
+            router.refresh()
         } catch (error) {
-           toast.error('Ups, algo salio mal')
+            toast.error('Ups, algo salio mal')
         }
     }
+
     return (
         <div className="p-6 bg-white rounded-md">
             <TitleBlock title="Configuracion del curso" icon={Cog} />
@@ -152,16 +161,25 @@ export const CourseForm = ({ course }: CourseFormProps) => {
                             name="description"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Description</FormLabel>
+                                    <FormLabel>Descripcion</FormLabel>
                                     <FormControl>
                                         <Textarea
                                             placeholder="Descripcion del curso"
                                             className="resize-none"
                                             {...field}
-                                        >
 
+                                            onChange={(e) => {
+                                                const value = e.target.value
+                                                setCharactersDescription(value.length);
+                                                field.onChange(e);
+                                            }}
+                                            maxLength={600}
+                                        >
                                         </Textarea>
                                     </FormControl>
+                                    <FormDescription>
+                                        {charactersDescription} / 500 caracteres
+                                    </FormDescription>
                                     <FormDescription>
                                         Pon la descripcion completa del curso
                                     </FormDescription>

@@ -33,9 +33,8 @@ export const FormChaterName = ({ idCourse, setShowInputChapter }: FormChaterName
                 title: values.title
             })
             toast("Capitulo creado")
-            setShowInputChapter(false)
-
             router.refresh()
+            setShowInputChapter(false)
         } catch (error) {
             console.log(error);
             toast.error("Hubo un error al momento de crear el capitulo")
