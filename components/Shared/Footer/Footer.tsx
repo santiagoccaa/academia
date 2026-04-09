@@ -1,7 +1,16 @@
+"use client"
+
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 const Footer = () => {
     const year = new Date().getFullYear()
+
+    const pathName = usePathname()
+
+    if (pathName.split("/sign-in?")) {
+        return
+    }
     return (
         <footer className='py-4 px-6 border-t bg-white w-full'>
             <div className='flex justify-between items-center text-sm text-slate-500'>

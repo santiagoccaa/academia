@@ -17,9 +17,10 @@ import {
 import Link from "next/link"
 import { routes, routesTeacher } from "./appSidebar.data"
 import { CodeXml } from "lucide-react"
-
+    
 export function AppSidebar() {
     const { state } = useSidebar()
+    
     return (
         <Sidebar collapsible="icon">
             <SidebarContent className="bg-white">

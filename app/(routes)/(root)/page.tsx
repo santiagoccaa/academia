@@ -9,7 +9,6 @@ export default async function Home() {
   return (
     <div>
       <ExploreCourse />
-
       <ListCourses courses={listCourses} title="Top cursos" />
     </div>
   );

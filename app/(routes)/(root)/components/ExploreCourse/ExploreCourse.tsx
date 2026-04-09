@@ -11,7 +11,13 @@ export const ExploreCourse = () => {
                         Explora todos los cursos
                     </h1>
                     <p className="text-balance max-w-2xl">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident quas maxime vel eaque nesciunt, voluptatibus sed praesentium adipisci deleniti excepturi omnis iste modi consequatur quisquam iure tenetur expedita? Amet, quidem!
+                        Bienvenido a nuestra academia
+                        Aquí comienza tu camino hacia el aprendizaje y el crecimiento.
+
+                        Explora una amplia variedad de cursos diseñados para potenciar tus habilidades, avanzar en tu carrera y ayudarte a alcanzar tus metas. Ya sea que estés empezando o buscando llevar tus conocimientos al siguiente nivel, tenemos algo para ti.
+
+                        Descubre todo lo que hemos preparado y da el siguiente paso en tu formación.
+                        ¡Tu futuro empieza hoy!
                     </p>
                     <Button className="w-fit" asChild>
                         <Link href={"/courses"}>
