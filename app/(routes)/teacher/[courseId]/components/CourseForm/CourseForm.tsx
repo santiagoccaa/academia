@@ -30,13 +30,11 @@ import {
 import axios from "axios"
 import { toast } from "sonner"
 import { useState } from "react"
-import { useRouter } from "next/navigation"
+import { countCharacteres } from "@/utils/countCharacteres"
 
 export const CourseForm = ({ course }: CourseFormProps) => {
 
-    const router = useRouter()
-
-    const [charactersDescription, setCharactersDescription] = useState(0)
+    const [charactersDescription, setCharactersDescription] = useState(course.description?.length)
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -51,9 +49,13 @@ export const CourseForm = ({ course }: CourseFormProps) => {
 
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
         try {
+            if (!form.formState.isDirty) {
+                return
+            }
             axios.patch(`/api/course/${course.id}`, values)
+            form.reset(values)
+
             toast('Curso actualizado correctamente')
-            router.refresh()
         } catch (error) {
             toast.error('Ups, algo salio mal')
         }
@@ -170,7 +172,7 @@ export const CourseForm = ({ course }: CourseFormProps) => {
 
                                             onChange={(e) => {
                                                 const value = e.target.value
-                                                setCharactersDescription(value.length);
+                                                setCharactersDescription(countCharacteres(value));
                                                 field.onChange(e);
                                             }}
                                             maxLength={600}
@@ -178,7 +180,7 @@ export const CourseForm = ({ course }: CourseFormProps) => {
                                         </Textarea>
                                     </FormControl>
                                     <FormDescription>
-                                        {charactersDescription} / 500 caracteres
+                                        {charactersDescription} / 600 caracteres
                                     </FormDescription>
                                     <FormDescription>
                                         Pon la descripcion completa del curso
@@ -188,7 +190,7 @@ export const CourseForm = ({ course }: CourseFormProps) => {
                             )}
                         />
                     </div>
-                    <Button type="submit">Guardar informacion basica</Button>
+                    <Button type="submit" disabled={!form.formState.isDirty}>Guardar informacion basica</Button>
                 </form>
             </Form>
         </div>

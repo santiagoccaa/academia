@@ -27,11 +27,11 @@ export const CoursePrice = ({ idCourse, priceCourse }: CoursePriceProps) => {
         <div className="p-6 bg-white rounded-mt h-filt">
             <TitleBlock title="Precio del curso" icon={DollarSign} />
 
-            <Select value={price} onValueChange={setPrice}>
+            <Select value={price} onValueChange={setPrice} >
                 <SelectTrigger className="w-full">
                     <SelectValue placeholder="Selecciona el precio del curso" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent position="popper" side="bottom" align="start">
                     <SelectGroup>
                         <SelectLabel>
                             Precio del curso

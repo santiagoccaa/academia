@@ -5,7 +5,6 @@ import {
     Form,
     FormField,
     FormItem,
-    FormLabel,
     FormControl,
     FormMessage,
 } from "@/components/ui/form"
@@ -15,11 +14,9 @@ import axios from 'axios'
 import { toast } from "sonner"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import { useRouter } from "next/navigation"
 
-export const FormChaterName = ({ idCourse, setShowInputChapter }: FormChaterNameProps) => {
+export const FormChaterName = ({ idCourse, setShowInputChapter, setChapterList, chapters }: FormChaterNameProps) => {
 
-    const router = useRouter()
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -29,12 +26,13 @@ export const FormChaterName = ({ idCourse, setShowInputChapter }: FormChaterName
 
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
         try {
-            axios.post(`/api/course/${idCourse}/chapter`, {
+            const res = await axios.post(`/api/course/${idCourse}/chapter`, {
                 title: values.title
             })
-            toast("Capitulo creado")
-            router.refresh()
+
+            setChapterList([...chapters, res.data])
             setShowInputChapter(false)
+            toast("Capitulo creado")
         } catch (error) {
             console.log(error);
             toast.error("Hubo un error al momento de crear el capitulo")

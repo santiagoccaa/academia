@@ -17,7 +17,6 @@ export const CourseChapter = ({ chapters, idCourse }: CourseChapterProps) => {
 
     const [chapterList, setChapterList] = useState(chapters ?? [])
     const [showInputChapter, setShowInputChapter] = useState(false)
-    const [isUpdating, setIsUpdating] = useState(false)
 
     useEffect(() => {
         setChapterList(chapters ?? [])
@@ -25,6 +24,8 @@ export const CourseChapter = ({ chapters, idCourse }: CourseChapterProps) => {
 
     const onDragEnd = (result: DropResult) => {
         if (!result.destination) return
+
+        if (result.source.index === result.destination.index) return
 
         const items = Array.from(chapterList)
         const [reorderItem] = items.splice(result.source.index, 1)
@@ -36,22 +37,18 @@ export const CourseChapter = ({ chapters, idCourse }: CourseChapterProps) => {
             id: chapter.id,
             position: index
         }))
+
         onReorder(bulkUpdate)
     }
 
     const onReorder = async (updateData: { id: string, position: number }[]) => {
+
         try {
-            setIsUpdating(true)
             await axios.put(`/api/course/${idCourse}/chapter/reorder`, {
                 list: updateData
             })
-
-            toast("Order actualizado")
-            router.refresh()
         } catch (error) {
             toast.error("Algo salio mal")
-        } finally {
-            setIsUpdating(false)
         }
     }
 
@@ -71,15 +68,8 @@ export const CourseChapter = ({ chapters, idCourse }: CourseChapterProps) => {
                 </Button>
             </div>
 
-            {showInputChapter && <FormChaterName setShowInputChapter={setShowInputChapter} idCourse={idCourse} />}
+            {showInputChapter && <FormChaterName chapters={chapterList} setShowInputChapter={setShowInputChapter} setChapterList={setChapterList} idCourse={idCourse} />}
 
-            {
-                isUpdating && (
-                    <div className="absolute top-0 right-0 flex items-center justify-center w-full h-full bg-slate-500/20">
-                        <Loader2 className="w-6 h-6 animate-spin  text-violet-500" />
-                    </div>
-                )
-            }
             <DragDropContext onDragEnd={onDragEnd}>
                 <Droppable droppableId="chapters">
                     {(provider) => (

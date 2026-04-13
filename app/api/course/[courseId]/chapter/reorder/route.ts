@@ -7,7 +7,7 @@ interface Params {
 }
 export async function PUT(req: Request, { params }: Params) {
     console.log("[REORDER]");
-    
+
     try {
         const { userId } = await auth()
         const { courseId } = await params
@@ -15,7 +15,7 @@ export async function PUT(req: Request, { params }: Params) {
         const { list } = await req.json()
 
         if (!userId) {
-            return new NextResponse('Unauthorized', { status: 401 })
+            return NextResponse.json({ message: 'Unauthorized' }, { status: 401 })
         }
 
         const course = await prisma.course.findUnique({
@@ -26,7 +26,7 @@ export async function PUT(req: Request, { params }: Params) {
         })
 
         if (!course) {
-            return new NextResponse("Course not found", { status: 404 })
+            return NextResponse.json({ message: "Course not found" }, { status: 404 })
         }
 
         for (const item of list) {
@@ -40,9 +40,9 @@ export async function PUT(req: Request, { params }: Params) {
             })
         }
 
-        return new NextResponse("Succes", { status: 200 })
+        return NextResponse.json({ message: "Succes" }, { status: 200 })
     } catch (error) {
         console.log("[COURSE_CHAPTER_REORDER]", error);
-        return new NextResponse("Internal server error", { status: 500 })
+        return NextResponse.json({ message: "Internal server error" }, { status: 500 })
     }
 }

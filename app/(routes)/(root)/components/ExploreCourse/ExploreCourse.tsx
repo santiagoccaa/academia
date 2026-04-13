@@ -3,6 +3,7 @@ import Image from "next/image"
 import Link from "next/link"
 
 export const ExploreCourse = () => {
+
     return (
         <div className="my-4 mx-6 border bg-white rounded-lg">
             <div className="grid grid-cols-1 md:grid-cols-[60%_40%] gap-4">

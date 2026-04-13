@@ -16,11 +16,15 @@ import {
 } from "@/components/ui/sidebar"
 import Link from "next/link"
 import { routes, routesTeacher } from "./appSidebar.data"
-import { CodeXml } from "lucide-react"
-    
+import { ArrowBigUpDash, CodeXml } from "lucide-react"
+import { useUser } from "@clerk/nextjs"
+
 export function AppSidebar() {
+    const { user } = useUser()
     const { state } = useSidebar()
-    
+
+    const role = user?.publicMetadata?.role as string
+
     return (
         <Sidebar collapsible="icon">
             <SidebarContent className="bg-white">
@@ -56,11 +60,22 @@ export function AppSidebar() {
                     </SidebarMenu>
                     <SidebarMenu className="mt-4 space-y-2">
                         <SidebarGroupLabel>
-                            Profesor
+                            Profesor:
                         </SidebarGroupLabel>
+
                         <SidebarMenuItem>
                             <SidebarMenuSub>
-                                {
+
+                                {role !== "teacher" ? (
+                                    <SidebarMenuSubItem>
+                                        <SidebarMenuSubButton href={"/being-teacher"} className="hover:bg-muted transition">
+                                            <div className="p-1 rounded-lg text-black bg-amber-400">
+                                                <ArrowBigUpDash className="w-4 h-4" />
+                                            </div>
+                                            Ser Profesor
+                                        </SidebarMenuSubButton>
+                                    </SidebarMenuSubItem>
+                                ) : (
                                     routesTeacher.map((routeTeacher) => (
                                         <SidebarMenuSubItem key={routeTeacher.title}>
                                             <SidebarMenuSubButton href={routeTeacher.url} className="hover:bg-muted transition">
@@ -68,16 +83,16 @@ export function AppSidebar() {
                                                     <routeTeacher.icon className="w-4 h-4" />
                                                 </div>
                                                 {routeTeacher.title}
-
                                             </SidebarMenuSubButton>
                                         </SidebarMenuSubItem>
                                     ))
-                                }
+                                )}
                             </SidebarMenuSub>
                         </SidebarMenuItem>
+
                     </SidebarMenu>
                 </SidebarGroup>
-            </SidebarContent>
-        </Sidebar>
+            </SidebarContent >
+        </Sidebar >
     )
 }

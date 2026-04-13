@@ -13,10 +13,10 @@ export const formSchema = z.object({
 
     description: z
         .string()
+        .trim()
         .min(2, "La descripción debe tener al menos 2 caracteres")
         .max(600, "La descripción no puede superar los 500 caracteres")
-        .optional()
-        .or(z.literal("")),
+        .optional(),
 
     category: z
         .string("La categoría es obligatoria")
