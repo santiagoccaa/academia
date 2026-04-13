@@ -20,7 +20,7 @@ export const Test = () => {
         }
     }
 
-    console.log("Data:", user?.user?.publicMetadata);
+    const role = user?.user?.publicMetadata
 
     return (
         <>
