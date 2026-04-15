@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
-import { SidebarProvider } from "@/components/ui/sidebar"
-import { AppSidebar } from "./(routes)/(root)/components";
 import Navbar from "@/components/Shared/Navbar/Navbar";
 import Footer from "@/components/Shared/Footer/Footer";
 import { Toaster } from "@/components/ui/sonner";
@@ -29,17 +27,17 @@ export default function RootLayout({
         <body
           className={`${fontPrimary.className} antialiased`}
         >
-          <SidebarProvider>
-            <AppSidebar />
+          {/* <SidebarProvider>
+            <AppSidebar /> */}
             <div className="w-full bg-stone-100 flex flex-col min-h-screen">
-              <Navbar />
+              {/* <Navbar /> */}
               <main className="flex-1">
                 {children}
               </main>
               <Footer />
             </div>
             <Toaster />
-          </SidebarProvider>
+          {/* </SidebarProvider> */}
         </body>
       </html>
     </ClerkProvider >

@@ -1,2 +1,5 @@
 export * from './AppSidebar'
 export * from './ExploreCourse'
+export * from './Navbar'
+export * from './Decorador'
+export * from './Hero'
