@@ -5,6 +5,7 @@ import Image from "next/image";
 import { STUDENT_HOME } from "@/const/images";
 import { Navbar } from "../Navbar";
 import { Decorador } from "../Decorador";
+import { CollaBoration } from "./CollaBoration";
 
 const items = [
     {
@@ -107,6 +108,7 @@ export const Hero = () => {
                         </div>
                     </div>
                 </div>
+                <CollaBoration />
             </PageContainer>
         </div>
     )
