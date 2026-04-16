@@ -1,37 +1,33 @@
+import { CardCourse } from "@/components/Shared"
+import { PageContainer } from "@/components/Shared/PageContainer"
 import { Button } from "@/components/ui/button"
-import Image from "next/image"
-import Link from "next/link"
 
-export const ExploreCourse = () => {
+export const ExploreCourse = async () => {
 
     return (
-        <div className="my-4 mx-6 border bg-white rounded-lg">
-            <div className="grid grid-cols-1 md:grid-cols-[60%_40%] gap-4">
-                <div className="p-6 flex flex-col gap-3">
-                    <h1 className="text-4xl font-semibold">
-                        Explora todos los cursos
-                    </h1>
-                    <p className="text-balance max-w-2xl">
-                        Bienvenido a nuestra academia
-                        Aquí comienza tu camino hacia el aprendizaje y el crecimiento.
-
-                        Explora una amplia variedad de cursos diseñados para potenciar tus habilidades, avanzar en tu carrera y ayudarte a alcanzar tus metas. Ya sea que estés empezando o buscando llevar tus conocimientos al siguiente nivel, tenemos algo para ti.
-
-                        Descubre todo lo que hemos preparado y da el siguiente paso en tu formación.
-                        ¡Tu futuro empieza hoy!
-                    </p>
-                    <Button className="w-fit" asChild>
-                        <Link href={"/courses"}>
-                            Empezar a aprender
-                        </Link>
-                    </Button>
-                </div>
-
-                <div className="flex items-end">
-                    <Image src={"/home_image.svg"} alt="explora todos los cursos" width={300} height={200} />
-                </div>
+        <PageContainer>
+            <div className='flex flex-col my-8 '>
+                <h2 className='text-sm font-medium text-violet-500'>Explore Programs</h2>
+                <p className='text-3xl font-medium text-gray-800 max-w-xl'>
+                    Our Most Popular Class
+                </p>
+                <p className="text-sm text-gray-500">
+                    Let's join our famous class, the knowledge provided will definitely be useful for you.
+                </p>
             </div>
-        </div>
+
+            <div className="grid grid-cols-4 gap-4">
+                <CardCourse />
+                <CardCourse />
+                <CardCourse />
+                <CardCourse />
+            </div>
+            <div className="flex justify-center mt-8">
+                <Button className="shadow-md">
+                    Explore All Courses
+                </Button>
+            </div>
+        </PageContainer>
     )
 }
 

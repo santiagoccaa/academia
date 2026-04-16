@@ -1,15 +1,14 @@
-import { getHomeCourses } from "@/actios/getHomeCourses";
-import { ExploreCourse } from "./components";
-import { ListCourses } from "@/components/Shared";
+import { Blog, ExploreCourse, FeedBack, Hero, Services, Tutors } from "./components";
 
-export default async function Home() {
-
-  const listCourses = await getHomeCourses()
-
+export default function Home() {
   return (
-    <div>
+    <>
+      <Hero />
+      <Services />
       <ExploreCourse />
-      <ListCourses courses={listCourses} title="Top cursos" />
-    </div>
+      <Tutors />
+      <FeedBack />
+      <Blog />
+    </>
   );
 }
