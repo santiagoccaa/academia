@@ -22,7 +22,7 @@ export const ExploreCourse = async () => {
                 <CardCourse />
                 <CardCourse />
             </div>
-            <div className="flex justify-center">
+            <div className="flex justify-center mt-8">
                 <Button className="shadow-md">
                     Explore All Courses
                 </Button>
