@@ -7,7 +7,6 @@ interface TutorProps {
     description: string
 }
 
-
 export const CardTutor = (infoTutor: TutorProps) => {
     const { description, job, name } = infoTutor
 

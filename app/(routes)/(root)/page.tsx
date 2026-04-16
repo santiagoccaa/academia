@@ -1,4 +1,4 @@
-import { ExploreCourse, Hero, Services, Tutors } from "./components";
+import { ExploreCourse, FeedBack, Hero, Services, Tutors } from "./components";
 
 export default function Home() {
   return (
@@ -7,6 +7,7 @@ export default function Home() {
       <Services />
       <ExploreCourse />
       <Tutors />
+      <FeedBack />
     </>
   );
 }
