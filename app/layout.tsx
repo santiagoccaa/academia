@@ -28,7 +28,7 @@ export default function RootLayout({
         >
           {/* <SidebarProvider>
             <AppSidebar /> */}
-            <div className="w-full bg-stone-100 flex flex-col min-h-screen">
+            <div className="w-full flex flex-col min-h-screen">
               {/* <Navbar /> */}
               <main className="flex-1">
                 {children}

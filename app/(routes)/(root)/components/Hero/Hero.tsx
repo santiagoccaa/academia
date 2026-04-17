@@ -35,7 +35,7 @@ export const Hero = () => {
             <Navbar />
             <PageContainer>
                 <div className="h-fit min-h-screen flex flex-col">
-                    <div className="flex flex-1 items-center relative ">
+                    <div className="flex flex-1 lg:min-h-screen items-center relative lg:pt-10">
                         {/* Left Content */}
                         <div className="w-full lg:w-1/2 relative flex flex-col">
                             {/* Title */}
