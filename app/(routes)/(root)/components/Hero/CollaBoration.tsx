@@ -26,7 +26,7 @@ export const CollaBoration = () => {
         </h3>
         <span className="text-xl font-medium text-gray-600">Collaboration</span>
       </div>
-      <div className="grid grid-cols-2 lg:grid-cols-4">
+      <div className="grid grid-cols-2 lg:grid-cols-4 w-full lg:place-items-end">
         {collabotarions.map(({ image }, index) => (
           <div key={index} className="w-40 h-20 relative">
             <Image src={image} alt={image} fill />
