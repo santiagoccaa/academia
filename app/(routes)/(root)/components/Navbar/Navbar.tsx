@@ -4,10 +4,20 @@ import { PageContainer } from "@/components/Shared/PageContainer"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { LOGO } from "@/const/images"
-import { ChevronDown, Search } from "lucide-react"
+import { ChevronDown, CircleX, House, LucideIcon, Menu, Search, X } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import {
+    Sheet,
+    SheetClose,
+    SheetContent,
+    SheetDescription,
+    SheetFooter,
+    SheetHeader,
+    SheetTitle,
+    SheetTrigger,
+} from "@/components/ui/sheet"
 
 interface Nav {
     name: string
@@ -41,23 +51,51 @@ export const Navbar = () => {
         <div className="absolute left-0 top-0 w-full z-10">
             <PageContainer>
                 <div className="flex items-center justify-between py-2 w-full">
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-center justify-between w-full lg:w-fit gap-4">
                         <div className="relative w-20 h-16">
                             <Image src={LOGO} fill alt="Logo" />
                         </div>
-                        <div className="relative">
+                        <div className="hidden lg:block relative">
                             <Input placeholder="Want to learn?" className="pl-7 pr-28 border" />
                             <Search className="absolute text-gray-300 top-1/2 -translate-y-1/2 left-2 w-4 h-4" />
                             <Button className="absolute top-1/2 -translate-y-1/2 right-2 h-8 text-xs bg-violet-100 text-violet-400 hover:text-white transition-colors duration-300">
                                 Explore <ChevronDown className="w-3 h-2" />
                             </Button>
                         </div>
+                        <Sheet>
+                            <SheetTrigger>
+                                <Menu />
+                            </SheetTrigger>
+                            <SheetContent showCloseButton={false}>
+                                <SheetClose className="p-4 text-2xl">
+                                    <X />
+                                </SheetClose>
+                                <SheetTitle className="sr-only">Menu</SheetTitle>
+                                <nav className="flex py-12 justify-center">
+                                    <ul className="flex flex-col gap-8 text-left">
+                                        {nav.map(({ url, name }, index) => (
+                                            <li key={index} className={`text-xl relative font-medium hover:text-violet-400 duration-300 transition-colors ${pathName === url && 'text-violet-400 border-b font-bold border-violet-400'}`}>
+                                                <Link href={url}>
+                                                    {name}
+                                                </Link>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </nav>
+                                <SheetFooter className="flex justify-center items-center">
+                                    <div className="relative w-20 h-16">
+                                        <Image src={LOGO} fill alt="Logo" />
+                                    </div>
+                                </SheetFooter>
+                            </SheetContent>
+
+                        </Sheet>
                     </div>
-                    <div className="flex items-center gap-8">
+                    <div className="hidden lg:flex items-center gap-8">
                         <nav>
                             <ul className="flex items-center gap-4">
-                                {nav.map(({ url, name }) => (
-                                    <li key={"name"} className={`text-sm font-medium hover:text-violet-400 duration-300 transition-colors ${pathName === name && 'text-violet-400'}`}>
+                                {nav.map(({ url, name }, index) => (
+                                    <li key={index} className={`text-sm font-medium hover:text-violet-400 duration-300 transition-colors ${pathName === name && 'text-violet-400'}`}>
                                         <Link href={url}>
                                             {name}
                                         </Link>
