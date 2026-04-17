@@ -13,7 +13,7 @@ export const CardTutor = (infoTutor: TutorProps) => {
     const { description, job, name, image } = infoTutor
 
     return (
-        <Card className="text-center rounded-xs bg-[#F9FAFB] border-[#F9FAFB] w-60 h-full">
+        <Card className="text-center rounded-xs bg-[#F9FAFB] shadow-md border-[#F9FAFB] w-60 h-full">
             <CardHeader>
                 <div className="w-full flex justify-center" >
                     <div className="relative w-17 aspect-square rounded-full">
