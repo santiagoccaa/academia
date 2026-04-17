@@ -48,7 +48,7 @@ export const Navbar = () => {
     const pathName = usePathname()
 
     return (
-        <div className="absolute left-0 top-0 w-full z-10">
+        <div className="absolute lg:block w-full z-10">
             <PageContainer>
                 <div className="flex items-center justify-between py-2 w-full">
                     <div className="flex items-center justify-between w-full lg:w-fit gap-4">
@@ -62,34 +62,35 @@ export const Navbar = () => {
                                 Explore <ChevronDown className="w-3 h-2" />
                             </Button>
                         </div>
-                        <Sheet>
-                            <SheetTrigger>
-                                <Menu />
-                            </SheetTrigger>
-                            <SheetContent showCloseButton={false}>
-                                <SheetClose className="p-4 text-2xl">
-                                    <X />
-                                </SheetClose>
-                                <SheetTitle className="sr-only">Menu</SheetTitle>
-                                <nav className="flex py-12 justify-center">
-                                    <ul className="flex flex-col gap-8 text-left">
-                                        {nav.map(({ url, name }, index) => (
-                                            <li key={index} className={`text-xl relative font-medium hover:text-violet-400 duration-300 transition-colors ${pathName === url && 'text-violet-400 border-b font-bold border-violet-400'}`}>
-                                                <Link href={url}>
-                                                    {name}
-                                                </Link>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </nav>
-                                <SheetFooter className="flex justify-center items-center">
-                                    <div className="relative w-20 h-16">
-                                        <Image src={LOGO} fill alt="Logo" />
-                                    </div>
-                                </SheetFooter>
-                            </SheetContent>
-
-                        </Sheet>
+                        <div className="block lg:hidden">
+                            <Sheet>
+                                <SheetTrigger>
+                                    <Menu />
+                                </SheetTrigger>
+                                <SheetContent showCloseButton={false}>
+                                    <SheetClose className="p-4 text-2xl">
+                                        <X />
+                                    </SheetClose>
+                                    <SheetTitle className="sr-only">Menu</SheetTitle>
+                                    <nav className="flex py-12 justify-center">
+                                        <ul className="flex flex-col gap-8 text-left">
+                                            {nav.map(({ url, name }, index) => (
+                                                <li key={index} className={`text-xl relative font-medium hover:text-violet-400 duration-300 transition-colors ${pathName === url && 'text-violet-400 border-b font-bold border-violet-400'}`}>
+                                                    <Link href={url}>
+                                                        {name}
+                                                    </Link>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </nav>
+                                    <SheetFooter className="flex justify-center items-center">
+                                        <div className="relative w-20 h-16">
+                                            <Image src={LOGO} fill alt="Logo" />
+                                        </div>
+                                    </SheetFooter>
+                                </SheetContent>
+                            </Sheet>
+                        </div>
                     </div>
                     <div className="hidden lg:flex items-center gap-8">
                         <nav>

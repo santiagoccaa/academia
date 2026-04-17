@@ -30,14 +30,14 @@ export const Hero = () => {
     return (
         <div className="relative bg-linear-to-t from-violet-50 via-white to-white overflow-hidden">
             <Decorador className="top-20 lg:top-1/2 lg:-translate-y-1/2 -left-40 lg:left-0" />
-            <Decorador className="bottom-0 right-0 hidden lg:block" />
+            <Decorador className="bottom-20 -right-30 lg:bottom-0 lg:right-0 lg:flex" />
             {/* <ExploreCourse /> */}
             <Navbar />
             <PageContainer>
-                <div className="h-screen flex flex-col">
+                <div className="h-fit min-h-screen flex flex-col">
                     <div className="flex flex-1 items-center relative ">
                         {/* Left Content */}
-                        <div className="w-full lg:w-1/2 relative flex flex-col h-full py-12">
+                        <div className="w-full lg:w-1/2 relative flex flex-col">
                             {/* Title */}
                             <div className="flex-1 flex flex-col justify-center">
                                 <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold">
