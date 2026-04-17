@@ -7,7 +7,7 @@ export const CourseContent = ({ chapters }: CourseContentProps) => {
             <div className='space-y-6'>
                 {chapters.map((chapter, index) => (
                     <div key={chapter.id} className='flex items-start space-x-4 border p-2 rounded-lg hover:bg-gray-100 transition-all'>
-                        <div className='shrink-0 bg-violet-400 text-white font-semibold rounded-full w-8 h-8 flex items-center justify-center'>
+                        <div className='shrink-0 bg-primary text-white font-semibold rounded-full w-8 h-8 flex items-center justify-center'>
                             {index + 1}
                         </div>
 

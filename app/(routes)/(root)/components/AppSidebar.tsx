@@ -30,7 +30,7 @@ export function AppSidebar() {
             <SidebarContent className="bg-white">
                 <SidebarHeader>
                     <Link href={"/"} className="flex flex-row items-center gap-2">
-                        <div className="p-1 rounded-full text-white bg-violet-400">
+                        <div className="p-1 rounded-full text-white bg-primary">
                             <CodeXml className="w-6 h-6" />
                         </div>
                         {
@@ -48,7 +48,7 @@ export function AppSidebar() {
                                 <SidebarMenuItem key={route.title}>
                                     <SidebarMenuButton asChild>
                                         <a href={route.url}>
-                                            <div className="p-1 rounded-lg text-white bg-violet-400">
+                                            <div className="p-1 rounded-lg text-white bg-primary">
                                                 <route.icon className="w-4 h-4" />
                                             </div>
                                             {state === "expanded" && <span>{route.title}</span>}

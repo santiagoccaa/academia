@@ -17,7 +17,7 @@ export default async function OrdersPage() {
     return (
         <div className='my-4 mx-6 border rounded-lg bg-white p-6'>
             <div className='flex items-center mb-6 gap-1'>
-                <div className='p-2 rounded-full bg-violet-400'>
+                <div className='p-2 rounded-full bg-primary'>
                     <ReceiptText className='w-4 h-4 text-white' />
                 </div>
                 <h1 className='text-xl font-semibold'>Todos mis pedidos</h1>

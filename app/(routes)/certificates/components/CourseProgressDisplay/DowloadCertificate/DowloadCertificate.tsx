@@ -38,7 +38,7 @@ export const DowloadCertificate = ({ titleCourse, userName }: DowloadCertificate
     return (
         <AlertDialog>
             <AlertDialogTrigger asChild>
-                <Button className="text-white bg-violet-400 hover:bg-violet-500 duration-300">Descargar certificado <Download className="w-4 h-4 ml-2" /> </Button>
+                <Button className="text-white bg-primary hover:bg-primary duration-300">Descargar certificado <Download className="w-4 h-4 ml-2" /> </Button>
             </AlertDialogTrigger>
             <AlertDialogContent className="w-full max-w-225!">
                 <AlertDialogHeader>

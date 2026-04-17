@@ -4,7 +4,7 @@ import { PageContainer } from "@/components/Shared/PageContainer"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { LOGO } from "@/const/images"
-import { ChevronDown, CircleX, House, LucideIcon, Menu, Search, X } from "lucide-react"
+import { ChevronDown, Menu, Search, X } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
@@ -12,9 +12,7 @@ import {
     Sheet,
     SheetClose,
     SheetContent,
-    SheetDescription,
     SheetFooter,
-    SheetHeader,
     SheetTitle,
     SheetTrigger,
 } from "@/components/ui/sheet"
@@ -58,7 +56,7 @@ export const Navbar = () => {
                         <div className="hidden lg:block relative">
                             <Input placeholder="Want to learn?" className="pl-7 pr-28 border" />
                             <Search className="absolute text-gray-300 top-1/2 -translate-y-1/2 left-2 w-4 h-4" />
-                            <Button className="absolute top-1/2 -translate-y-1/2 right-2 h-8 text-xs bg-violet-100 text-violet-400 hover:text-white transition-colors duration-300">
+                            <Button className="absolute top-1/2 -translate-y-1/2 right-2 h-8 text-xs bg-accent text-primary hover:text-white transition-colors duration-300">
                                 Explore <ChevronDown className="w-3 h-2" />
                             </Button>
                         </div>
@@ -75,7 +73,7 @@ export const Navbar = () => {
                                     <nav className="flex py-12 justify-center">
                                         <ul className="flex flex-col gap-8 text-left">
                                             {nav.map(({ url, name }, index) => (
-                                                <li key={index} className={`text-xl relative font-medium hover:text-violet-400 duration-300 transition-colors ${pathName === url && 'text-violet-400 border-b font-bold border-violet-400'}`}>
+                                                <li key={index} className={`text-xl relative font-medium hover:text-primary duration-300 transition-colors ${pathName === url && 'text-primary border-b font-bold border-primary'}`}>
                                                     <Link href={url}>
                                                         {name}
                                                     </Link>
@@ -96,7 +94,7 @@ export const Navbar = () => {
                         <nav>
                             <ul className="flex items-center gap-4">
                                 {nav.map(({ url, name }, index) => (
-                                    <li key={index} className={`text-sm font-medium hover:text-violet-400 duration-300 transition-colors ${pathName === name && 'text-violet-400'}`}>
+                                    <li key={index} className={`text-sm font-medium hover:text-primary duration-300 transition-colors ${pathName === url && 'text-primary'}`}>
                                         <Link href={url}>
                                             {name}
                                         </Link>

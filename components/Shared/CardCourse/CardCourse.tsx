@@ -12,11 +12,11 @@ export const CardCourse = () => {
                 <Image src={"/courses/figma.png"} width={200} height={200} alt="image courses" className="w-full" />
             </CardHeader>
             <CardContent className="space-y-2">
-                <span className="text-xs font-medium text-violet-500">Design</span>
+                <span className="text-xs font-medium text-primary">Design</span>
                 <h3 className="text-xl text-gray-600 font-bold">Figma UI UX Design</h3>
                 <p className="text-xs font-light text-gray-400">Use Figma to get a job in UI Design, User Interface, User Experience design.</p>
                 <div className="flex items-center gap-2">
-                    <span className="text-xs font-light text-violet-500">4.3</span>
+                    <span className="text-xs font-light text-primary">4.3</span>
                     <div className="flex items-center gap-1">
                         <Star size={10} />
                         <Star size={10} />
@@ -30,13 +30,13 @@ export const CardCourse = () => {
 
             <CardFooter className="justify-between items-end">
                 <div className="flex items-center gap-2">
-                    <div className="w-8 aspect-square rounded-full bg-violet-500" />
+                    <div className="w-8 aspect-square rounded-full bg-primary" />
                     <div className="flex flex-col">
                         <span className="text-xs font-bold text-gray-800">Janne Cooper</span>
                         <span className="text-xs font-light text-gray-400">2025 Create</span>
                     </div>
                 </div>
-                <h3 className="text-xl font-bold text-violet-500">$17.85</h3>
+                <h3 className="text-xl font-bold text-primary">$17.85</h3>
             </CardFooter>
         </Card>
     )

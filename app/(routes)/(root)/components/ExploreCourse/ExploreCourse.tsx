@@ -7,7 +7,7 @@ export const ExploreCourse = async () => {
     return (
         <PageContainer>
             <div className='flex flex-col my-8 '>
-                <h2 className='text-sm font-medium text-violet-500'>Explore Programs</h2>
+                <h2 className='text-sm font-medium text-primary'>Explore Programs</h2>
                 <p className='text-3xl font-medium text-gray-800 max-w-xl'>
                     Our Most Popular Class
                 </p>

@@ -15,7 +15,7 @@ export const ChapterList = ({ chapters, courseSlug, currentChapter, userProgress
                 const isCompleted = userProgress?.some((progress) => progress.chapterId === chapter.id && progress.isCompleted)
 
                 return (
-                    <Link href={`/courses/${courseSlug}/${chapter.id}`} key={chapter.id} className={`flex items-center justify-between border-gray-200 rounded-md transition-all duration-300 ${isCurrent ? 'bg-violet-400 text-white' : 'hover:bg-violet-200 hover:shadow-lg'}`}>
+                    <Link href={`/courses/${courseSlug}/${chapter.id}`} key={chapter.id} className={`flex items-center justify-between border-gray-200 rounded-md transition-all duration-300 ${isCurrent ? 'bg-primary text-white' : 'hover:bg-violet-200 hover:shadow-lg'}`}>
                         <div className='flex items-center gap-2  border shadow-md w-full justify-between rounded-md p-2'>
                             <span>{chapter.title}</span>
                             {

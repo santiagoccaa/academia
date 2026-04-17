@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 export const FeedBack = () => {
     return (
-        <div className='bg-violet-100 py-8 my-8'>
+        <div className='bg-accent py-8 my-8'>
             <PageContainer>
                 <div className='flex flex-col items-center gap-4 text-center'>
                     <Image src={LOGO} alt='logo' width={100} height={100} />

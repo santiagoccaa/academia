@@ -25,10 +25,9 @@ const items = [
     }
 ]
 
-
 export const Hero = () => {
     return (
-        <div className="relative bg-linear-to-t from-violet-50 via-white to-white overflow-hidden">
+        <div className="relative bg-linear-to-t from-accent via-white to-white overflow-hidden">
             <Decorador className="top-20 lg:top-1/2 lg:-translate-y-1/2 -left-40 lg:left-0" />
             <Decorador className="bottom-20 -right-30 lg:bottom-0 lg:right-0 lg:flex" />
             {/* <ExploreCourse /> */}
@@ -41,7 +40,7 @@ export const Hero = () => {
                             {/* Title */}
                             <div className="flex-1 flex flex-col justify-center">
                                 <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold">
-                                    Up your <span className="text-violet-400">Skills</span> to <span className="text-violet-400">Advance</span> your <span className="text-violet-400">Career</span> path
+                                    Up your <span className="text-primary">Skills</span> to <span className="text-primary">Advance</span> your <span className="text-primary">Career</span> path
                                 </h2>
 
                                 {/* Description */}
@@ -54,7 +53,7 @@ export const Hero = () => {
                                         Get Started
                                     </Button>
 
-                                    <Button className="bg-violet-100 text-violet-400 hover:text-white transition-colors duration-300" size="lg">
+                                    <Button className="bg-accent text-primary hover:text-white transition-colors duration-300" size="lg">
                                         Get free trial
                                     </Button>
                                 </div>
@@ -73,24 +72,24 @@ export const Hero = () => {
                         {/* Right Content */}
                         <div className="w-1/2 hidden lg:flex items-center justify-center h-full">
                             <div className="relative">
-                                <div className="w-8 aspect-square rounded-full bg-violet-500 absolute left-0 bottom-10" />
-                                <div className="w-4 aspect-square rounded-full bg-violet-500 absolute left-10 bottom-0" />
+                                <div className="w-8 aspect-square rounded-full bg-primary absolute left-0 bottom-10" />
+                                <div className="w-4 aspect-square rounded-full bg-primary absolute left-10 bottom-0" />
 
-                                <div className="w-100 aspect-square border border-violet-400 rounded-full absolute bottom-4 right-4" />
-                                <div className="w-100 h-100 rounded-full bg-violet-500 relative overflow-hidden">
+                                <div className="w-100 aspect-square border border-primary rounded-full absolute bottom-4 right-4" />
+                                <div className="w-100 h-100 rounded-full bg-primary relative overflow-hidden">
                                     <div className="w-70 h-80 absolute bottom-0 left-1/2 -translate-x-1/2">
                                         <Image src={STUDENT_HOME} alt="student" fill />
                                     </div>
                                 </div>
 
-                                <div className="absolute top-0 -right-12 w-30 py-2 rounded-lg bg-white border border-violet-400 shadow-2xl flex flex-col justify-end items-center gap-2">
-                                    <LoaderCircle className="w-20 h-20 text-violet-500" />
+                                <div className="absolute top-0 -right-12 w-30 py-2 rounded-lg bg-white border border-primary shadow-2xl flex flex-col justify-end items-center gap-2">
+                                    <LoaderCircle className="w-20 h-20 text-primary" />
                                     <h3 className="text-2xl font-bold">5k+</h3>
                                     <span className="text-sm text-gray-400">Online Courses</span>
                                 </div>
 
-                                <div className="absolute top-1/2 -translate-y-1/2 -left-20 w-44 py-1 px-2  rounded-lg bg-white border border-violet-400 shadow-2xl flex items-center gap-2">
-                                    <div className="p-2 rounded-lg bg-violet-500">
+                                <div className="absolute top-1/2 -translate-y-1/2 -left-20 w-44 py-1 px-2  rounded-lg bg-white border border-primary shadow-2xl flex items-center gap-2">
+                                    <div className="p-2 rounded-lg bg-primary">
                                         <Laptop className="w-6 h-6 text-white" />
                                     </div>
                                     <div>
@@ -99,8 +98,8 @@ export const Hero = () => {
                                     </div>
                                 </div>
 
-                                <div className="absolute bottom-8 -right-4 w-fit py-1 px-2 rounded-lg bg-white border border-violet-400 shadow-2xl flex items-center gap-2">
-                                    <div className="p-2 rounded-lg bg-violet-500">
+                                <div className="absolute bottom-8 -right-4 w-fit py-1 px-2 rounded-lg bg-white border border-primary shadow-2xl flex items-center gap-2">
+                                    <div className="p-2 rounded-lg bg-primary">
                                         <UserPen className="w-6 h-6 text-white" />
                                     </div>
                                     <div>

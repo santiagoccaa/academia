@@ -7,7 +7,7 @@ export const CardServices = (service: AcademyService) => {
   const { description, href, icon: Icon, title, color } = service
 
   return (
-    <Card className="full hover:bg-violet-500 rounded-md shadow-lg hover:shadow-none group transition-colors duration-300">
+    <Card className="full hover:bg-secondary rounded-md shadow-lg hover:shadow-none group transition-colors duration-300">
       <CardTitle className="text-2xl font-bold flex px-6 items-center gap-2 text-gray-800 group-hover:text-white duration-300">
         <div className={`p-2 rounded-lg ${color}`}>
           <Icon />
@@ -18,7 +18,7 @@ export const CardServices = (service: AcademyService) => {
         {description}
       </CardContent>
       <CardFooter>
-        <Link href={href} className="text-sm font-medium text-violet-500 flex gap-2 items-center group-hover:text-white duration-300">
+        <Link href={href} className="text-sm font-medium text-primary flex gap-2 items-center group-hover:text-white duration-300">
           Learm More <ChevronRight size={15} className="group-hover:translate-x-1 duration-300 text-white" />
         </Link>
       </CardFooter>
