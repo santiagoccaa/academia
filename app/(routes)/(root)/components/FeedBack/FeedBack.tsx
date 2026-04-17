@@ -12,7 +12,9 @@ export const FeedBack = () => {
 
                     <div className='mt-6'>
                         <div className="w-full flex justify-center mb-2">
-                            <div className="w-12 aspect-square rounded-full bg-violet-400" />
+                            <div className="w-14 aspect-square rounded-full relative">
+                                <Image src={`/persons/person5.png`} fill alt={"image user"} />
+                            </div>
                         </div>
                         <h3 className="text-sm font-bold text-gray-800">Jacob Jones</h3>
                         <span className="text-gray-600 text-sm font-light">Student, National University</span>
