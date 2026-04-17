@@ -39,10 +39,10 @@ export const Services = () => {
         <PageContainer>
             <div className='flex flex-col items-center text-center my-8 '>
                 <h2 className='text-sm font-medium text-violet-500'>Our Services</h2>
-                <p className='text-3xl font-medium text-gray-800 max-w-xl mb-8'>
+                <p className='text-2xl md:text-3xl font-medium text-gray-800 max-w-xl mb-8'>
                     Fostering a playful & engaging learning environment
                 </p>
-                <div className='grid grid-cols-3 gap-8 w-full'>
+                <div className='grid grid-cols-1 lg:grid-cols-3 gap-8 w-full'>
                     {academyServices.map((service, index) => (
                         <CardServices key={index} {...service} />
                     ))}
