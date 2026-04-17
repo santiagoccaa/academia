@@ -28,87 +28,91 @@ const items = [
 
 export const Hero = () => {
     return (
-        <div className="min-h-screen relative bg-linear-to-t from-violet-50 via-white to-white">
-            <Decorador positionY="top-1/2 -translate-y-1/2" positionX="left-0" />
-            <Decorador positionY="bottom-0" positionX="right-0" />
+        <div className="relative bg-linear-to-t from-violet-50 via-white to-white overflow-hidden">
+            <Decorador className="top-20 lg:top-1/2 lg:-translate-y-1/2 -left-40 lg:left-0" />
+            <Decorador className="bottom-0 right-0 hidden lg:block" />
             {/* <ExploreCourse /> */}
             <Navbar />
             <PageContainer>
-                <div className="flex items-center h-screen relative">
-                    {/* Left Content */}
-                    <div className="w-1/2 relative">
-                        {/* Title */}
-                        <h2 className="text-7xl font-bold">
-                            Up your <span className="text-violet-400">Skills</span> to <span className="text-violet-400">Advance</span> your <span className="text-violet-400">Career</span> path
-                        </h2>
+                <div className="h-screen flex flex-col">
+                    <div className="flex flex-1 items-center relative ">
+                        {/* Left Content */}
+                        <div className="w-full lg:w-1/2 relative flex flex-col h-full py-12">
+                            {/* Title */}
+                            <div className="flex-1 flex flex-col justify-center">
+                                <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold">
+                                    Up your <span className="text-violet-400">Skills</span> to <span className="text-violet-400">Advance</span> your <span className="text-violet-400">Career</span> path
+                                </h2>
 
-                        {/* Description */}
-                        <p className="text-sm text-gray-400 my-4">
-                            Learn UI-UX Design skills with weekend UX . The latest online learning system and material that help your knowledge growing.
-                        </p>
+                                {/* Description */}
+                                <p className="text-sm text-gray-600 my-4">
+                                    Learn UI-UX Design skills with weekend UX . The latest online learning system and material that help your knowledge growing.
+                                </p>
 
-                        <div className="flex gap-8">
-                            <Button size="lg" className="hover:shadow-xl">
-                                Get Started
-                            </Button>
+                                <div className="flex gap-8 mt-4">
+                                    <Button size="lg" className="hover:shadow-xl">
+                                        Get Started
+                                    </Button>
 
-                            <Button className="bg-violet-100 text-violet-400 hover:text-white transition-colors duration-300" size="lg">
-                                Get free trial
-                            </Button>
-                        </div>
-                        {/* Item icons */}
-                        <div className="flex justify-between mt-8">
-                            {items.map(({ icon: Icon, name, color }, index) => (
-                                <div key={index} className="flex gap-2 items-center">
-                                    <Icon className={`w-8 h-8 ${color}`} />
-                                    <span className="text-sm text-gray-500">{name}</span>
+                                    <Button className="bg-violet-100 text-violet-400 hover:text-white transition-colors duration-300" size="lg">
+                                        Get free trial
+                                    </Button>
                                 </div>
-                            ))}
+                            </div>
+                            {/* Item icons */}
+                            <div className="flex justify-between mt-8 py-4">
+                                {items.map(({ icon: Icon, name, color }, index) => (
+                                    <div key={index} className="flex gap-2 items-center">
+                                        <Icon className={`w-8 h-8 ${color}`} />
+                                        <span className="text-sm text-gray-500">{name}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Right Content */}
+                        <div className="w-1/2 hidden lg:flex items-center justify-center h-full">
+                            <div className="relative">
+                                <div className="w-8 aspect-square rounded-full bg-violet-500 absolute left-0 bottom-10" />
+                                <div className="w-4 aspect-square rounded-full bg-violet-500 absolute left-10 bottom-0" />
+
+                                <div className="w-100 aspect-square border border-violet-400 rounded-full absolute bottom-4 right-4" />
+                                <div className="w-100 h-100 rounded-full bg-violet-500 relative overflow-hidden">
+                                    <div className="w-70 h-80 absolute bottom-0 left-1/2 -translate-x-1/2">
+                                        <Image src={STUDENT_HOME} alt="student" fill />
+                                    </div>
+                                </div>
+
+                                <div className="absolute top-0 -right-12 w-30 py-2 rounded-lg bg-white border border-violet-400 shadow-2xl flex flex-col justify-end items-center gap-2">
+                                    <LoaderCircle className="w-20 h-20 text-violet-500" />
+                                    <h3 className="text-2xl font-bold">5k+</h3>
+                                    <span className="text-sm text-gray-400">Online Courses</span>
+                                </div>
+
+                                <div className="absolute top-1/2 -translate-y-1/2 -left-20 w-44 py-1 px-2  rounded-lg bg-white border border-violet-400 shadow-2xl flex items-center gap-2">
+                                    <div className="p-2 rounded-lg bg-violet-500">
+                                        <Laptop className="w-6 h-6 text-white" />
+                                    </div>
+                                    <div>
+                                        <h3 className="text-2xl font-bold">2k+</h3>
+                                        <span className="text-sm text-gray-400">Video Courses</span>
+                                    </div>
+                                </div>
+
+                                <div className="absolute bottom-8 -right-4 w-fit py-1 px-2 rounded-lg bg-white border border-violet-400 shadow-2xl flex items-center gap-2">
+                                    <div className="p-2 rounded-lg bg-violet-500">
+                                        <UserPen className="w-6 h-6 text-white" />
+                                    </div>
+                                    <div>
+                                        <span className="text-sm text-gray-400">Tutors</span>
+                                        <h3 className="text-2xl font-bold">250+</h3>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
-                    {/* Right Content */}
-                    <div className="w-1/2 flex items-center justify-center h-full">
-                        <div className="relative">
-                            <div className="w-8 aspect-square rounded-full bg-violet-500 absolute left-0 bottom-10" />
-                            <div className="w-4 aspect-square rounded-full bg-violet-500 absolute left-10 bottom-0" />
-
-                            <div className="w-100 aspect-square border border-violet-400 rounded-full absolute bottom-4 right-4" />
-                            <div className="w-100 h-100 rounded-full bg-violet-500 relative overflow-hidden">
-                                <div className="w-70 h-80 absolute bottom-0 left-1/2 -translate-x-1/2">
-                                    <Image src={STUDENT_HOME} alt="student" fill />
-                                </div>
-                            </div>
-
-                            <div className="absolute top-0 -right-12 w-30 py-2 rounded-lg bg-white border border-violet-400 shadow-2xl flex flex-col justify-end items-center gap-2">
-                                <LoaderCircle className="w-20 h-20 text-violet-500" />
-                                <h3 className="text-2xl font-bold">5k+</h3>
-                                <span className="text-sm text-gray-400">Online Courses</span>
-                            </div>
-
-                            <div className="absolute top-1/2 -translate-y-1/2 -left-20 w-44 py-1 px-2  rounded-lg bg-white border border-violet-400 shadow-2xl flex items-center gap-2">
-                                <div className="p-2 rounded-lg bg-violet-500">
-                                    <Laptop className="w-6 h-6 text-white" />
-                                </div>
-                                <div>
-                                    <h3 className="text-2xl font-bold">2k+</h3>
-                                    <span className="text-sm text-gray-400">Video Courses</span>
-                                </div>
-                            </div>
-
-                            <div className="absolute bottom-8 -right-4 w-fit py-1 px-2 rounded-lg bg-white border border-violet-400 shadow-2xl flex items-center gap-2">
-                                <div className="p-2 rounded-lg bg-violet-500">
-                                    <UserPen className="w-6 h-6 text-white" />
-                                </div>
-                                <div>
-                                    <span className="text-sm text-gray-400">Tutors</span>
-                                    <h3 className="text-2xl font-bold">250+</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <CollaBoration />
                 </div>
-                <CollaBoration />
             </PageContainer>
         </div>
     )
