@@ -10,12 +10,12 @@ export const Blog = () => {
                 <p className='text-3xl font-medium text-gray-800 max-w-xl'>
                     Our recent blogs
                 </p>
-                <div className='flex gap-4 mt-8'>
-                    <div className='w-1/2 space-y-4'>
+                <div className='flex flex-col lg:flex-row gap-8 lg:gap-4 mt-8'>
+                    <div className='w-full lg:w-1/2 flex flex-col lg:flex-row space-y-8 lg:space-x-4'>
                         <CardBlog {...blogs[0]} />
                         <CardBlog {...blogs[1]} />
                     </div>
-                    <div className='w-1/2'>
+                    <div className='w-full lg:w-1/2'>
                         <CardBlog {...blogs[2]} />
                     </div>
                 </div>
