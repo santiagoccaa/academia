@@ -6,7 +6,7 @@ export const Tutors = () => {
     return (
         <PageContainer>
             <div className='flex flex-col my-8 items-center text-center'>
-                <h2 className='text-sm font-medium text-violet-500'>Tutors</h2>
+                <h2 className='text-sm font-medium text-primary'>Tutors</h2>
                 <p className='text-2xl md:text-3xl font-medium text-gray-800 max-w-xl'>
                     Meet the Heroes
                 </p>

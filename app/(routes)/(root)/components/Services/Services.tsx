@@ -16,7 +16,7 @@ const academyServices: AcademyService[] = [
         description: "Lessons on design that cover the most recent developments.",
         icon: Computer,
         href: "/",
-        color:"text-violet-400 bg-violet-100"
+        color:"text-primary bg-violet-100"
     },
     {
         title: "UX Design Course",
@@ -38,7 +38,7 @@ export const Services = () => {
     return (
         <PageContainer>
             <div className='flex flex-col items-center text-center my-8 '>
-                <h2 className='text-sm font-medium text-violet-500'>Our Services</h2>
+                <h2 className='text-sm font-medium text-primary'>Our Services</h2>
                 <p className='text-2xl md:text-3xl font-medium text-gray-800 max-w-xl mb-8'>
                     Fostering a playful & engaging learning environment
                 </p>

@@ -54,7 +54,7 @@ export const PurchaseButtons = ({ purchase, slug, chapters, price, id }: Purchas
             {
                 purchase ? (
                     <Button
-                        className='hover:bg-violet-400 text-white font-semibold'
+                        className='hover:bg-primary text-white font-semibold'
                         disabled={isLoading}
                         onClick={redirectToCourse}
                     >
@@ -64,7 +64,7 @@ export const PurchaseButtons = ({ purchase, slug, chapters, price, id }: Purchas
                 ) :
                     (
                         <Button
-                            className='hover:bg-violet-400 text-white font-semibold'
+                            className='hover:bg-primary text-white font-semibold'
                             disabled={isLoading}
                             onClick={enrollCourse}
                         >

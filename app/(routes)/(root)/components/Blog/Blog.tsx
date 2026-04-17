@@ -6,7 +6,7 @@ export const Blog = () => {
     return (
         <PageContainer>
             <div className='flex flex-col my-8 mb-16'>
-                <h2 className='text-sm font-medium text-violet-500'>Blog</h2>
+                <h2 className='text-sm font-medium text-primary'>Blog</h2>
                 <p className='text-3xl font-medium text-gray-800 max-w-xl'>
                     Our recent blogs
                 </p>

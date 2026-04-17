@@ -21,7 +21,7 @@ export const CardTutor = (infoTutor: TutorProps) => {
                     </div>
                 </div>
                 <h3 className="text-sm font-bold text-gray-800">{name}</h3>
-                <span className="text-violet-400 text-sm font-medium">{job}</span>
+                <span className="text-primary text-sm font-medium">{job}</span>
             </CardHeader>
             <CardContent className="flex-1">
                 <p className="text-sm text-gray-600 font-light">{description}</p>

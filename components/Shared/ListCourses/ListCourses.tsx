@@ -19,7 +19,7 @@ export const ListCourses = ({ courses, title }: ListCoursesProps) => {
                                     href={`/courses/${slug}`}
                                     className='border rounded-lg relative transition-shadow hover:shadow-lg shadow-violet-300/40 shadow-md'
                                 >
-                                    <span className='absolute top-2  right-2 z-10 px-2 py-1 bg-white text-violet-500 font-medium rounded-full text-xs shadow-md'>{category}</span>
+                                    <span className='absolute top-2  right-2 z-10 px-2 py-1 bg-white text-primary font-medium rounded-full text-xs shadow-md'>{category}</span>
                                     <div className='w-full h-45 relative'>
                                         <Image
                                             src={imageUrl || '/image-default-course.webp'}
