@@ -34,7 +34,6 @@ export const Hero = () => {
             <Decorador className="top-20 lg:top-1/2 lg:-translate-y-1/2 -left-40 lg:left-0" />
             <Decorador className="bottom-20 -right-30 lg:bottom-0 lg:right-0 lg:flex" />
             {/* <ExploreCourse /> */}
-            <Navbar />
             <PageContainer>
                 <div className="h-fit min-h-screen flex flex-col">
                     <div className="flex flex-1 lg:min-h-screen items-center relative lg:pt-10">
