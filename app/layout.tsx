@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
-import Footer from "@/components/Shared/Footer/Footer";
 import { Toaster } from "@/components/ui/sonner";
+import { Footer, Navbar } from "./(routes)/(root)/components";
 
 const fontPrimary = Space_Grotesk({
   variable: "--font-space-grotest",
@@ -28,14 +28,16 @@ export default function RootLayout({
         >
           {/* <SidebarProvider>
             <AppSidebar /> */}
-            <div className="w-full flex flex-col min-h-screen">
-              {/* <Navbar /> */}
-              <main className="flex-1">
-                {children}
-              </main>
-              <Footer />
-            </div>
-            <Toaster />
+          <div className="w-full flex flex-col min-h-screen">
+            {/* <Navbar /> */}
+            <Navbar />
+
+            <main className="flex-1">
+              {children}
+            </main>
+            <Footer />
+          </div>
+          <Toaster />
           {/* </SidebarProvider> */}
         </body>
       </html>
