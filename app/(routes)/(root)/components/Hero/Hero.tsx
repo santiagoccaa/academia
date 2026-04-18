@@ -80,7 +80,7 @@ export const Hero = () => {
                                 <div className="w-100 aspect-square border border-primary rounded-full absolute bottom-4 right-4" />
                                 <div className="w-100 h-100 rounded-full bg-primary relative overflow-hidden">
                                     <div className="w-70 h-80 absolute bottom-0 left-1/2 -translate-x-1/2">
-                                        <Image src={STUDENT_HOME} alt="student" fill />
+                                        <Image src={STUDENT_HOME} alt="student" fill sizes="280px" />
                                     </div>
                                 </div>
 
