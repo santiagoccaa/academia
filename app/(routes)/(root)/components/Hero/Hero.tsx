@@ -6,22 +6,25 @@ import { STUDENT_HOME } from "@/const/images";
 import { Navbar } from "../Navbar";
 import { Decorador } from "../Decorador";
 import { CollaBoration } from "./CollaBoration";
+import { Board, Career, Computer, Loader, Speaking, Thinking } from "@/components/Icons";
 
 const items = [
     {
         icon: Speech,
         name: "Public Speaking",
-        color: "text-yellow-500"
+        component: <Speaking color="#F1BF5A" size="25" />
     },
     {
         icon: BriefcaseBusiness,
         name: "Career-Oriented",
-        color: "text-orange-500"
+        component: <Career color="#F4876B" size="25" />
+
     },
     {
         icon: Lightbulb,
         name: "Creative Thinking",
-        color: "text-purple-500"
+        component: <Thinking color="#B4708D" size="25" />
+
     }
 ]
 
@@ -60,9 +63,9 @@ export const Hero = () => {
                             </div>
                             {/* Item icons */}
                             <div className="flex justify-between mt-8 py-4">
-                                {items.map(({ icon: Icon, name, color }, index) => (
+                                {items.map(({ component, name, }, index) => (
                                     <div key={index} className="flex gap-2 items-center">
-                                        <Icon className={`w-8 h-8 ${color}`} />
+                                        {component}
                                         <span className="text-sm text-gray-500">{name}</span>
                                     </div>
                                 ))}
@@ -83,28 +86,28 @@ export const Hero = () => {
                                 </div>
 
                                 <div className="absolute top-0 -right-12 w-30 py-2 rounded-lg bg-white border border-primary shadow-2xl flex flex-col justify-end items-center gap-2">
-                                    <LoaderCircle className="w-20 h-20 text-primary" />
-                                    <h3 className="text-2xl font-bold">5k+</h3>
-                                    <span className="text-sm text-gray-400">Online Courses</span>
+                                    <Loader size="70" color="#20B486" />
+                                    <h3 className="text-xl font-bold">5k+</h3>
+                                    <span className="text-xs text-gray-400">Online Courses</span>
                                 </div>
 
                                 <div className="absolute top-1/2 -translate-y-1/2 -left-20 w-44 py-1 px-2  rounded-lg bg-white border border-primary shadow-2xl flex items-center gap-2">
-                                    <div className="p-2 rounded-lg bg-primary">
-                                        <Laptop className="w-6 h-6 text-white" />
+                                    <div className="p-1 rounded-lg bg-primary">
+                                        <Computer size="25" color="white" />
                                     </div>
                                     <div>
-                                        <h3 className="text-2xl font-bold">2k+</h3>
-                                        <span className="text-sm text-gray-400">Video Courses</span>
+                                        <h3 className="text-xl font-bold">2k+</h3>
+                                        <span className="text-xs text-gray-400 -mt-1">Video Courses</span>
                                     </div>
                                 </div>
 
-                                <div className="absolute bottom-8 -right-4 w-fit py-1 px-2 rounded-lg bg-white border border-primary shadow-2xl flex items-center gap-2">
-                                    <div className="p-2 rounded-lg bg-primary">
-                                        <UserPen className="w-6 h-6 text-white" />
+                                <div className="absolute bottom-8 -right-4 w-fit py-1 px-2 rounded-lg bg-white border border-primary shadow-2xl flex items-center  gap-2">
+                                    <div className="p-1 rounded-lg bg-primary">
+                                        <Board size="25" color="white" />
                                     </div>
                                     <div>
-                                        <span className="text-sm text-gray-400">Tutors</span>
-                                        <h3 className="text-2xl font-bold">250+</h3>
+                                        <span className="text-xs text-gray-400">Tutors</span>
+                                        <h3 className="text-xl font-bold -mt-1">250+</h3>
                                     </div>
                                 </div>
                             </div>
