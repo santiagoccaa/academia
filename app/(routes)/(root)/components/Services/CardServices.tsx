@@ -4,13 +4,13 @@ import Link from "next/link"
 import { ChevronRight } from "lucide-react"
 
 export const CardServices = (service: AcademyService) => {
-  const { description, href, icon: Icon, title, color } = service
+  const { description, href, icon, title, color } = service
 
   return (
     <Card className="full hover:bg-secondary rounded-md shadow-lg hover:shadow-none group transition-colors duration-300">
       <CardTitle className="text-2xl font-bold flex px-6 items-center gap-2 text-gray-800 group-hover:text-white duration-300">
-        <div className={`p-2 rounded-lg ${color}`}>
-          <Icon />
+        <div className={`p-2 rounded-lg ${color} group-hover:bg-white transition-colors duration-300`}>
+          {icon}
         </div>
         {title}
       </CardTitle>

@@ -1,36 +1,39 @@
 import { PageContainer } from "@/components/Shared/PageContainer"
 import { CardServices } from "./CardServices"
 import { ChartNetwork, Computer, LucideIcon, SquareCode } from "lucide-react"
+import { ReactNode } from "react"
+import { Graph, Mockup } from "@/components/Icons"
+import { Html } from "@/components/Icons/Html"
 
 export interface AcademyService {
     title: string
     description: string
-    icon: LucideIcon
+    icon: ReactNode
     href: string
-    color:string
+    color: string
 }
 
 const academyServices: AcademyService[] = [
     {
         title: "Interaction Design",
         description: "Lessons on design that cover the most recent developments.",
-        icon: Computer,
+        icon: <Mockup size="30" color="#4AC8AE" />,
         href: "/",
-        color:"text-primary bg-violet-100"
+        color: "bg-accent"
     },
     {
         title: "UX Design Course",
         description: "Classes in development that cover the most recent advancements in web.",
-        icon: SquareCode ,
+        icon: <Html size="30" color="#4883FF" />,
         href: "/",
-        color:"text-blue-400 bg-blue-100"
+        color: "bg-[#E0EAFF]"
     },
     {
         title: "User Interface Design",
         description: "User Interface Design courses that cover the most recent  trends",
-        icon: ChartNetwork ,
+        icon: <Graph size="30" color="#C11574" />,
         href: "/",
-        color:"text-pink-400 bg-pink-100"
+        color: "bg-[#FCE7F6]"
     },
 ]
 
