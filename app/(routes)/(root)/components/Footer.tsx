@@ -115,7 +115,7 @@ export const Footer = () => {
                 <div className='flex flex-col lg:flex-row space-y-4'>
                     <div className='w-full md:w-2/6 flex flex-col items-center text-center md:items-start md:text-left'>
                         <div className="relative w-20 h-16">
-                            <Image src={LOGO} fill alt="Logo" />
+                            <Image src={LOGO} fill alt="Logo" sizes='80px' />
                         </div>
                         <p className='w-70 mt-8'>Top learning experiences that create more talent in the world.</p>
                     </div>

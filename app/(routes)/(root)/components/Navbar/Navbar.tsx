@@ -51,7 +51,7 @@ export const Navbar = () => {
                 <div className="flex items-center justify-between py-2 w-full">
                     <div className="flex items-center justify-between w-full lg:w-fit gap-4">
                         <div className="relative w-20 h-16">
-                            <Image src={LOGO} fill alt="Logo" />
+                            <Image src={LOGO} fill alt="Logo" sizes='80px' />
                         </div>
                         <div className="hidden lg:block relative">
                             <Input placeholder="Want to learn?" className="pl-7 pr-28 border" />
@@ -83,7 +83,7 @@ export const Navbar = () => {
                                     </nav>
                                     <SheetFooter className="flex justify-center items-center">
                                         <div className="relative w-20 h-16">
-                                            <Image src={LOGO} fill alt="Logo" />
+                                            <Image src={LOGO} fill alt="Logo" sizes='80px' />
                                         </div>
                                     </SheetFooter>
                                 </SheetContent>

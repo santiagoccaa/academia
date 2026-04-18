@@ -7,7 +7,9 @@ export const FeedBack = () => {
         <div className='bg-accent py-8 my-8'>
             <PageContainer>
                 <div className='flex flex-col items-center gap-4 text-center'>
-                    <Image src={LOGO} alt='logo' width={100} height={100} />
+                    <div className="relative w-20 h-16">
+                        <Image src={LOGO} fill alt="Logo" sizes='80px' />
+                    </div>
                     <h2 className='text-2xl font-bold text-gray-800 max-w-4xl'>Courses was fantastic! It is Master platform for those looking to start a new career, or need a refresher.</h2>
 
                     <div className='mt-6'>
