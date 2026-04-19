@@ -16,6 +16,7 @@ import {
     SheetTitle,
     SheetTrigger,
 } from "@/components/ui/sheet"
+import { ABOUT_US, CONTACT_US, COURSES, HOME } from "@/const/routes"
 
 interface Nav {
     name: string
@@ -25,25 +26,29 @@ interface Nav {
 const nav: Nav[] = [
     {
         name: "Home",
-        url: "/"
+        url: HOME
     },
     {
         name: "About Us",
-        url: "/about-us"
+        url: ABOUT_US
     },
     {
         name: "Courses",
-        url: "/courses"
+        url: COURSES
     },
     {
         name: "Contact Us",
-        url: "/contact-us"
+        url: CONTACT_US
     }
 ]
 
 export const Navbar = () => {
 
     const pathName = usePathname()
+
+    if (pathName !== HOME || ABOUT_US || CONTACT_US) {
+        return
+    }
 
     return (
         <div className="absolute lg:block w-full z-10">
