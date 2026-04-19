@@ -21,7 +21,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    < ClerkProvider>
+    <ClerkProvider
+
+    >
       <html lang="es">
         <body
           className={`${fontPrimary.className} antialiased`}

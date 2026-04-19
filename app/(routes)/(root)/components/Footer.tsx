@@ -1,7 +1,11 @@
+"use client"
+
 import { PageContainer } from '@/components/Shared/PageContainer'
 import { LOGO } from '@/const/images'
 import { Dribbble, Facebook, Github, Linkedin, Twitter } from 'lucide-react'
 import Image from 'next/image'
+import { usePathname } from 'next/navigation'
+import { ABOUT_US, CONTACT_US, HOME } from "@/const/routes"
 
 const products = [
     {
@@ -108,7 +112,12 @@ const socialIcons = [
 
 export const Footer = () => {
 
+    const pathName = usePathname()
     const year = new Date().getFullYear()
+
+    if (pathName !== HOME || ABOUT_US || CONTACT_US) {
+        return
+    }
     return (
         <footer className='bg-[#101828] w-full text-[#EAECF0] text-xs py-10'>
             <PageContainer>
