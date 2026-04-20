@@ -1,29 +1,30 @@
+import { CERTIFICATES, COURSES, HOME, MY_COURSES, ORDERS } from "@/const/routes";
 import { Award, BookOpen, ChartArea, GraduationCap, House, ReceiptText, Settings2, SquareTerminal } from "lucide-react";
 
 export const routes = [
     {
         title: "Home",
-        url: "/",
+        url: HOME,
         icon: House
     },
     {
         title: "Cursos",
-        url: "/courses",
+        url: COURSES ,
         icon: SquareTerminal
     },
     {
         title: "Mis Cursos",
-        url: "/my-courses",
+        url: MY_COURSES,
         icon: BookOpen
     },
     {
         title: "Pedidos",
-        url: "/orders",
+        url: ORDERS,
         icon: ReceiptText
     },
     {
         title: "Certificados",
-        url: "/certificates",
+        url: CERTIFICATES,
         icon: Award 
     },
 ]
