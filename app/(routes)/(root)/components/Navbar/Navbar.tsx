@@ -46,7 +46,9 @@ export const Navbar = () => {
 
     const pathName = usePathname()
 
-    if (pathName !== HOME || ABOUT_US || CONTACT_US) {
+    const allowedRoutes = [HOME, ABOUT_US, CONTACT_US]
+
+    if (!allowedRoutes.includes(pathName)) {
         return
     }
 

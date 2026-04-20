@@ -16,11 +16,11 @@ export const ExploreCourse = async () => {
                 </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {/* <CardCourse />
                 <CardCourse />
                 <CardCourse />
-                <CardCourse />
-                <CardCourse />
+                <CardCourse /> */}
             </div>
             <div className="flex justify-center mt-8">
                 <Button className="shadow-md">

@@ -40,6 +40,7 @@ model Chapter {
   position    Int
   isPublised  Boolean @default(false)
   isFree      Boolean @default(false)
+  duration    Int?
 
   courseId String
   couse    Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
@@ -86,12 +87,12 @@ model UserSubscription {
   id String @id @default(cuid())
 
   // ── Usuario ──────────────────────────────
-  userId String @unique  // un usuario = una suscripción activa
+  userId String @unique // un usuario = una suscripción activa
 
   // ── Stripe IDs ───────────────────────────
   stripeCustomerId     String @unique // para identificar al cliente en Stripe
   stripeSubscriptionId String @unique // para cancelar/pausar desde tu app
-  stripePriceId        String         // por si cambias el precio en el futuro
+  stripePriceId        String // por si cambias el precio en el futuro
 
   // ── Control de vigencia ──────────────────
   stripeCurrentPeriodEnd DateTime // 👈 el campo MÁS importante

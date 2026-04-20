@@ -22,25 +22,19 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider
-
     >
       <html lang="es">
         <body
           className={`${fontPrimary.className} antialiased`}
         >
-          {/* <SidebarProvider>
-            <AppSidebar /> */}
           <div className="w-full flex flex-col min-h-screen">
-            {/* <Navbar /> */}
             <Navbar />
-
             <main className="flex-1">
               {children}
             </main>
             <Footer />
           </div>
           <Toaster />
-          {/* </SidebarProvider> */}
         </body>
       </html>
     </ClerkProvider >
