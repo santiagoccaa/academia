@@ -36,7 +36,7 @@ export const FormCreateCourse = () => {
             const course = await axios.post('/api/course', values)
             toast("Curso creado correctamente")
 
-            router.push(`/teacher/${course.data.id}`)
+            router.push(`/academy/teacher/${course.data.id}`)
         } catch (error) {
             console.log(error);
             toast.error("Ha ocurrido un error")
@@ -59,7 +59,7 @@ export const FormCreateCourse = () => {
                         </FormItem>
                     )}
                 />
-
+    
                 <FormField
                     control={form.control}
                     name="slug"

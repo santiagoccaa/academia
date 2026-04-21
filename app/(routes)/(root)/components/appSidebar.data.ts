@@ -1,4 +1,4 @@
-import { CERTIFICATES, COURSES, HOME, MY_COURSES, ORDERS } from "@/const/routes";
+import { ANALyTIC, CERTIFICATES, COURSES, HOME, MY_COURSES, ORDERS, TEACHER } from "@/const/routes";
 import { Award, BookOpen, ChartArea, GraduationCap, House, ReceiptText, Settings2, SquareTerminal } from "lucide-react";
 
 export const routes = [
@@ -9,7 +9,7 @@ export const routes = [
     },
     {
         title: "Cursos",
-        url: COURSES ,
+        url: COURSES,
         icon: SquareTerminal
     },
     {
@@ -25,19 +25,19 @@ export const routes = [
     {
         title: "Certificados",
         url: CERTIFICATES,
-        icon: Award 
+        icon: Award
     },
 ]
 
 export const routesTeacher = [
     {
         title: "Cursos",
-        url: "/teacher",
+        url: TEACHER,
         icon: GraduationCap
     },
     {
         title: "Analiticas",
-        url: "/teacher/analytics",
+        url: ANALyTIC,
         icon: ChartArea
     },
 ]

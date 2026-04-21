@@ -1,9 +1,4 @@
-import Link from 'next/link'
 import { ListCoursesProps } from './ListCourses.types'
-import Image from 'next/image'
-import { IconBadge } from '../IconBadge'
-import { Book, ChartNoAxesColumn } from 'lucide-react'
-import { ProgressCourse } from '../ProgressCourse'
 import { CardCourse } from '../CardCourse'
 
 export const ListCourses = ({ courses, title }: ListCoursesProps) => {
@@ -14,7 +9,7 @@ export const ListCourses = ({ courses, title }: ListCoursesProps) => {
                 <div className='border-t py-2'>
                     {courses && courses.length > 0 ? (
                         <div className='grid grid-cols-1 lg:grid-cols-3 2xl:grid-cols-4 gap-3 mt-4'>
-                            {courses.map(({ id, imageUrl, title, level, price, slug, category, chapters, description }) => (
+                            {courses.map(({ id, imageUrl, title ,price, slug, category, chapters, description }) => (
                                 <CardCourse
                                     key={id}
                                     category={category}

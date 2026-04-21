@@ -22,7 +22,7 @@ export const Actions = ({ courseId }: ActionsProps) => {
     const router = useRouter()
 
     const onEdit = () => {
-        router.push(`/teacher/${courseId}`)
+        router.push(`/academy/teacher/${courseId}`)
     }
 
     const onDelete = () => {

@@ -15,15 +15,16 @@ export const ChapterVideoForm = ({ chapterId, courseId, videoUrl }: ChapterVideo
     const router = useRouter()
     const [onEditVideo, setOnEditVideo] = useState(false)
 
-    const onSubmit = async (url: string) => {
+    const onSubmit = async (url: string, duration: number) => {
         try {
             await axios.patch(`/api/course/${courseId}/chapter/${chapterId}`, {
-                videoUrl: url
+                videoUrl: url,
+                duration
             })
 
             toast("Video actualizado con exito")
             router.refresh()
-        } catch{
+        } catch {
             toast.error("Algo salio mal")
         }
     }
@@ -53,9 +54,18 @@ export const ChapterVideoForm = ({ chapterId, courseId, videoUrl }: ChapterVideo
                         <UploadButton
                             className="w-full bg-slate-200 rounded-mdp-2 mt-2"
                             endpoint="chapterVideo"
-                            onClientUploadComplete={(url) => {
-                                if (url) {
-                                    onSubmit(url[0].serverData.url)
+                            onClientUploadComplete={(res) => {
+                                if (res) {
+                                    const videoUrl = res[0].serverData.url
+
+                                    const video = document.createElement("video")
+                                    video.src = videoUrl
+
+                                    video.onloadedmetadata = () => {
+                                        const duration = Math.floor(video.duration)
+
+                                        onSubmit(videoUrl, duration)
+                                    }
                                 }
                             }}
                         />

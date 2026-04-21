@@ -6,15 +6,33 @@ import { DEFAULT_IMAGE_COURSE } from "@/const/images"
 import { formatPrice } from "@/lib/formatPrice"
 
 export const CardCourse = ({ category, chapters, description, imageUrl, price, slug, title }: CardCourseProps) => {
+
+    const duration = chapters.reduce((acc, chapter) => {
+        return acc + (chapter.duration ?? 0)
+    }, 0)
+
+    const formatDuration = (seconds: number) => {
+        const h = Math.floor(seconds / 3600)
+        const m = Math.floor((seconds % 3600) / 60)
+        const s = seconds % 60
+
+        return `${h}h ${m}m ${s}s`
+    }
+
+    const formatted = formatDuration(duration)
+
     return (
         <Card>
             <CardHeader className="relative">
-                <div className="absolute top-2 right-8 bg-white gap-1 text-xs font-light text-gray-400 flex items-center p-1 rounded-sm shadow-md">
-                    <Clock size={15} /> 9 hr 12 mins
-                </div>
-                <div className="relative w-full h-60">
+
+                <div className="relative w-full h-50 rounded-sm overflow-hidden">
                     <Image src={imageUrl || DEFAULT_IMAGE_COURSE} fill alt="image courses" className="w-full" />
+
+                    <div className="absolute top-1 right-1 bg-white gap-1 text-xs font-light text-gray-400 flex items-center p-1 rounded-sm shadow-md z-20">
+                        <Clock size={15} /> {formatted}
+                    </div>
                 </div>
+
             </CardHeader>
             <CardContent className="space-y-2">
                 <span className="text-xs font-medium text-primary">{category}</span>
