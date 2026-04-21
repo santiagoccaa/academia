@@ -27,7 +27,7 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ course
             }
         })
 
-        return NextResponse.json(chapter)
+        return NextResponse.json({ message: chapter }, { status: 200 })
     } catch (error) {
         console.log("[COURSE_CHAPTER_ERROR]", { status: 500 });
 

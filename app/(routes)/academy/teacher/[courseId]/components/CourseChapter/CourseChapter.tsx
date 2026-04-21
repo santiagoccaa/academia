@@ -53,7 +53,7 @@ export const CourseChapter = ({ chapters, idCourse }: CourseChapterProps) => {
     }
 
     const onEditChapter = (chapterId: string) => {
-        router.push(`/teacher/${idCourse}/${chapterId}`)
+        router.push(`/academy/teacher/${idCourse}/${chapterId}`)
     }
 
     return (

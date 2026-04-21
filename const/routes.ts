@@ -10,3 +10,8 @@ export const COURSES = "/academy/courses"
 export const MY_COURSES = "/academy/my-courses"
 export const ORDERS = "/academy/orders"
 export const CERTIFICATES = "/academy/certificates"
+// TEACHER
+
+export const TEACHER = "/academy/teacher"
+export const ANALyTIC = "/academy/teacher/analytics"
+

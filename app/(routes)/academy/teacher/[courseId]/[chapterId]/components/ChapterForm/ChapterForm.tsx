@@ -31,7 +31,7 @@ export const ChapterForm = ({ chapter, courseId }: ChapterFormProps) => {
     const onRemoveChapter = async () => {
         try {
             axios.delete(`/api/course/${courseId}/chapter/${chapter.id}`)
-            router.push(`/teacher/${courseId}`)
+            router.push(`/academy/teacher/${courseId}`)
             toast("Capitulo eliminado con existo")
         } catch (error) {
             toast("Ocurrio un error al momento de intenter eliminar el capitulo")
@@ -41,7 +41,7 @@ export const ChapterForm = ({ chapter, courseId }: ChapterFormProps) => {
     return (
         <>
             <div className="p-6 bg-white rounded-md">
-                <Button className="mb-4" variant="outline" onClick={() => router.push(`/teacher/${courseId}`)}>
+                <Button className="mb-4" variant="outline" onClick={() => router.push(`/academy/teacher/${courseId}`)}>
                     <ArrowLeft />
                     Volver a la edicion del cursor
                 </Button>
