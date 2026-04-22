@@ -12,9 +12,9 @@ export const CardPricing = () => {
 
     const handleRoleUser = async () => {
 
-        const role = user?.publicMetadata?.role as string
         try {
-            await axios.post('api/', { role })
+            const res = await axios.post('/api/beingTeacher')
+            window.location.assign(res.data.url)
         } catch (error) {
             console.log(error);
         }

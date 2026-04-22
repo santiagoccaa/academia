@@ -68,7 +68,7 @@ export function AppSidebar() {
 
                                 {role !== "teacher" ? (
                                     <SidebarMenuSubItem>
-                                        <SidebarMenuSubButton href={"/being-teacher"} className="hover:bg-muted transition">
+                                        <SidebarMenuSubButton href={"/academy/being-teacher"} className="hover:bg-muted transition">
                                             <div className="p-1 rounded-lg text-black bg-amber-400">
                                                 <ArrowBigUpDash className="w-4 h-4" />
                                             </div>
