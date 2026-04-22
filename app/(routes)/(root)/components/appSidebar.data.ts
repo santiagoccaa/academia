@@ -1,12 +1,7 @@
 import { ANALyTIC, CERTIFICATES, COURSES, HOME, MY_COURSES, ORDERS, TEACHER } from "@/const/routes";
-import { Award, BookOpen, ChartArea, GraduationCap, House, ReceiptText, Settings2, SquareTerminal } from "lucide-react";
+import { Award, BookOpen, ChartArea, GraduationCap, ReceiptText, SquareTerminal } from "lucide-react";
 
 export const routes = [
-    {
-        title: "Home",
-        url: HOME,
-        icon: House
-    },
     {
         title: "Cursos",
         url: COURSES,
