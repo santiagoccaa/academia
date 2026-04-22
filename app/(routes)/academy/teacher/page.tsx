@@ -1,7 +1,6 @@
 import { currentUser } from "@clerk/nextjs/server"
 import { Header, ListCourses } from "./components"
 import prisma from "@/lib/prisma"
-import { Test } from "./components/Test"
 
 export default async function TeacherPage() {
     const user = await currentUser()
@@ -17,10 +16,6 @@ export default async function TeacherPage() {
         <div>
             <Header />
             <ListCourses courses={courses} />
-
-            <div className="h-20 p-4 bg-violet-300">
-                <Test />
-            </div>
         </div>
     )
 }

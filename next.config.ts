@@ -6,6 +6,10 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: "rpu8u3z1lf.ufs.sh"
+      },
+      {
+        protocol: 'https',
+        hostname: "img.clerk.com"
       }
     ]
   }

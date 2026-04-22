@@ -4,9 +4,11 @@ import Image from "next/image"
 import { CardCourseProps } from "./cardCourse.types"
 import { DEFAULT_IMAGE_COURSE } from "@/const/images"
 import { formatPrice } from "@/lib/formatPrice"
+import { clerkClient } from "@clerk/nextjs/server"
 
-export const CardCourse = ({ category, chapters, description, imageUrl, price, slug, title }: CardCourseProps) => {
+export const CardCourse = async ({ category, chapters, description, imageUrl, price, userID, title, updatedAt }: CardCourseProps) => {
 
+    const client = await clerkClient();
     const duration = chapters.reduce((acc, chapter) => {
         return acc + (chapter.duration ?? 0)
     }, 0)
@@ -20,6 +22,8 @@ export const CardCourse = ({ category, chapters, description, imageUrl, price, s
     }
 
     const formatted = formatDuration(duration)
+
+    const user = await client.users.getUser(userID)
 
     return (
         <Card>
@@ -38,7 +42,8 @@ export const CardCourse = ({ category, chapters, description, imageUrl, price, s
                 <span className="text-xs font-medium text-primary">{category}</span>
                 <h3 className="text-xl text-gray-600 font-bold">{title}</h3>
                 <p className="text-xs font-light text-gray-400 line-clamp-3">{description}</p>
-                <div className="flex items-center gap-2">
+
+                <div className="flex items-center gap-2 mt-2">
                     <span className="text-xs font-light text-primary">4.3</span>
                     <div className="flex items-center gap-1">
                         <Star size={10} />
@@ -53,10 +58,12 @@ export const CardCourse = ({ category, chapters, description, imageUrl, price, s
 
             <CardFooter className="justify-between items-end">
                 <div className="flex items-center gap-2">
-                    <div className="w-8 aspect-square rounded-full bg-primary" />
+                    <div className="w-10 aspect-square rounded-full relative overflow-hidden">
+                        <Image src={user.imageUrl} fill alt={user.firstName || 'teacher'} />
+                    </div>
                     <div className="flex flex-col">
-                        <span className="text-xs font-bold text-gray-800">Janne Cooper</span>
-                        <span className="text-xs font-light text-gray-400">2025 Create</span>
+                        <span className="text-xs font-bold text-gray-800">{user.firstName}</span>
+                        <span className="text-xs font-light text-gray-400 text-right">{updatedAt.toLocaleDateString()} Created</span>
                     </div>
                 </div>
                 <h3 className="text-xl font-bold text-primary">{formatPrice(price)}</h3>
