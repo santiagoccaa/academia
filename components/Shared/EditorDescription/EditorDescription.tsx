@@ -7,9 +7,8 @@ import 'react-quill-new/dist/quill.snow.css'
 
 export const EditorDescription = ({ onChange, value }: EditorDescriptionProps) => {
 
-    const ReactQuill = useMemo(() => dynamic(() => import('react-quill-new'), { ssr: false }),[])
+    const ReactQuill = useMemo(() => dynamic(() => import('react-quill-new'), { ssr: false }), [])
     return (
         <ReactQuill theme="snow" value={value} onChange={onChange} />
     )
 }
-export default EditorDescription

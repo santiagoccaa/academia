@@ -17,12 +17,11 @@ export const HeaderCourse = ({ idCourse, isPublished }: HeaderCourseProps) => {
         setIsLoading(true)
         try {
             axios.patch(`/api/course/${idCourse}`, { isPublished: state })
-
+            router.refresh()
             toast(state ? 'Curso publicado' : 'Curso oculto')
-            router.refresh()
         } catch {
-            toast('Ups, algo ha salido mal')
             router.refresh()
+            toast('Ups, algo ha salido mal')
         }
         setIsLoading(false)
     }

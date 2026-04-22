@@ -21,8 +21,8 @@ export const ChapterForm = ({ chapter, courseId }: ChapterFormProps) => {
             axios.patch(`/api/course/${courseId}/chapter/${chapter.id}`, {
                 isPublised: state
             })
-            toast(state ? "Capitulo publicado" : "Capitulo oculto")
             router.refresh()
+            toast(state ? "Capitulo publicado" : "Capitulo oculto")
         } catch (error) {
             toast("Algo ha salido mal")
         }
