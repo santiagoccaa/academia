@@ -1,1 +1,1 @@
-export {default as EditorDescription} from './EditorDescription'
+export * from './EditorDescription'

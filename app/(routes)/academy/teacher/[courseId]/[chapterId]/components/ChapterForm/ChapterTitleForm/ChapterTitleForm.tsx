@@ -1,3 +1,5 @@
+"use client"
+
 import {
     Form,
     FormField,
@@ -15,14 +17,15 @@ import { formSchema } from "./ChapterTitleForm.form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import { EditorDescription } from "@/components/Shared"
 import axios from "axios"
 import { toast } from "sonner"
 import { useRouter } from "next/navigation"
+import { EditorDescription } from "@/components/Shared/EditorDescription"
 
 export const ChapterTitleForm = ({ chapter, courseId }: ChapterTitleFormProps) => {
 
     const router = useRouter()
+
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -97,7 +100,6 @@ export const ChapterTitleForm = ({ chapter, courseId }: ChapterTitleFormProps) =
                             </FormItem>
                         )}
                     />
-
                     <div />
                     <Button type="submit" disabled={!form.formState.isValid} className="mt-4">Guardar</Button>
                 </form>
