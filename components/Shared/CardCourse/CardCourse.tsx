@@ -1,10 +1,11 @@
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
-import { Clock, Star } from "lucide-react"
+import { ArrowUpRight, Clock, Star } from "lucide-react"
 import Image from "next/image"
 import { CardCourseProps } from "./cardCourse.types"
 import { DEFAULT_IMAGE_COURSE } from "@/const/images"
 import { formatPrice } from "@/lib/formatPrice"
 import { clerkClient } from "@clerk/nextjs/server"
+import Link from "next/link"
 
 export const CardCourse = async ({ category, chapters, description, imageUrl, price, userID, title, updatedAt }: CardCourseProps) => {
 
@@ -40,7 +41,12 @@ export const CardCourse = async ({ category, chapters, description, imageUrl, pr
             </CardHeader>
             <CardContent className="space-y-2">
                 <span className="text-xs font-medium text-primary">{category}</span>
-                <h3 className="text-xl text-gray-600 font-bold">{title}</h3>
+                <div className="flex justify-between items-center">
+                    <h3 className="text-xl text-gray-600 font-bold">{title}</h3>
+                    <Link href={`/academy/courses/${""}`}>
+                        <ArrowUpRight />
+                    </Link>
+                </div>
                 <p className="text-xs font-light text-gray-400 line-clamp-3">{description}</p>
 
                 <div className="flex items-center gap-2 mt-2">
