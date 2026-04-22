@@ -1,7 +1,8 @@
 import { Chapter, Course } from "@/app/generated/prisma/client";
+import { CourseWithExtras } from "@/components/Shared/ListCourses/ListCourses.types";
 import prisma from "@/lib/prisma";
 
-export const getHomeCourses = async (): Promise<(Course & { chapters: Chapter[] })[] | null> => {
+export const getHomeCourses = async (): Promise<CourseWithExtras[] | null> => {
     try {
         const courses = await prisma.course.findMany({
             where: {
@@ -14,6 +15,11 @@ export const getHomeCourses = async (): Promise<(Course & { chapters: Chapter[] 
                 chapters: {
                     where: {
                         isPublised: true
+                    }
+                },
+                _count: {
+                    select: {
+                        purchases: true
                     }
                 }
             }

@@ -10,4 +10,5 @@ export type CardCourseProps = {
     chapters: Chapter[]
     userID: string
     createdAt: Date
+    coursePurchase: number
 }
