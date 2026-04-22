@@ -2,6 +2,11 @@ import { ListCoursesProps } from './ListCourses.types'
 import { CardCourse } from '../CardCourse'
 
 export const ListCourses = ({ courses, title }: ListCoursesProps) => {
+
+    if (courses) {
+        console.log("curso:", courses[0]._count);
+    }
+
     return (
         <div className=''>
             <div className='my-4 mx-6 border rounded-lg bg-white p-6'>
@@ -9,19 +14,8 @@ export const ListCourses = ({ courses, title }: ListCoursesProps) => {
                 <div className='border-t py-2'>
                     {courses && courses.length > 0 ? (
                         <div className='grid grid-cols-1 lg:grid-cols-3 2xl:grid-cols-4 gap-3 mt-4'>
-                            {courses.map(({ id, imageUrl, title ,price, slug, category, chapters, description, userID, createdAt }) => (
-                                <CardCourse
-                                    key={id}
-                                    category={category}
-                                    chapters={chapters}
-                                    description={description}
-                                    imageUrl={imageUrl}
-                                    title={title}
-                                    price={price}
-                                    slug={slug}
-                                    userID={userID}
-                                    createdAt={createdAt}
-                                />
+                            {courses.map((course, index) => (
+                                <CardCourse key={index} {...course} />
                             ))}
                         </div>
                     ) : (

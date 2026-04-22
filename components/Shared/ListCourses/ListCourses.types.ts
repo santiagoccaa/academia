@@ -1,6 +1,17 @@
-import { Chapter, Course } from "@/app/generated/prisma/client"
+import { Chapter, Course, Prisma } from "@/app/generated/prisma/client"
 
-export type ListCoursesProps ={
-    title?:string
-    courses: (Course & {chapters: Chapter[]})[] | null
+export type CourseWithExtras = Prisma.CourseGetPayload<{
+    include: {
+        chapters: true,
+        _count: {
+            select: {
+                purchases: true
+            }
+        }
+    }
+}>
+
+export type ListCoursesProps = {
+    title?: string
+    courses: CourseWithExtras[] | null
 }
