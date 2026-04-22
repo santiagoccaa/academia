@@ -9,5 +9,5 @@ export type CardCourseProps = {
     category: string | null
     chapters: Chapter[]
     userID: string
-    updatedAt: Date
+    createdAt: Date
 }

@@ -7,7 +7,7 @@ import { formatPrice } from "@/lib/formatPrice"
 import { clerkClient } from "@clerk/nextjs/server"
 import Link from "next/link"
 
-export const CardCourse = async ({ category, chapters, description, imageUrl, price, userID, title, updatedAt }: CardCourseProps) => {
+export const CardCourse = async ({ category, chapters, description, imageUrl, price, userID, title, createdAt, slug }: CardCourseProps) => {
 
     const client = await clerkClient();
     const duration = chapters.reduce((acc, chapter) => {
@@ -43,7 +43,7 @@ export const CardCourse = async ({ category, chapters, description, imageUrl, pr
                 <span className="text-xs font-medium text-primary">{category}</span>
                 <div className="flex justify-between items-center">
                     <h3 className="text-xl text-gray-600 font-bold">{title}</h3>
-                    <Link href={`/academy/courses/${""}`}>
+                    <Link href={`/academy/courses/${slug}`}>
                         <ArrowUpRight />
                     </Link>
                 </div>
@@ -69,7 +69,7 @@ export const CardCourse = async ({ category, chapters, description, imageUrl, pr
                     </div>
                     <div className="flex flex-col">
                         <span className="text-xs font-bold text-gray-800">{user.firstName}</span>
-                        <span className="text-xs font-light text-gray-400 text-right">{updatedAt.toLocaleDateString()} Created</span>
+                        <span className="text-xs font-light text-gray-400 text-right">{createdAt.toLocaleDateString()} Created</span>
                     </div>
                 </div>
                 <h3 className="text-xl font-bold text-primary">{formatPrice(price)}</h3>

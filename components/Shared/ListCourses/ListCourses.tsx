@@ -9,7 +9,7 @@ export const ListCourses = ({ courses, title }: ListCoursesProps) => {
                 <div className='border-t py-2'>
                     {courses && courses.length > 0 ? (
                         <div className='grid grid-cols-1 lg:grid-cols-3 2xl:grid-cols-4 gap-3 mt-4'>
-                            {courses.map(({ id, imageUrl, title ,price, slug, category, chapters, description, userID, updateAt }) => (
+                            {courses.map(({ id, imageUrl, title ,price, slug, category, chapters, description, userID, createdAt }) => (
                                 <CardCourse
                                     key={id}
                                     category={category}
@@ -20,7 +20,7 @@ export const ListCourses = ({ courses, title }: ListCoursesProps) => {
                                     price={price}
                                     slug={slug}
                                     userID={userID}
-                                    updatedAt={updateAt}
+                                    createdAt={createdAt}
                                 />
                             ))}
                         </div>
