@@ -2,11 +2,10 @@ import { InfoCourseProps } from './InfoCourse.types'
 import { Lock } from 'lucide-react'
 import { VideoCourse } from './VideoCourse'
 import { ProgressCourse } from './ProgressCourse'
-import { auth } from '@clerk/nextjs/server'
 
-export const InfoCourse = async ({ chapterCourseId, infoCourse, purchaseCourse, userProgress, videoUrl }: InfoCourseProps) => {
+export const InfoCourse = ({ chapterCourseId, infoCourse, purchaseCourse, userProgress, videoUrl }: InfoCourseProps) => {
 
-    const { title, category, description, userID } = infoCourse
+    const { title, category, description } = infoCourse
 
     return (
         <div className='w-full relative'>
