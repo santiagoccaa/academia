@@ -1,12 +1,12 @@
-import React from 'react'
 import { InfoCourseProps } from './InfoCourse.types'
 import { Lock } from 'lucide-react'
 import { VideoCourse } from './VideoCourse'
 import { ProgressCourse } from './ProgressCourse'
+import { auth } from '@clerk/nextjs/server'
 
-export const InfoCourse = ({ chapterCourseId, infoCourse, purchaseCourse, userProgress, videoUrl }: InfoCourseProps) => {
+export const InfoCourse = async ({ chapterCourseId, infoCourse, purchaseCourse, userProgress, videoUrl }: InfoCourseProps) => {
 
-    const { title, category, description } = infoCourse
+    const { title, category, description, userID } = infoCourse
 
     return (
         <div className='w-full relative'>
@@ -30,7 +30,6 @@ export const InfoCourse = ({ chapterCourseId, infoCourse, purchaseCourse, userPr
             <div className='mt-4 bg-white rounded-md p-6 shadow-md'>
                 <h2 className='text-2xl font-semibold text-gray-800 mb-4'>{title}</h2>
                 <div className='w-fit mb-4 px-2 py-1 bg-primary text-white rounded-full text-xs shadow-md'>{category}</div>
-
                 <p className='text-gray-600 text-sm'>{description}</p>
             </div>
         </div>

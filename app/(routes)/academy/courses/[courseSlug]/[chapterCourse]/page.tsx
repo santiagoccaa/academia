@@ -24,7 +24,7 @@ export default async function ChapterCoursePage({ params }: Params) {
     const userProgress = await getUserProgress()
 
     if (!infoCourse) {
-        return redirect(`/courses/${courseSlug}`)
+        return redirect(`/academy/courses/${courseSlug}`)
     }
 
     const isPurchaseCourse = await getIsPurchasedCourse(user.id, infoCourse.id)
