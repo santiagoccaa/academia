@@ -41,7 +41,7 @@ export const ProgressCourse = ({ chapterCourseId, infoCourse, userProgress }: Pr
         const nextChapter = chapters[currentIndex + 1]
 
         if (nextChapter) {
-          router.push(`/courses/${slug}/${nextChapter.id}`)
+          router.push(`/academy/courses/${slug}/${nextChapter.id}`)
         }
 
       }

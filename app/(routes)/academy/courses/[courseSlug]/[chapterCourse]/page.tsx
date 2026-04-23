@@ -4,6 +4,7 @@ import { getUserProgress } from "@/actios/getUserProgress"
 import { currentUser } from "@clerk/nextjs/server"
 import { redirect } from "next/navigation"
 import { ChaptersCourse, InfoCourse } from "./components"
+import { getTeacherId } from "@/actios/getTeacherId"
 
 interface Params {
     params: Promise<{ courseSlug: string, chapterCourse: string }>
@@ -19,15 +20,20 @@ export default async function ChapterCoursePage({ params }: Params) {
         return redirect("/")
     }
 
+    // Informacion del curso
     const infoCourse = await getCourseBySlug(courseSlug)
 
+    // Id del teacher
+    const idTeacher = await getTeacherId(courseSlug)
+
+    // Progreso del estudiante
     const userProgress = await getUserProgress()
 
     if (!infoCourse) {
-        return redirect(`/courses/${courseSlug}`)
+        return redirect(`/academy/courses/${courseSlug}`)
     }
 
-    const isPurchaseCourse = await getIsPurchasedCourse(user.id, infoCourse.id)
+    const isPurchaseCourse = await getIsPurchasedCourse(user.id, infoCourse.id, idTeacher!!)
 
     const videoUrl = infoCourse.chapters.find((chapter) => chapter.id === chapterCourse)?.videoUrl
 

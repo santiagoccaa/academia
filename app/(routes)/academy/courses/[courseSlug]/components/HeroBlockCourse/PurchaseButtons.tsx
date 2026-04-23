@@ -2,7 +2,9 @@
 
 import { Chapter } from '@/app/generated/prisma/client'
 import { Button } from '@/components/ui/button'
+import { useAuth } from '@clerk/nextjs'
 import axios from 'axios'
+import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { toast } from 'sonner'
@@ -13,20 +15,24 @@ interface PurchaseButtonsProps {
     chapters: Chapter[]
     price: string | null
     id: string
+    userID: string
 }
 
-export const PurchaseButtons = ({ purchase, slug, chapters, price, id }: PurchaseButtonsProps) => {
+export const PurchaseButtons = ({ purchase, slug, chapters, price, id, userID }: PurchaseButtonsProps) => {
+
+    const { userId } = useAuth()
 
     const router = useRouter()
 
     const [isLoading, setIsloading] = useState(false)
 
     const enrollCourse = async () => {
+
         setIsloading(true)
         if (price === 'Gratis') {
             try {
                 await axios.post(`/api/course/${id}/enroll`)
-                router.push(`/courses/${slug}/${chapters[0].id}`)
+                router.push(`/academy/courses/${slug}/${chapters[0].id}`)
                 toast("Inscripcion exitosa")
             } catch (error) {
                 toast.error("Ocurrio un error al momento de intentar suscribirte")
@@ -46,32 +52,35 @@ export const PurchaseButtons = ({ purchase, slug, chapters, price, id }: Purchas
     }
 
     const redirectToCourse = () => {
-        router.push(`/courses/${slug}/${chapters[0].id}`)
+        router.push(`academy/courses/${slug}/${chapters[0].id}`)
     }
+
+    const autor = userID === userId
 
     return (
         <>
             {
-                purchase ? (
+                purchase || autor ? (
+                    <Button
+                        className='hover:bg-primary text-white font-semibold'
+                        asChild
+                    >
+                        <Link href={`/academy/courses/${slug}/${chapters[0].id}`}>
+                            Ver curso
+                        </Link>
+                    </Button>
+                ) : (
+
                     <Button
                         className='hover:bg-primary text-white font-semibold'
                         disabled={isLoading}
-                        onClick={redirectToCourse}
+                        onClick={enrollCourse}
                     >
-                        Ver curso
-
+                        Inscribirse
                     </Button>
-                ) :
-                    (
-                        <Button
-                            className='hover:bg-primary text-white font-semibold'
-                            disabled={isLoading}
-                            onClick={enrollCourse}
-                        >
-                            Inscribirse
-                        </Button>
-                    )
+                )
             }
+
         </>
     )
 

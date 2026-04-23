@@ -8,7 +8,7 @@ import Image from 'next/image'
 
 export const HeroBlockCourse = ({ course, purchase }: HeroBlockCourseProps) => {
 
-  const { description, price, level, imageUrl, updateAt, slug, chapters, title, id } = course
+  const { description, price, level, imageUrl, updateAt, slug, chapters, title, id, userID } = course
 
   return (
     <div className='grid grid-cols-1 md:grid-cols-2 gap-4 mt-6'>
@@ -24,7 +24,7 @@ export const HeroBlockCourse = ({ course, purchase }: HeroBlockCourseProps) => {
         </div>
 
         <h2 className='text-xl font-semibold my-4'>{formatPrice(price)}</h2>
-        <PurchaseButtons purchase={purchase} slug={slug} chapters={chapters} price={price} id={id} />
+        <PurchaseButtons purchase={purchase} slug={slug} chapters={chapters} price={price} id={id} userID={userID} />
       </div>
 
       <Image

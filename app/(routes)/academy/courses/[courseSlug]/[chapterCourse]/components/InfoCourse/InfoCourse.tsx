@@ -1,4 +1,3 @@
-import React from 'react'
 import { InfoCourseProps } from './InfoCourse.types'
 import { Lock } from 'lucide-react'
 import { VideoCourse } from './VideoCourse'
@@ -30,7 +29,6 @@ export const InfoCourse = ({ chapterCourseId, infoCourse, purchaseCourse, userPr
             <div className='mt-4 bg-white rounded-md p-6 shadow-md'>
                 <h2 className='text-2xl font-semibold text-gray-800 mb-4'>{title}</h2>
                 <div className='w-fit mb-4 px-2 py-1 bg-primary text-white rounded-full text-xs shadow-md'>{category}</div>
-
                 <p className='text-gray-600 text-sm'>{description}</p>
             </div>
         </div>
