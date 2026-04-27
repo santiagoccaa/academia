@@ -1,9 +1,16 @@
-import { Chapter, Course } from "@/app/generated/prisma/client";
+import { Chapter, Course, FeedbackCourse } from "@/app/generated/prisma/client";
 import prisma from "@/lib/prisma";
+import { auth } from "@clerk/nextjs/server";
 
-export const getCourseBySlug = async (slug: string): Promise<Course & { chapters: Chapter[] } | null> => {
+export const getCourseBySlug = async (slug: string): Promise<Course & { chapters: Chapter[], feedback?: FeedbackCourse[] } | null> => {
+
+    const { userId } = await auth()
+
+    if (!userId) {
+        return null
+    }
     try {
-        const course = prisma.course.findUnique({
+        const course = await prisma.course.findUnique({
             where: {
                 slug,
                 isPublished: true
@@ -15,6 +22,11 @@ export const getCourseBySlug = async (slug: string): Promise<Course & { chapters
                     },
                     orderBy: {
                         position: "asc"
+                    }
+                },
+                feedback: {
+                    where: {
+                        userId
                     }
                 }
             }

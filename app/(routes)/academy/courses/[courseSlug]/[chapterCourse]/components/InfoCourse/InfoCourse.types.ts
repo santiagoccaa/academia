@@ -1,7 +1,7 @@
-import { Chapter, Course, UserProgress } from "@/app/generated/prisma/client";
+import { Chapter, Course, FeedbackCourse, UserProgress } from "@/app/generated/prisma/client";
 
 export type InfoCourseProps = {
-    infoCourse: Course & { chapters: Chapter[] }
+    infoCourse: Course & { chapters: Chapter[], feedback?: FeedbackCourse[] }
     chapterCourseId: string
     userProgress: UserProgress[]
     purchaseCourse: boolean

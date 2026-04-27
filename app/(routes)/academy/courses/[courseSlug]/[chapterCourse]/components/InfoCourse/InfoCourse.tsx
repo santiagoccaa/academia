@@ -2,10 +2,11 @@ import { InfoCourseProps } from './InfoCourse.types'
 import { Lock } from 'lucide-react'
 import { VideoCourse } from './VideoCourse'
 import { ProgressCourse } from './ProgressCourse'
+import { FeedbackUserCourse } from '../FeedbackCourse'
 
 export const InfoCourse = ({ chapterCourseId, infoCourse, purchaseCourse, userProgress, videoUrl }: InfoCourseProps) => {
 
-    const { title, category, description } = infoCourse
+    const { title, category, description, id, feedback } = infoCourse
 
     return (
         <div className='w-full relative'>
@@ -31,6 +32,8 @@ export const InfoCourse = ({ chapterCourseId, infoCourse, purchaseCourse, userPr
                 <div className='w-fit mb-4 px-2 py-1 bg-primary text-white rounded-full text-xs shadow-md'>{category}</div>
                 <p className='text-gray-600 text-sm'>{description}</p>
             </div>
+
+            <FeedbackUserCourse id={id} feedback={feedback && feedback[0]} />
         </div>
     )
 }
