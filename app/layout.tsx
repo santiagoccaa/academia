@@ -4,6 +4,7 @@ import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "@/components/ui/sonner";
 import { Footer, Navbar } from "./(routes)/(root)/components";
+import { NextIntlClientProvider } from 'next-intl';
 
 const fontPrimary = Space_Grotesk({
   variable: "--font-space-grotest",
@@ -30,7 +31,7 @@ export default function RootLayout({
       localization={{
         userButton: {
           action__signOut: "Cerrar sesión",
-          action__manageAccount: "Gestionar cuenta", // opcional
+          action__manageAccount: "Gestionar cuenta",
         },
       }}
     >
@@ -38,14 +39,16 @@ export default function RootLayout({
         <body
           className={`${fontPrimary.className} antialiased`}
         >
-          <div className="w-full flex flex-col min-h-screen">
-            <Navbar />
-            <main className="flex-1">
-              {children}
-            </main>
-            <Footer />
-          </div>
-          <Toaster />
+          <NextIntlClientProvider>
+            <div className="w-full flex flex-col min-h-screen">
+              <Navbar />
+              <main className="flex-1">
+                {children}
+              </main>
+              <Footer />
+            </div>
+            <Toaster />
+          </NextIntlClientProvider>
         </body>
       </html>
     </ClerkProvider >

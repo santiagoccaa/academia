@@ -17,6 +17,7 @@ import {
     SheetTrigger,
 } from "@/components/ui/sheet"
 import { ABOUT_US, CONTACT_US, COURSES, HOME } from "@/const/routes"
+import LanguageSelector from "@/components/Shared/LenguajeSelector/LenguajeSelector"
 
 interface Nav {
     name: string
@@ -67,6 +68,8 @@ export const Navbar = () => {
                                 Explore <ChevronDown className="w-3 h-2" />
                             </Button>
                         </div>
+                        <LanguageSelector />
+
                         <div className="block lg:hidden">
                             <Sheet>
                                 <SheetTrigger>
@@ -122,6 +125,7 @@ export const Navbar = () => {
                                 </Link>
                             </Button>
                         </div>
+
                     </div>
                 </div>
             </PageContainer>
