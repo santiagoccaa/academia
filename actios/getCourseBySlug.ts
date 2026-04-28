@@ -25,8 +25,8 @@ export const getCourseBySlug = async (slug: string): Promise<Course & { chapters
                     }
                 },
                 feedback: {
-                    where: {
-                        userId
+                    orderBy: {
+                        createdAt: "asc"
                     }
                 }
             }
