@@ -45,6 +45,25 @@
                 "signIn": "Ingresar",
                 "free": "Crear cuenta gratis"
             }
+        },
+        "services": {
+            "title": "Nuestros Servicios",
+            "subtitle": "Fomentando un entorno de aprendizaje lúdico y atractivo",
+            "cards": {
+                "card1": {
+                    "title": "Diseño de Interacción",
+                    "description": "Lecciones de diseño que cubren los desarrollos más recientes."
+                },
+                "card2": {
+                    "title": "Curso de Diseño UX",
+                    "description": "Clases de desarrollo que cubren los avances más recientes en la web."
+                },
+                "card3": {
+                    "title": "Interfaz de Usuario",
+                    "description": "Cursos de Diseño de Interfaz de Usuario que cubren las tendencias más recientes."
+                },
+                "link": "Saber Más"
+            }
         }
     }
 }

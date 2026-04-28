@@ -45,6 +45,25 @@
                 "signIn": "Sign In",
                 "free": "Create free account"
             }
+        },
+        "services": {
+            "title": "Our Services",
+            "subtitle": "Fostering a playful & engaging learning environment",
+            "cards": {
+                "card1": {
+                    "title": "Interaction Design",
+                    "description": "Lessons on design that cover the most recent developments."
+                },
+                "card2": {
+                    "title": "UX Design Course",
+                    "description": "Classes in development that cover the most recent advancements in web."
+                },
+                "card3": {
+                    "title": "User Interface Design",
+                    "description": "User Interface Design courses that cover the most recent trends"
+                },
+                "link":"Learm More"
+            }
         }
     }
 }

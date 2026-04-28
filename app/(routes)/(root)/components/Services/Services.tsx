@@ -4,6 +4,7 @@ import { ChartNetwork, Computer, LucideIcon, SquareCode } from "lucide-react"
 import { ReactNode } from "react"
 import { Graph, Mockup } from "@/components/Icons"
 import { Html } from "@/components/Icons/Html"
+import { useTranslations } from "next-intl"
 
 export interface AcademyService {
     title: string
@@ -15,22 +16,22 @@ export interface AcademyService {
 
 const academyServices: AcademyService[] = [
     {
-        title: "Interaction Design",
-        description: "Lessons on design that cover the most recent developments.",
+        title: "card1.title",
+        description: "card1.description",
         icon: <Mockup size="30" color="#4AC8AE" />,
         href: "/",
         color: "bg-accent"
     },
     {
-        title: "UX Design Course",
-        description: "Classes in development that cover the most recent advancements in web.",
+        title: "card2.title",
+        description: "card2.description",
         icon: <Html size="30" color="#4883FF" />,
         href: "/",
         color: "bg-[#E0EAFF]"
     },
     {
-        title: "User Interface Design",
-        description: "User Interface Design courses that cover the most recent  trends",
+        title: "card3.title",
+        description: "card3.description",
         icon: <Graph size="30" color="#C11574" />,
         href: "/",
         color: "bg-[#FCE7F6]"
@@ -38,14 +39,15 @@ const academyServices: AcademyService[] = [
 ]
 
 export const Services = () => {
+    const t = useTranslations('homePage.services')
     return (
         <PageContainer>
             <div className='flex flex-col items-center text-center my-8 '>
-                <h2 className='text-sm font-medium text-primary'>Our Services</h2>
+                <h2 className='text-sm font-medium text-primary'>{t('title')}</h2>
                 <p className='text-2xl md:text-3xl font-medium text-gray-800 max-w-xl mb-8'>
-                    Fostering a playful & engaging learning environment
+                    {t('subtitle')}
                 </p>
-                <div className='grid grid-cols-1 lg:grid-cols-3 gap-8 w-full'>
+                <div className='grid grid-cols-1 lg:grid-cols-3 gap-4 w-full'>
                     {academyServices.map((service, index) => (
                         <CardServices key={index} {...service} />
                     ))}
