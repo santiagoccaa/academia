@@ -27,6 +27,23 @@
                 "box1": "Cursos en Video",
                 "box2": "Cursos en Línea",
                 "box3": "Tutores"
+            },
+            "collaboration": "Colaboradores"
+        },
+        "navbar": {
+            "input": {
+                "title": "¿Qué quieres aprender?",
+                "button": "Explorar"
+            },
+            "nav": {
+                "home": "Inicio",
+                "aboutUs": "Sobre Nosotros",
+                "courses": "Cursos",
+                "contactUs": "Contáctanos"
+            },
+            "auth": {
+                "signIn": "Ingresar",
+                "free": "Crear cuenta gratis"
             }
         }
     }

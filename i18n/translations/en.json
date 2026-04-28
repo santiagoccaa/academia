@@ -27,6 +27,23 @@
                 "box1": "Video Courses",
                 "box2": "Online Courses",
                 "box3": "Tutors"
+            },
+            "collaboration": "Collaboration"
+        },
+        "navbar": {
+            "input": {
+                "title": "Want to learn?",
+                "button": "Explore"
+            },
+            "nav": {
+                "home": "Home",
+                "aboutUs": "About Us",
+                "courses": "Courses",
+                "contactUs": "Contact Us"
+            },
+            "auth": {
+                "signIn": "Sign In",
+                "free": "Create free account"
             }
         }
     }
