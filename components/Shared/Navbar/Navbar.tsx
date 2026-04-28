@@ -11,7 +11,7 @@ const Navbar = () => {
     const pathName = usePathname()
     const { user } = useUser()
 
-    if(pathName.includes("/sign-in")){
+    if (pathName.includes("/sign-in")) {
         return
     }
     return (
@@ -30,7 +30,7 @@ const Navbar = () => {
                     </SignInButton>
                 </SignedOut>
                 <SignedIn>
-                    <UserButton />
+                    <UserButton/>
                 </SignedIn>
             </div>
         </div>
