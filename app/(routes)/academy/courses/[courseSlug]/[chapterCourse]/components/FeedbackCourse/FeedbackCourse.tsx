@@ -17,9 +17,14 @@ export const FeedbackUserCourse = ({ id, feedback }: FeedbackCourseProps) => {
     const [stars, setStars] = useState<number>(feedback?.stars ?? 0)
     const [description, setDescription] = useState<string>(feedback?.description ?? "")
 
+    console.log("Nani", feedback);
+    
+
     return (
         <div className='mt-4 bg-white rounded-md p-6 shadow-md'>
-            <h2 className='text-2xl font-semibold text-gray-800 mb-4'>Tu Calificacion</h2>
+            {feedback &&
+                <h2 className='text-2xl font-semibold text-gray-800 mb-4'>Tu Calificacion</h2>
+            }
             {!edit && feedback ? (
                 <div>
                     <div className="flex gap-4 mb-4">
