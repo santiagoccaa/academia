@@ -12,20 +12,18 @@ export interface FeedbackCourseProps {
 }
 
 export const FeedbackUserCourse = ({ id, feedback }: FeedbackCourseProps) => {
+
     const [edit, setEdit] = useState(false)
 
     const [stars, setStars] = useState<number>(feedback?.stars ?? 0)
     const [description, setDescription] = useState<string>(feedback?.description ?? "")
-
-    console.log("Nani", feedback);
-    
 
     return (
         <div className='mt-4 bg-white rounded-md p-6 shadow-md'>
             {feedback &&
                 <h2 className='text-2xl font-semibold text-gray-800 mb-4'>Tu Calificacion</h2>
             }
-            {!edit && feedback ? (
+            {!edit && description || stars ? (
                 <div>
                     <div className="flex gap-4 mb-4">
                         {[1, 2, 3, 4, 5].map((item) => (
