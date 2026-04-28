@@ -1,5 +1,33 @@
 {
     "common": {
         "test": "Prueba"
+    },
+    "homePage": {
+        "hero": {
+            "title": {
+                "text1": "Mejora tus",
+                "text2": "Habilidades",
+                "text3": "para",
+                "text4": "Impulsar ",
+                "text5": "tu",
+                "text6": "Carrera ",
+                "text7": "profesional"
+            },
+            "description": "Aprende habilidades de diseño UI-UX con Weekend UX. El sistema de aprendizaje en línea más reciente para hacer crecer tu conocimiento.",
+            "buttons": {
+                "started": "Comenzar",
+                "freeTrial": "Prueba Gratis"
+            },
+            "icons": {
+                "speaking": "Oratoria",
+                "career": "Orientado a la Carrera",
+                "creative": "Pensamiento Creativo"
+            },
+            "box": {
+                "box1": "Cursos en Video",
+                "box2": "Cursos en Línea",
+                "box3": "Tutores"
+            }
+        }
     }
 }

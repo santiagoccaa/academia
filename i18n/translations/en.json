@@ -1,5 +1,33 @@
 {
     "common": {
         "test": "Test"
+    },
+    "homePage": {
+        "hero": {
+            "title": {
+                "text1": "Up your",
+                "text2": "Skills",
+                "text3": "to",
+                "text4": "Advance ",
+                "text5": "your",
+                "text6": "Career ",
+                "text7": "path"
+            },
+            "description": "Learn UI-UX Design skills with weekend UX . The latest online learning system and material that help your knowledge growing.",
+            "buttons": {
+                "started": "Get Started",
+                "freeTrial": "Get Free Trial"
+            },
+            "icons": {
+                "speaking": "Public Speaking",
+                "career": "Career-Oriented",
+                "creative": "Creative Thinking"
+            },
+            "box": {
+                "box1": "Video Courses",
+                "box2": "Online Courses",
+                "box3": "Tutors"
+            }
+        }
     }
 }
