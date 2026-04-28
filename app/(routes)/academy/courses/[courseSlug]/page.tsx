@@ -6,6 +6,13 @@ import { clerkClient, currentUser } from "@clerk/nextjs/server"
 import Image from "next/image"
 import { StarRating } from "@/components/Shared"
 
+import {
+    Accordion,
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger,
+} from "@/components/ui/accordion"
+
 interface Params {
     params: Promise<{ courseSlug: string }>
 }
@@ -42,6 +49,7 @@ export default async function CourseSlugPage({ params }: Params) {
             </div>
             {feedback &&
                 <div className="my-4 mx-6 border rounded-lg bg-white p-6">
+                    <h2 className='text-3xl font-semibold mb-4'>Opiniones</h2>
                     {feedback.map(async (item, index) => {
                         const user = await client.users.getUser(item.userId)
                         return (
@@ -51,7 +59,7 @@ export default async function CourseSlugPage({ params }: Params) {
                                         <Image src={user.imageUrl} fill alt={user.firstName || 'teacher'} />
                                     </div>
                                     <div className="flex flex-col">
-                                        <span className="text-xs font-bold text-gray-800 capitalize">{user.firstName} {user.lastName}</span>
+                                        <span className="text-sm font-medium text-gray-800 capitalize">{user.firstName} {user.lastName}</span>
                                     </div>
                                 </div>
 
@@ -59,7 +67,15 @@ export default async function CourseSlugPage({ params }: Params) {
                                     <StarRating rating={item.stars} />
                                     <span className="text-xs font-light text-gray-600">{item.createdAt.toLocaleDateString()}</span>
                                 </div>
-                                <p className="text-sm font-light text-gray-700">{item.description}</p>
+                                <Accordion type="single" collapsible defaultValue="item-1" className="relative">
+                                    <AccordionItem value="item-1">
+                                        <AccordionTrigger className="text-left absolute bottom-full right-0 aspect-square flex items-center justify-center" />
+
+                                        <AccordionContent className="text-sm text-gray-700">
+                                            {item.description}
+                                        </AccordionContent>
+                                    </AccordionItem>
+                                </Accordion>
                             </div>
                         )
                     })}

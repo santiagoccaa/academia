@@ -1,4 +1,4 @@
-import { Chapter, Course, FeedbackCourse } from "@/app/generated/prisma/client";
+import { Chapter, Course, FeedbackCourse, Prisma } from "@/app/generated/prisma/client";
 import prisma from "@/lib/prisma";
 import { auth } from "@clerk/nextjs/server";
 
@@ -26,7 +26,7 @@ export const getCourseBySlug = async (slug: string): Promise<Course & { chapters
                 },
                 feedback: {
                     orderBy: {
-                        createdAt: "asc"
+                        stars:"desc"
                     }
                 }
             }
