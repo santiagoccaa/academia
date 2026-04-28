@@ -1,1 +1,1 @@
-export {default as HeroBlockCourse} from './HeroBlockCourse'
+export * from './HeroBlockCourse'
