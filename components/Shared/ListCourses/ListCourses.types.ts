@@ -7,9 +7,16 @@ export type CourseWithExtras = Prisma.CourseGetPayload<{
             select: {
                 purchases: true
             }
+        },
+        feedback: {
+            select: {
+                stars: true
+            }
         }
     }
-}>
+}> & {
+    avgStars: number
+}
 
 export type ListCoursesProps = {
     title?: string
