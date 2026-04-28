@@ -13,11 +13,18 @@ export const getPurchasesCoureses = async (): Promise<CourseWithExtras[] | null>
     try {
         const purchaseCourses = await prisma.course.findMany({
             where: {
-                purchases: {
-                    some: {
-                        userId: user.id
+                OR: [
+                    {
+                        userID: user.id
+                    },
+                    {
+                        purchases: {
+                            some: {
+                                userId: user.id
+                            }
+                        }
                     }
-                },
+                ],
                 isPublished: true
             },
             include: {
