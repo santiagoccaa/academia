@@ -1,5 +1,5 @@
-import { ListCoursesProps } from './ListCourses.types'
 import { CardCourse } from '../CardCourse'
+import { ListCoursesProps } from './ListCourses.types'
 
 export const ListCourses = ({ courses, title }: ListCoursesProps) => {
 

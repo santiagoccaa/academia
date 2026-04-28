@@ -1,4 +1,3 @@
-
 import { HeroBlockCourseProps } from './HeroBlockCourse.types'
 import { IconBadge } from '@/components/Shared'
 import { Calendar, ChartNoAxesColumn, Timer } from 'lucide-react'
@@ -16,14 +15,13 @@ export const HeroBlockCourse = ({ course, purchase }: HeroBlockCourseProps) => {
         <h2 className='text-3xl font-semibold'>{title}</h2>
         <p className='text-balance mt-2'>{description}</p>
 
-        <div className='flex flex-col gap-3 mt-5 text-gray-600'>
+        <div className='flex flex-col gap-3 my-4 text-gray-600'>
           <IconBadge icon={Timer} text='70h 40m' />
           <IconBadge icon={Calendar} text={`Ultima actualizacion: ${new Date(updateAt).toLocaleDateString("es-ES")}`} />
           <IconBadge icon={ChartNoAxesColumn} text={level || ''} />
-
         </div>
-
-        <h2 className='text-xl font-semibold my-4'>{formatPrice(price)}</h2>
+        
+        {!purchase && <h2 className='text-xl font-semibold mb-4'>{formatPrice(price)}</h2>}
         <PurchaseButtons purchase={purchase} slug={slug} chapters={chapters} price={price} id={id} userID={userID} />
       </div>
 

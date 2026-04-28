@@ -51,10 +51,6 @@ export const PurchaseButtons = ({ purchase, slug, chapters, price, id, userID }:
         }
     }
 
-    const redirectToCourse = () => {
-        router.push(`academy/courses/${slug}/${chapters[0].id}`)
-    }
-
     const autor = userID === userId
 
     return (
