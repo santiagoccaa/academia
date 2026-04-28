@@ -22,6 +22,17 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider
+      appearance={{
+        elements: {
+          userButtonPopoverFooter: { display: "none" },
+        },
+      }}
+      localization={{
+        userButton: {
+          action__signOut: "Cerrar sesión",
+          action__manageAccount: "Gestionar cuenta", // opcional
+        },
+      }}
     >
       <html lang="es">
         <body
