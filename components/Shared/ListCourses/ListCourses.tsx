@@ -3,10 +3,6 @@ import { CardCourse } from '../CardCourse'
 
 export const ListCourses = ({ courses, title }: ListCoursesProps) => {
 
-    if (courses) {
-        console.log("curso:", courses[0]._count);
-    }
-
     return (
         <div className=''>
             <div className='my-4 mx-6 border rounded-lg bg-white p-6'>

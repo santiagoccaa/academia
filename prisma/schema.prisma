@@ -24,12 +24,27 @@ model Course {
   isPublished Boolean @default(false)
   level       String? @db.Text
 
-  category  String?    @db.Text
+  category  String?          @db.Text
   chapters  Chapter[]
   purchases Purchase[]
+  feedback  FeedbackCourse[]
 
   createdAt DateTime @default(now())
   updateAt  DateTime @updatedAt
+}
+
+model FeedbackCourse {
+  id          String  @id @default(uuid())
+  userId      String
+  description String? @db.Text
+  stars       Int
+
+  createdAt DateTime @default(now())
+  updateAt  DateTime @updatedAt
+  course    Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  courseId  String
+
+  @@unique([userId, courseId])
 }
 
 model Chapter {
@@ -83,26 +98,6 @@ model Purchase {
   @@index([courseId])
 }
 
-model UserSubscription {
-  id String @id @default(cuid())
-
-  // ── Usuario ──────────────────────────────
-  userId String @unique // un usuario = una suscripción activa
-
-  // ── Stripe IDs ───────────────────────────
-  stripeCustomerId     String @unique // para identificar al cliente en Stripe
-  stripeSubscriptionId String @unique // para cancelar/pausar desde tu app
-  stripePriceId        String // por si cambias el precio en el futuro
-
-  // ── Control de vigencia ──────────────────
-  stripeCurrentPeriodEnd DateTime // 👈 el campo MÁS importante
-  // Stripe te dice hasta cuándo está pagado.
-  // Si esta fecha > hoy → suscripción activa
-  // Si esta fecha < hoy → venció, bloquear acceso
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
 
 model StripeCustomer {
   id               String @id @default(uuid())

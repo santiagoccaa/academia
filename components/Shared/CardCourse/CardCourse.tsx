@@ -1,19 +1,18 @@
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { ArrowUpRight, Clock, Star } from "lucide-react"
 import Image from "next/image"
-import { CardCourseProps } from "./cardCourse.types"
 import { DEFAULT_IMAGE_COURSE } from "@/const/images"
 import { formatPrice } from "@/lib/formatPrice"
 import { clerkClient } from "@clerk/nextjs/server"
 import Link from "next/link"
 import { formatDuration } from "@/utils"
 import { CourseWithExtras } from "../ListCourses/ListCourses.types"
-import { Separator } from "@/components/ui/separator"
+import { StarRating } from "../StarRating"
 
 export const CardCourse = async (course: CourseWithExtras) => {
 
     const client = await clerkClient();
-    const { _count, chapters, userID, imageUrl, category, description, slug, createdAt, title, price } = course
+    const { _count, chapters, userID, imageUrl, category, description, slug, createdAt, title, price, avgStars, feedback } = course
 
     const duration = chapters.reduce((acc, chapter) => {
         return acc + (chapter.duration ?? 0)
@@ -48,16 +47,12 @@ export const CardCourse = async (course: CourseWithExtras) => {
 
                 <p className="text-xs font-light text-gray-400 line-clamp-3">{description}</p>
 
-                <div className="flex items-center gap-2 mt-2">
-                    <span className="text-xs font-medium text-primary">4.3</span>
+                <div className="flex items-end gap-2 mt-2">
+                    <span className="text-xs font-medium text-primary">{avgStars}</span>
                     <div className="flex items-center gap-1">
-                        <Star size={10} />
-                        <Star size={10} />
-                        <Star size={10} />
-                        <Star size={10} />
-                        <Star size={10} />
+                        <StarRating rating={avgStars} />
                     </div>
-                    <span className="text-xs font-light text-gray-400">(1.309)</span>
+                    <span className="text-xs font-light text-gray-400">{feedback.length}</span>
                 </div>
                 <div className="flex items-center gap-2 mt-2">
                     <h2 className="text-xs font-medium text-primary">Inscritos: <span className="text-gray-400 font-light">{_count.purchases}</span></h2>
