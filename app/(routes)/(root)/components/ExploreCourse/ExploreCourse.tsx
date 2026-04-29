@@ -1,11 +1,21 @@
-import { CardCourse } from "@/components/Shared"
+import {
+    Carousel,
+    CarouselContent,
+    CarouselItem,
+    CarouselNext,
+    CarouselPrevious,
+} from "@/components/ui/carousel"
 import { PageContainer } from "@/components/Shared/PageContainer"
 import { Button } from "@/components/ui/button"
 import { useTranslations } from "next-intl"
+import { getHomeCourses } from "@/actios/getHomeCourses"
+import { CardCourse } from "@/components/Shared"
 
 export const ExploreCourse = async () => {
 
     const t = useTranslations('homePage.exploreCourses')
+
+    const courses = await getHomeCourses()
 
     return (
         <PageContainer>
@@ -15,16 +25,24 @@ export const ExploreCourse = async () => {
                     {t('subtitle2')}
                 </p>
                 <p className="text-sm text-gray-500">
-                   {t('subtitle')}
+                    {t('subtitle')}
                 </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {/* <CardCourse />
-                <CardCourse />
-                <CardCourse />
-                <CardCourse /> */}
-            </div>
+            <PageContainer>
+                <Carousel>
+                    <CarouselContent className="-ml-2 md:-ml-4">
+                        {courses?.map((course, index) => (
+                            <CarouselItem key={index} className="basis-1/2 lg:basis-1/3 pl-2 md:pl-4">
+                                <CardCourse {...course} />
+                            </CarouselItem>
+                        ))}
+                    </CarouselContent>
+                    <CarouselPrevious />
+                    <CarouselNext />
+                </Carousel>
+            </PageContainer>
+
             <div className="flex justify-center mt-8">
                 <Button className="shadow-md">
                     {t('button')}
