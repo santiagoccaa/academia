@@ -197,5 +197,10 @@
             "colum3": "Course",
             "colum4": "Price"
         }
+    },
+    "cardCourse": {
+        "createdAt": "Created",
+        "subs": "Subscribers",
+        "message": "Enrolled"
     }
 }
