@@ -6,6 +6,7 @@ import { SidebarTrigger } from '@/components/ui/sidebar'
 import { SignedIn, SignedOut, SignInButton, UserButton, useUser } from '@clerk/clerk-react'
 import { BellRing, LogIn, Search } from 'lucide-react'
 import { usePathname } from 'next/navigation'
+import LanguageSelector from '../LenguajeSelector/LenguajeSelector'
 
 const Navbar = () => {
     const pathName = usePathname()
@@ -18,6 +19,7 @@ const Navbar = () => {
         <div className='flex justify-between p-4 border-b bg-white h-16'>
             {user ? < SidebarTrigger /> : <div />}
             <div className='flex items-center gap-4'>
+                <LanguageSelector />
                 <Button variant='outline'>
                     <BellRing />
                 </Button>
@@ -29,7 +31,7 @@ const Navbar = () => {
                         </Button>
                     </SignInButton>
                 </SignedOut>
-                <SignedIn>
+                <SignedIn   >
                     <UserButton/>
                 </SignedIn>
             </div>
