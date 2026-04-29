@@ -1,42 +1,44 @@
 import { PageContainer } from "@/components/Shared/PageContainer"
+import { useTranslations } from "next-intl"
 
 const benefits = [
     {
-        title: "Standardization",
-        description: "When working in a global workplace, it’s often difficult to gauge learners’ training experiences, which are"
+        title: "card1",
+        description: "card1"
     },
     {
-        title: "Reduced Costs",
-        description: "With Weekend UX, there’s no cost to reproduce materials and, thanks to mobile learning and microlearning"
+        title: "card2",
+        description: "card2"
     },
     {
-        title: "More Customization",
-        description: "ust like learners aren’t one-size-fits-all, learning is not a one-size-fits-all experience. By using different"
+        title: "card3",
+        description: "card3"
     },
     {
-        title: "Affordable Pricing",
-        description: "With Weekend UX, there’s no cost to reproduce materials and, thanks to mobile learning and microlearning"
+        title: "card4",
+        description: "card4"
     },
     {
-        title: "Learner Satisfaction",
-        description: "If you really want students to retain what they learn, you’ll need to aim for high satisfaction rates. Bad"
+        title: "card5",
+        description: "card5"
     },
     {
-        title: "Multimedia Materials",
-        description: "One of the main reasons why custom eLearning is effective is that it’s the perfect delivery method for"
+        title: "card6",
+        description: "card6"
     },
 ]
 
 export const Beenefits = () => {
+    const t = useTranslations('aboutUsPage.benefits')
     return (
         <PageContainer>
             <div className="flex flex-col items-center text-center gap-4 my-16">
-                <h2 className="text-sm font-bold text-primary">Our Benefits</h2>
+                <h2 className="text-sm font-bold text-primary">{t('title')}</h2>
                 <h2 className="text-3xl text-gray-800 font-medium max-w-2xl">
-                    By Joining WEEKENS UX Platform, One Can Avail a Lot Of Benefits.
+                    {t('subtitle')}
                 </h2>
                 <p className="text-sm text-gray-600 max-w-xl">
-                    Install our top-rated dropshipping app to your e-commerce site and get access to US Suppliers, AliExpress vendors, and the best.
+                    {t('description')}
                 </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center gap-8 mt-8">
@@ -46,9 +48,9 @@ export const Beenefits = () => {
                                 <div className={`w-8 h-4 ${index % 2 === 0 ? 'rotate-45' : '-rotate-45'} bg-accent absolute top-2 left-0`} />
                                 <span className="text-2xl text-primary relative font-bold">0{index + 1}</span>
                             </div>
-                            <h3 className="text-2xl font-bold text-gray-800">{title}</h3>
+                            <h3 className="text-2xl font-bold text-gray-800">{t(`cards.${title}.title`)}</h3>
                             <p className="text-sm text-gray-600">
-                                {description}
+                                {t(`cards.${description}.description`)}
                             </p>
                         </div>
                     ))}

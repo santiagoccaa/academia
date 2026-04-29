@@ -17,6 +17,8 @@ import {
     SheetTrigger,
 } from "@/components/ui/sheet"
 import { ABOUT_US, CONTACT_US, COURSES, HOME } from "@/const/routes"
+import LanguageSelector from "@/components/Shared/LenguajeSelector/LenguajeSelector"
+import { useTranslations } from "next-intl"
 
 interface Nav {
     name: string
@@ -25,19 +27,19 @@ interface Nav {
 
 const nav: Nav[] = [
     {
-        name: "Home",
+        name: "home",
         url: HOME
     },
     {
-        name: "About Us",
+        name: "aboutUs",
         url: ABOUT_US
     },
     {
-        name: "Courses",
+        name: "courses",
         url: COURSES
     },
     {
-        name: "Contact Us",
+        name: "contactUs",
         url: CONTACT_US
     }
 ]
@@ -45,6 +47,7 @@ const nav: Nav[] = [
 export const Navbar = () => {
 
     const pathName = usePathname()
+    const t = useTranslations("homePage.navbar")
 
     const allowedRoutes = [HOME, ABOUT_US, CONTACT_US]
 
@@ -61,12 +64,14 @@ export const Navbar = () => {
                             <Image src={LOGO} fill alt="Logo" sizes='80px' />
                         </div>
                         <div className="hidden lg:block relative">
-                            <Input placeholder="Want to learn?" className="pl-7 pr-28 border" />
+                            <Input placeholder={t("input.title")} className="pl-7 pr-28 border" />
                             <Search className="absolute text-gray-300 top-1/2 -translate-y-1/2 left-2 w-4 h-4" />
                             <Button className="absolute top-1/2 -translate-y-1/2 right-2 h-8 text-xs bg-accent text-primary hover:text-white transition-colors duration-300">
-                                Explore <ChevronDown className="w-3 h-2" />
+                                {t("input.button")}  <ChevronDown className="w-3 h-2" />
                             </Button>
                         </div>
+                        <LanguageSelector />
+
                         <div className="block lg:hidden">
                             <Sheet>
                                 <SheetTrigger>
@@ -82,7 +87,7 @@ export const Navbar = () => {
                                             {nav.map(({ url, name }, index) => (
                                                 <li key={index} className={`text-xl relative font-medium hover:text-primary duration-300 transition-colors ${pathName === url && 'text-primary border-b font-bold border-primary'}`}>
                                                     <Link href={url}>
-                                                        {name}
+                                                        {t("input.title")}
                                                     </Link>
                                                 </li>
                                             ))}
@@ -103,7 +108,7 @@ export const Navbar = () => {
                                 {nav.map(({ url, name }, index) => (
                                     <li key={index} className={`text-sm font-medium hover:text-primary duration-300 transition-colors ${pathName === url && 'text-primary'}`}>
                                         <Link href={url}>
-                                            {name}
+                                            {t(`nav.${name}`)}
                                         </Link>
                                     </li>
                                 ))}
@@ -113,15 +118,17 @@ export const Navbar = () => {
                         <div className="flex items-center gap-2">
                             <Button variant="ghost" asChild>
                                 <Link href={"/sign-in"}>
-                                    Sign In
+                                    {t("auth.signIn")}
                                 </Link>
                             </Button>
                             <Button asChild>
                                 <Link href={"/sign-in"}>
-                                    Create free account
+                                    {t("auth.free")}
+
                                 </Link>
                             </Button>
                         </div>
+
                     </div>
                 </div>
             </PageContainer>

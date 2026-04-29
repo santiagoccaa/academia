@@ -1,34 +1,38 @@
 import { PageContainer } from "@/components/Shared/PageContainer";
 import { Button } from "@/components/ui/button";
-import { BriefcaseBusiness, Laptop, Lightbulb, LoaderCircle, Speech, UserPen } from "lucide-react";
+import { BriefcaseBusiness, Laptop, Lightbulb, Speech } from "lucide-react";
 import Image from "next/image";
 import { STUDENT_HOME } from "@/const/images";
-import { Navbar } from "../Navbar";
 import { Decorador } from "../Decorador";
 import { CollaBoration } from "./CollaBoration";
 import { Board, Career, Computer, Loader, Speaking, Thinking } from "@/components/Icons";
+import { useLocale, useTranslations } from "next-intl";
 
 const items = [
     {
         icon: Speech,
-        name: "Public Speaking",
+        name: "icons.speaking",
         component: <Speaking color="#F1BF5A" size="25" />
     },
     {
         icon: BriefcaseBusiness,
-        name: "Career-Oriented",
+        name: "icons.career",
         component: <Career color="#F4876B" size="25" />
 
     },
     {
         icon: Lightbulb,
-        name: "Creative Thinking",
+        name: "icons.creative",
         component: <Thinking color="#B4708D" size="25" />
 
     }
 ]
 
 export const Hero = () => {
+
+    const t = useTranslations("homePage.hero")
+
+    const lang = useLocale()
     return (
         <div className="relative bg-linear-to-t from-accent via-white to-white overflow-hidden">
             <Decorador className="top-20 lg:top-1/2 lg:-translate-y-1/2 -left-40 lg:left-0" />
@@ -41,22 +45,22 @@ export const Hero = () => {
                         <div className="w-full lg:w-1/2 relative flex flex-col">
                             {/* Title */}
                             <div className="flex-1 flex flex-col justify-center">
-                                <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold">
-                                    Up your <span className="text-primary">Skills</span> to <span className="text-primary">Advance</span> your <span className="text-primary">Career</span> path
+                                <h2 className={`text-4xl md:text-6xl ${lang === "en" ? 'lg:text-7xl' : 'lg:text-5xl'} font-bold`}>
+                                    {t('title.text1')} <span className="text-primary">{t('title.text2')}</span> {t('title.text3')} <span className="text-primary">{t('title.text4')}</span> {t('title.text5')} <span className="text-primary">{t('title.text6')}</span> {t('title.text7')}
                                 </h2>
 
                                 {/* Description */}
                                 <p className="text-sm text-gray-600 my-4">
-                                    Learn UI-UX Design skills with weekend UX . The latest online learning system and material that help your knowledge growing.
+                                    {t('description')}
                                 </p>
 
                                 <div className="flex gap-8 mt-4">
                                     <Button size="lg" className="hover:shadow-xl">
-                                        Get Started
+                                        {t('buttons.started')}
                                     </Button>
 
                                     <Button className="bg-accent text-primary hover:text-white transition-colors duration-300" size="lg">
-                                        Get free trial
+                                        {t('buttons.freeTrial')}
                                     </Button>
                                 </div>
                             </div>
@@ -65,7 +69,7 @@ export const Hero = () => {
                                 {items.map(({ component, name, }, index) => (
                                     <div key={index} className="flex gap-2 items-center">
                                         {component}
-                                        <span className="text-sm text-gray-500">{name}</span>
+                                        <span className="text-sm text-gray-500">{t(name)}</span>
                                     </div>
                                 ))}
                             </div>
@@ -87,7 +91,7 @@ export const Hero = () => {
                                 <div className="absolute top-0 -right-12 w-30 py-2 rounded-lg bg-white border border-primary shadow-2xl flex flex-col justify-end items-center gap-2">
                                     <Loader size="70" color="#20B486" />
                                     <h3 className="text-xl font-bold">5k+</h3>
-                                    <span className="text-xs text-gray-400">Online Courses</span>
+                                    <span className="text-xs text-gray-400">{t('box.box1')}</span>
                                 </div>
 
                                 <div className="absolute top-1/2 -translate-y-1/2 -left-20 w-44 py-1 px-2  rounded-lg bg-white border border-primary shadow-2xl flex items-center gap-2">
@@ -96,7 +100,7 @@ export const Hero = () => {
                                     </div>
                                     <div>
                                         <h3 className="text-xl font-bold">2k+</h3>
-                                        <span className="text-xs text-gray-400 -mt-1">Video Courses</span>
+                                        <span className="text-xs text-gray-400 -mt-1">{t('box.box2')}</span>
                                     </div>
                                 </div>
 
@@ -105,7 +109,7 @@ export const Hero = () => {
                                         <Board size="25" color="white" />
                                     </div>
                                     <div>
-                                        <span className="text-xs text-gray-400">Tutors</span>
+                                        <span className="text-xs text-gray-400">{t('box.box3')}</span>
                                         <h3 className="text-xl font-bold -mt-1">250+</h3>
                                     </div>
                                 </div>
