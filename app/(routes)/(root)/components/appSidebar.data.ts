@@ -13,11 +13,6 @@ export const routes = [
         icon: BookOpen
     },
     {
-        title: "Pedidos",
-        url: ORDERS,
-        icon: ReceiptText
-    },
-    {
         title: "Certificados",
         url: CERTIFICATES,
         icon: Award
@@ -29,6 +24,11 @@ export const routesTeacher = [
         title: "Cursos",
         url: TEACHER,
         icon: GraduationCap
+    },
+    {
+        title: "Pedidos",
+        url: ORDERS,
+        icon: ReceiptText
     },
     {
         title: "Analiticas",
