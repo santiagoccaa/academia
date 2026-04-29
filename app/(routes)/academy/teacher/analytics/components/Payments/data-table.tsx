@@ -19,6 +19,7 @@ import {
     TableRow,
 } from "@/components/ui/table"
 import { useState } from "react"
+import { useTranslations } from "next-intl"
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[]
@@ -30,6 +31,8 @@ export function DataTable<TData, TValue>({
     data,
 }: DataTableProps<TData, TValue>) {
 
+    const t = useTranslations('academy.graph3')
+
     const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>(
         []
     )
@@ -39,7 +42,7 @@ export function DataTable<TData, TValue>({
         onColumnFiltersChange: setColumnFilters,
         getFilteredRowModel: getFilteredRowModel(),
         getCoreRowModel: getCoreRowModel(),
-        state:{
+        state: {
             columnFilters
         }
     })
@@ -48,7 +51,7 @@ export function DataTable<TData, TValue>({
         <div className="overflow-hidden">
             <div className="flex items-center py-4">
                 <Input
-                    placeholder="Filter emails..."
+                    placeholder={t('input')}
                     value={(table.getColumn("userEmail")?.getFilterValue() as string) ?? ""}
                     onChange={(event) =>
                         table.getColumn("userEmail")?.setFilterValue(event.target.value)
@@ -63,12 +66,10 @@ export function DataTable<TData, TValue>({
                             {headerGroup.headers.map((header) => {
                                 return (
                                     <TableHead key={header.id}>
-                                        {header.isPlaceholder
-                                            ? null
-                                            : flexRender(
-                                                header.column.columnDef.header,
-                                                header.getContext()
-                                            )}
+                                        {flexRender(
+                                            t(header.column.columnDef.header as string),
+                                            header.getContext()
+                                        )}
                                     </TableHead>
                                 )
                             })}

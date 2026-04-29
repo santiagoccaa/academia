@@ -1,8 +1,11 @@
 import { CardCourse } from '../CardCourse'
 import { FilterCourse } from '../FilterCourse'
 import { ListCoursesProps } from './ListCourses.types'
+import { useTranslations } from "next-intl"
 
 export const ListCourses = ({ courses, title }: ListCoursesProps) => {
+
+  const t = useTranslations()
 
     const nameCourses = courses?.map(course => {
         const names = course.title
@@ -18,7 +21,7 @@ export const ListCourses = ({ courses, title }: ListCoursesProps) => {
         <div className=''>
             <div className='my-4 mx-6 border rounded-lg bg-white p-6'>
                 <div className='w-full flex items-center justify-between pb-2'>
-                    <h2 className='text-2xl font-normal'>{title}</h2>
+                    <h2 className='text-2xl font-normal'>{t(title)}</h2>
                     {nameCourses && <FilterCourse filter={nameCourses} />} 
                 </div>
                 <div className='border-t py-2'>

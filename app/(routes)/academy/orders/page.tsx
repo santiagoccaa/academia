@@ -3,8 +3,11 @@ import { getUserReceips } from '@/actios/getUserReceips'
 import { currentUser } from '@clerk/nextjs/server'
 import { ReceiptText } from 'lucide-react'
 import { OrderList } from './components'
+import { getTranslations } from 'next-intl/server'
 
 export default async function OrdersPage() {
+
+    const t = await getTranslations('academy')
 
     const user = await currentUser()
 
@@ -20,7 +23,7 @@ export default async function OrdersPage() {
                 <div className='p-2 rounded-full bg-primary'>
                     <ReceiptText className='w-4 h-4 text-white' />
                 </div>
-                <h1 className='text-xl font-semibold'>Todos mis pedidos</h1>
+                <h1 className='text-xl font-semibold'>{t('orders')}</h1>
             </div>
             <OrderList purchases={purchases} receipts={receipts} />
         </div>

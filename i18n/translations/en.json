@@ -1,6 +1,10 @@
 {
     "common": {
-        "test": "Test"
+        "filled": "Filled"
+    },
+    "auth": {
+        "user": "Manage account",
+        "signOut": "Sign Out"
     },
     "homePage": {
         "hero": {
@@ -143,6 +147,55 @@
             },
             "description": "Your message",
             "button": "Send"
+        }
+    },
+    "appSidebar": {
+        "courses": "Courses",
+        "myCourses": "My Courses",
+        "certificates": "Certificates",
+        "orders": "Orders",
+        "analytics": "Analytics",
+        "platform": "Platform",
+        "teacher": "Teacher"
+    },
+    "academy": {
+        "allCourses": "All Courses",
+        "search": "Search course",
+        "myCourses": "My Courses",
+        "certificated": "Course Certificates",
+        "teacherMode": "Teacher mode",
+        "orders": "All My Orders",
+        "notFound": "Course not found",
+        "formOrders": {
+            "date": "Date",
+            "course": "Course",
+            "state": "Status",
+            "receipt": "Receipt",
+            "price": "Price",
+            "total": "Total spent",
+            "footer": "Order list",
+            "message": "View receipt",
+            "message2": "Paid"
+        },
+        "graph1": {
+            "subs": "Latest Subscribers",
+            "subtitle": "Subscribers from the last 6 months",
+            "footer1": "Your growth was",
+            "loading": "Loading subscribers..."
+        },
+        "graph2": {
+            "benefis": "Earnings",
+            "subtitle": "Earnings from the last 6 months",
+            "footer1": "Trending up by 5.2% this month",
+            "footer2": "Showing total visitors for the last 6 months",
+            "loading": "Loading data..."
+        },
+        "graph3": {
+            "input": "Filter emails",
+            "colum1": "Purchase date",
+            "colum2": "Client",
+            "colum3": "Course",
+            "colum4": "Price"
         }
     }
 }

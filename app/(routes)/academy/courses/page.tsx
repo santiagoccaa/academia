@@ -7,7 +7,7 @@ export default async function CoursesPage() {
   
   return (
     <div> 
-      <ListCourses courses={listCourses} title="Todos los cursos" />
+      <ListCourses courses={listCourses} title="academy.allCourses" />
     </div>
   )
 }

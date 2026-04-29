@@ -3,8 +3,11 @@ import { getUserProgressByCourses } from "@/actios/getUserProgressByCourses"
 import { currentUser } from "@clerk/nextjs/server"
 import { Award } from "lucide-react"
 import { CoursesList } from "./components"
+import { getTranslations } from "next-intl/server"
 
 export default async function CertificatesPage() {
+
+    const t = await getTranslations()
 
     const courses = await getPurchasesCoureses()
     const user = await currentUser()
@@ -31,7 +34,7 @@ export default async function CertificatesPage() {
                 <div className="p-2 rounded-full bg-primary">
                     <Award className="w-5 h-5 text-white" />
                 </div>
-                <h3 className="text-xl font-semibold">Certificados de los cursos</h3>
+                <h3 className="text-xl font-semibold">{t('academy.certificated')}</h3>
             </div>
 
             <CoursesList courses={coursesWithProgress} userName={userName} />

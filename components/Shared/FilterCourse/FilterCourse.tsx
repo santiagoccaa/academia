@@ -10,16 +10,18 @@ import {
 } from "@/components/ui/combobox"
 import { FilterCourseProps } from "./FilterCourse.types"
 import { useRouter } from "next/navigation"
+import { useTranslations } from "next-intl"
 
 
 export function FilterCourse({ filter }: FilterCourseProps) {
+    const t = useTranslations()
 
     const router = useRouter()
     return (
         <Combobox items={filter}>
-            <ComboboxInput placeholder="Buscar curso" />
+            <ComboboxInput placeholder={t('academy.search')} />
             <ComboboxContent>
-                <ComboboxEmpty>Curso no encontrado</ComboboxEmpty>
+                <ComboboxEmpty>{t('academy.notFound')}</ComboboxEmpty>
                 <ComboboxList>
                     {(item) => (
                         <ComboboxItem
