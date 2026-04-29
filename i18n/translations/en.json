@@ -128,5 +128,21 @@
                 }
             }
         }
+    },
+    "contactUsPage": {
+        "title": "Contact Us",
+        "subtitle": "Leave us a message",
+        "form": {
+            "name": {
+                "title": "Name",
+                "placeholder": "Your name"
+            },
+            "email": {
+                "title": "email",
+                "placeholder": "example@example.com"
+            },
+            "description": "Your message",
+            "button": "Send"
+        }
     }
 }

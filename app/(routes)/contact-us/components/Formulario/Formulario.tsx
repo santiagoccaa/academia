@@ -16,8 +16,11 @@ import { Button } from "@/components/ui/button"
 import { toast } from "sonner"
 import { Textarea } from "@/components/ui/textarea"
 import { formSchema } from "./formulario.form"
+import { useTranslations } from "next-intl"
 
 export const Formulario = () => {
+    const t = useTranslations('contactUsPage.form')
+
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -40,9 +43,9 @@ export const Formulario = () => {
                     name="name"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel>Name</FormLabel>
+                            <FormLabel>{t('name.title')}</FormLabel>
                             <FormControl>
-                                <Input placeholder="Introduccion..." {...field} />
+                                <Input placeholder={t('name.placeholder')} {...field} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
@@ -54,9 +57,9 @@ export const Formulario = () => {
                     name="email"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel>Email</FormLabel>
+                            <FormLabel>{t('email.title')}</FormLabel>
                             <FormControl>
-                                <Input placeholder="example@example.com" {...field} />
+                                <Input placeholder={t('email.placeholder')} {...field} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
@@ -69,7 +72,7 @@ export const Formulario = () => {
                     render={({ field }) => (
                         <FormItem>
                             <FormControl>
-                                <Textarea placeholder="Your message" />
+                                <Textarea placeholder={t('description')} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
@@ -77,7 +80,7 @@ export const Formulario = () => {
                 />
 
                 <div />
-                <Button type="submit" className="mt-4 w-full cursor-pointer">Send</Button>
+                <Button type="submit" className="mt-4 w-full cursor-pointer">{t('button')}</Button>
             </form>
         </Form>
     )
