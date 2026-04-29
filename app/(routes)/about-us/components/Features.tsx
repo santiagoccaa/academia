@@ -1,9 +1,11 @@
 import { PageContainer } from "@/components/Shared/PageContainer"
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
+import { useTranslations } from "next-intl"
 import Image from "next/image"
 
 export const Features = () => {
+    const t = useTranslations('aboutUsPage.features')
     return (
         <PageContainer>
             <div className="flex h-fit lg:py-8">
@@ -15,21 +17,21 @@ export const Features = () => {
                     </div>
                 </div>
                 <div className="w-full lg:w-1/2 space-y-4">
-                    <h2 className="text-primary text-sm font-bold">Features</h2>
+                    <h2 className="text-primary text-sm font-bold">{t('title')}</h2>
                     <h2 className="text-gray-800 font-medium text-3xl">
-                        We are always working to provide you best of the features in all aspects.
+                        {t('subtitle')}
                     </h2>
 
                     <p className="text-sm font-light text-gray-600">
-                        At WEEKENDUX the chief determination is to clear the minds of our students about their goals, while making them consistent in their ambitions and pushing them to be confident for their journey towards the course of time.
+                        {t('description')}
                     </p>
 
                     <p className="text-sm font-light text-gray-600">
-                        You will find every little thing on the internet in just a click of hand, but here we admire that without knowledge and practice the internet may even also fail you in your life.
+                        {t('description1')}
                     </p>
 
                     <Button className="rounded-full w-fit text-sm">
-                        Learn More <ArrowRight />
+                        {t('button')} <ArrowRight />
                     </Button>
                 </div>
             </div>
