@@ -9,8 +9,11 @@ import { formatDuration } from "@/utils"
 import { CourseWithExtras } from "../ListCourses/ListCourses.types"
 import { StarRating } from "../StarRating"
 import { getPurchaseCourseById } from "@/actios/getPurchaseCourseById"
+import { getTranslations } from "next-intl/server"
 
 export const CardCourse = async (course: CourseWithExtras) => {
+
+    const t = await getTranslations('cardCourse')
 
     const client = await clerkClient();
     const { _count, chapters, userID, imageUrl, category, description, slug, createdAt, title, price, avgStars, feedback, id } = course
@@ -47,7 +50,7 @@ export const CardCourse = async (course: CourseWithExtras) => {
                             <ArrowUpRight />
                         </span>
                     </div>
-                    <h2 className="text-xs font-medium text-primary">Creado: <span className="text-gray-400 font-light">{createdAt.toLocaleDateString()}</span></h2>
+                    <h2 className="text-xs font-medium text-primary">{t('createdAt')}: <span className="text-gray-400 font-light">{createdAt.toLocaleDateString()}</span></h2>
 
                     <p className="text-xs font-light text-gray-400 line-clamp-3">{description}</p>
 
@@ -59,7 +62,7 @@ export const CardCourse = async (course: CourseWithExtras) => {
                         <span className="text-xs font-light text-gray-400">{feedback.length}</span>
                     </div>
                     <div className="flex items-center gap-2 mt-2">
-                        <h2 className="text-xs font-medium text-primary">Inscritos: <span className="text-gray-400 font-light">{_count.purchases}</span></h2>
+                        <h2 className="text-xs font-medium text-primary">{t('subs')}: <span className="text-gray-400 font-light">{_count.purchases}</span></h2>
                     </div>
 
                 </CardContent>
@@ -74,7 +77,7 @@ export const CardCourse = async (course: CourseWithExtras) => {
                         </div>
                     </div>
                     {purschase ? (
-                        <h3 className="bg-accent text-primary font-semibold text-xs p-1 rounded-md">Inscrito</h3>
+                        <h3 className="bg-accent text-primary font-semibold text-xs p-1 rounded-md">{t('message')}</h3>
                     ) : (
                         <h3 className="text-xl font-bold text-primary">{formatPrice(price)}</h3>
                     )}
