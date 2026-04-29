@@ -115,9 +115,12 @@ export const Footer = () => {
     const pathName = usePathname()
     const year = new Date().getFullYear()
 
-    if (pathName !== HOME || ABOUT_US || CONTACT_US) {
+    const excludedPaths = [HOME, ABOUT_US, CONTACT_US]
+
+    if (!excludedPaths.includes(pathName)) {
         return
     }
+
     return (
         <footer className='bg-[#101828] w-full text-[#EAECF0] text-xs py-10'>
             <PageContainer>

@@ -64,7 +64,7 @@ export const Navbar = () => {
                             <Image src={LOGO} fill alt="Logo" sizes='80px' />
                         </div>
                         <div className="hidden lg:block relative">
-                            <Input placeholder={t("input.title")} className="pl-7 pr-28 border" />
+                            <Input placeholder={t("input.title")} className="pl-7 pr-28 border bg-white" />
                             <Search className="absolute text-gray-300 top-1/2 -translate-y-1/2 left-2 w-4 h-4" />
                             <Button className="absolute top-1/2 -translate-y-1/2 right-2 h-8 text-xs bg-accent text-primary hover:text-white transition-colors duration-300">
                                 {t("input.button")}  <ChevronDown className="w-3 h-2" />
