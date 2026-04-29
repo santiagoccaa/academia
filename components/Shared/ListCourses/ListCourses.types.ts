@@ -19,6 +19,6 @@ export type CourseWithExtras = Prisma.CourseGetPayload<{
 }
 
 export type ListCoursesProps = {
-    title?: string
+    title: string
     courses: CourseWithExtras[] | null
 }

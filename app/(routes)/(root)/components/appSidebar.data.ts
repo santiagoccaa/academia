@@ -3,17 +3,22 @@ import { Award, BookOpen, ChartArea, GraduationCap, ReceiptText, SquareTerminal 
 
 export const routes = [
     {
-        title: "Cursos",
+        title: "courses",
         url: COURSES,
         icon: SquareTerminal
     },
     {
-        title: "Mis Cursos",
+        title: "myCourses",
         url: MY_COURSES,
         icon: BookOpen
     },
     {
-        title: "Certificados",
+        title: "orders",
+        url: ORDERS,
+        icon: ReceiptText
+    },
+    {
+        title: "certificates",
         url: CERTIFICATES,
         icon: Award
     },
@@ -21,17 +26,13 @@ export const routes = [
 
 export const routesTeacher = [
     {
-        title: "Cursos",
+        title: "courses",
         url: TEACHER,
         icon: GraduationCap
     },
+
     {
-        title: "Pedidos",
-        url: ORDERS,
-        icon: ReceiptText
-    },
-    {
-        title: "Analiticas",
+        title: "analytics",
         url: ANALyTIC,
         icon: ChartArea
     },

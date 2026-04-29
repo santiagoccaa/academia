@@ -18,6 +18,7 @@ import {
 import { useEffect, useState } from "react"
 import { SuscriptorsChartProps } from "./SuscriptorsChart.types"
 import axios from "axios"
+import { useTranslations } from "next-intl"
 export const description = "A bar chart"
 
 const chartConfig = {
@@ -29,6 +30,8 @@ const chartConfig = {
 
 
 export const SuscriptorsChart = () => {
+
+    const t = useTranslations('academy.graph1')
 
     const [data, setData] = useState<SuscriptorsChartProps[]>([])
     const [isLoading, setIsLoading] = useState(true)
@@ -52,12 +55,12 @@ export const SuscriptorsChart = () => {
     return (
         <Card>
             <CardHeader>
-                <CardTitle>Ultimos Suscriptores</CardTitle>
-                <CardDescription>Suscriptores de los ultimos 6 meses</CardDescription>
+                <CardTitle>{t('subs')}</CardTitle>
+                <CardDescription>{t('subtitle')}</CardDescription>
             </CardHeader>
             {isLoading ? (
                 <div className="text-sm text-muted-foreground h-36 flex items-center justify-center">
-                    Cargando suscriptores...
+                    {t('loading')}
                 </div>
             )
                 : (
@@ -83,7 +86,7 @@ export const SuscriptorsChart = () => {
                 )}
             <CardFooter className="flex-col items-start gap-2 text-sm">
                 <div className="flex gap-2 leading-none font-medium">
-                    Tu crecimiento fue de ** <TrendingUp className="h-4 w-4" />
+                    {t('footer1')} ** <TrendingUp className="h-4 w-4" />
                 </div>
             </CardFooter>
         </Card>

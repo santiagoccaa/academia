@@ -15,8 +15,11 @@ import {
 import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
 import { ExternalLink } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 
 export const OrderList = ({ purchases, receipts }: OrderListProps) => {
+
+    const t = useTranslations('academy.formOrders')
 
     const totalPurchases = purchases.reduce((acc, purchase) => {
 
@@ -39,14 +42,14 @@ export const OrderList = ({ purchases, receipts }: OrderListProps) => {
     }
     return (
         <Table className='my-6'>
-            <TableCaption>Listado de tus pedidos</TableCaption>
+            <TableCaption>{t('footer')}</TableCaption>
             <TableHeader className='bg-slate-100'>
                 <TableRow>
-                    <TableHead className="w-25">Fecha</TableHead>
-                    <TableHead>Curso</TableHead>
+                    <TableHead className="w-25">{t('date')}</TableHead>
+                    <TableHead>{t('course')}</TableHead>
                     <TableHead>Status</TableHead>
-                    <TableHead className="text-center">recibo</TableHead>
-                    <TableHead className="text-right">Precio</TableHead>
+                    <TableHead className="text-center">{t('receipt')}</TableHead>
+                    <TableHead className="text-right">{t('price')}</TableHead>
                 </TableRow>
             </TableHeader>
             <TableBody>
@@ -60,11 +63,11 @@ export const OrderList = ({ purchases, receipts }: OrderListProps) => {
                                 {purchase.course.title}
                             </TableCell>
                             <TableCell>
-                                <span className='bg-green-100 text-green-600 py-1 px-2 rounded-md text-sm'>pagado</span>
+                                <span className='bg-green-100 text-green-600 py-1 px-2 rounded-md text-sm'>{t('message2')}</span>
                             </TableCell>
                             <TableCell className='text-center'>
                                 <Button variant={"outline"} onClick={() => donwloadReceipt(index)}>
-                                    Ver recibo
+                                    {t('message')}
                                     <ExternalLink className='w-4 h-4' />
                                 </Button>
                             </TableCell>
@@ -79,7 +82,7 @@ export const OrderList = ({ purchases, receipts }: OrderListProps) => {
             <TableFooter>
                 <TableRow>
                     <TableCell colSpan={4}>
-                        total gastado
+                        {t('total')}
                     </TableCell>
                     <TableCell className='text-right'>
                         {formattedTotal}

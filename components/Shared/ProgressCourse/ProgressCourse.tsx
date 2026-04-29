@@ -4,9 +4,11 @@ import { ProgressCourseProps } from './ProgressCourse.types'
 import { Progress } from '@/components/ui/progress'
 import { formatPrice } from '@/lib/formatPrice'
 import { useUser } from '@clerk/nextjs'
+import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 
 export const ProgressCourse = ({ courseId, price, totalChapters }: ProgressCourseProps) => {
+    const t = useTranslations()
 
     const { user } = useUser()
 
@@ -42,7 +44,7 @@ export const ProgressCourse = ({ courseId, price, totalChapters }: ProgressCours
                 totalChapters > 0 && progress > 0 ? (
                     <div>
                         <Progress value={progress} className='*:bg-violet-300' />
-                        <p className='text-xs mt-1'>{progress}% Completado</p>
+                        <p className='text-xs mt-1'>{progress}% {t('common.filled')}</p>
                     </div>
                 ) :
                     (

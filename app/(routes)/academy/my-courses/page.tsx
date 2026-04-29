@@ -6,6 +6,6 @@ export default async function MyCoursesPage() {
     const courses = await getPurchasesCoureses()
 
     return (
-        <ListCourses title="Mis Cursos" courses={courses} />
+        <ListCourses title="academy.myCourses" courses={courses} />
     )
 }

@@ -18,8 +18,12 @@ import Link from "next/link"
 import { routes, routesTeacher } from "./appSidebar.data"
 import { ArrowBigUpDash, CodeXml } from "lucide-react"
 import { useUser } from "@clerk/nextjs"
+import { useTranslations } from "next-intl"
 
 export function AppSidebar() {
+
+    const t = useTranslations('appSidebar')
+
     const { user } = useUser()
     const { state } = useSidebar()
 
@@ -40,7 +44,7 @@ export function AppSidebar() {
                 </SidebarHeader>
                 <SidebarGroup>
                     <SidebarGroupLabel>
-                        Plataforma
+                        {t('platform')}
                     </SidebarGroupLabel>
                     <SidebarMenu className="space-y-2">
                         {
@@ -51,7 +55,7 @@ export function AppSidebar() {
                                             <div className="p-1 rounded-lg text-white bg-primary">
                                                 <route.icon className="w-4 h-4" />
                                             </div>
-                                            {state === "expanded" && <span>{route.title}</span>}
+                                            {state === "expanded" && <span>{t(route.title)}</span>}
                                         </a>
                                     </SidebarMenuButton>
                                 </SidebarMenuItem>
@@ -60,7 +64,7 @@ export function AppSidebar() {
                     </SidebarMenu>
                     <SidebarMenu className="mt-4 space-y-2">
                         <SidebarGroupLabel>
-                            Profesor:
+                           {t('teacher')}
                         </SidebarGroupLabel>
 
                         <SidebarMenuItem>
@@ -82,7 +86,7 @@ export function AppSidebar() {
                                                 <div className="p-1 rounded-lg text-white bg-slate-400">
                                                     <routeTeacher.icon className="w-4 h-4" />
                                                 </div>
-                                                {routeTeacher.title}
+                                                {t(routeTeacher.title)}
                                             </SidebarMenuSubButton>
                                         </SidebarMenuSubItem>
                                     ))

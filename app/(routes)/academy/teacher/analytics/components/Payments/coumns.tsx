@@ -21,7 +21,7 @@ export type PurchasWithCourse = {
 export const columns: ColumnDef<PurchasWithCourse>[] = [
     {
         accessorKey: "createdAtFormatted",
-        header: "Fecha de compra",
+        header: "colum1",
         cell: ({ row }) => {
             const date = new Date(row.original.createdAt).toLocaleDateString("es-ES")
             return <div className="font-semibold">{date}</div>
@@ -29,15 +29,15 @@ export const columns: ColumnDef<PurchasWithCourse>[] = [
     },
     {
         accessorKey: "userEmail",
-        header: "Cliente",
+        header: "colum2",
     },
     {
         accessorKey: "course.title",
-        header: "Curso",
+        header: "colum3",
     },
     {
         accessorKey: "price",
-        header: "Precio",
+        header: "colum4",
         cell: ({ row }) => {
             const price = row.original.price
             return <div>{price}$</div>

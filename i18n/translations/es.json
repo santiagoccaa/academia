@@ -1,6 +1,10 @@
 {
     "common": {
-        "test": "Prueba"
+        "filled": "Completado"
+    },
+    "auth": {
+        "user": "Gestionar cuenta",
+        "signOut": "Cerrar session"
     },
     "homePage": {
         "hero": {
@@ -143,6 +147,55 @@
             },
             "description": "Tu mensaje",
             "button": "Enviar"
+        }
+    },
+    "appSidebar": {
+        "courses": "Cursos",
+        "myCourses": "Mis cursos",
+        "certificates": "Certificados",
+        "orders": "Pedidos",
+        "analytics": "Analitica",
+        "platform": "Plataforma",
+        "teacher": "Profesor"
+    },
+    "academy": {
+        "allCourses": "Todos los cursos",
+        "search": "Buscar curso",
+        "myCourses": "Mis cursos",
+        "certificated": "Certificados de los cursos",
+        "teacherMode": "Modo profesor",
+        "orders": "Todos mis pedidos",
+        "notFound": "Curso no encontrado",
+        "formOrders": {
+            "date": "Fecha",
+            "course": "Curso",
+            "state": "Estado",
+            "receipt": "Recibo",
+            "price": "Precio",
+            "total": "Total gastado",
+            "footer": "Lista de pedidos",
+            "message": "Ver recibo",
+            "message2": "Pagado"
+        },
+        "graph1": {
+            "subs": "Últimos Suscriptores",
+            "subtitle": "Suscriptores de los últimos 6 meses",
+            "footer1": "Tu crecimiento fue de",
+            "loading": "Cargando suscriptores..."
+        },
+        "graph2": {
+            "benefis": "Beneficios",
+            "subtitle": "Beneficios de los últimos 6 meses",
+            "footer1": "Tendencia al alza del 5.2% este mes",
+            "footer2": "Mostrando el total de visitas de los últimos 6 meses",
+            "loading": "Cargando datos..."
+        },
+        "graph3": {
+            "input": "Filtrar correos",
+            "colum1": "Fecha de compra",
+            "colum2": "Cliente",
+            "colum3": "Curso",
+            "colum4": "Precio"
         }
     }
 }
