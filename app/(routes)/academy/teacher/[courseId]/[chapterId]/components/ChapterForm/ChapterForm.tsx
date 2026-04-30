@@ -9,8 +9,12 @@ import axios from "axios"
 import { toast } from "sonner"
 import { ChapterTitleForm } from "./ChapterTitleForm"
 import { ChapterVideoForm } from "./ChapterVideoForm"
+import { useTranslations } from "next-intl"
 
 export const ChapterForm = ({ chapter, courseId }: ChapterFormProps) => {
+
+    const t = useTranslations()
+
     const router = useRouter()
     if (!chapter) {
         return null
@@ -43,23 +47,23 @@ export const ChapterForm = ({ chapter, courseId }: ChapterFormProps) => {
             <div className="p-6 bg-white rounded-md">
                 <Button className="mb-4" variant="outline" onClick={() => router.push(`/academy/teacher/${courseId}`)}>
                     <ArrowLeft />
-                    Volver a la edicion del cursor
+                    {t('editCourse.chapterForm.buttonHeader')}
                 </Button>
             </div>
             <div className="p-6 my-4 bg-white rounded-md flex justify-between items-center">
-                <TitleBlock title="Configuracion del capitulo" icon={Cog} />
+                <TitleBlock title="editCourse.chapterForm.title" icon={Cog} />
                 <div className="flex items-center gap-2">
                     {chapter.isPublised
                         ?
                         (
                             <Button variant={"outline"} onClick={() => onPublis(false)}>
-                                Ocultar
+                                {t('common.hide')}
                             </Button>
                         )
                         :
                         (
                             <Button onClick={() => onPublis(true)}>
-                                Publicar
+                                {t('common.post')}
                             </Button>
                         )
                     }

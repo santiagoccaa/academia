@@ -9,8 +9,11 @@ import { UploadButton } from "@/utils/uploadthing"
 import { useRouter } from "next/navigation"
 import axios from "axios"
 import { toast } from "sonner"
+import { useTranslations } from "next-intl"
 
 export const ChapterVideoForm = ({ chapterId, courseId, videoUrl }: ChapterVideoFormProps) => {
+
+    const t = useTranslations()
 
     const router = useRouter()
     const [onEditVideo, setOnEditVideo] = useState(false)
@@ -31,7 +34,7 @@ export const ChapterVideoForm = ({ chapterId, courseId, videoUrl }: ChapterVideo
 
     return (
         <div className="mt-6 p-6 bg-white rounded-md">
-            <TitleBlock title="Añade o modifica el video" icon={Video} />
+            <TitleBlock title="editCourse.chapterForm.titleVideo" icon={Video} />
 
             {videoUrl ?
                 (
@@ -39,13 +42,13 @@ export const ChapterVideoForm = ({ chapterId, courseId, videoUrl }: ChapterVideo
                 )
                 :
                 (
-                    <p>No hay video</p>
+                    <p>{t('editCourse.chapterForm.messageVideo')}</p>
                 )
             }
 
             <div className="mt-4 p-2 rounded-md border">
                 <Button variant={"secondary"} onClick={() => setOnEditVideo(true)}>
-                    {onEditVideo ? "Selecciona el video" : "Editar video"}
+                    {onEditVideo ? t('editCourse.chapterForm.selectVideo') : t('editCourse.chapterForm.button')}
                     <Pencil className="w-4 h-4" />
                 </Button>
 

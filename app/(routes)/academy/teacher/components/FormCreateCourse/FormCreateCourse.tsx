@@ -19,9 +19,12 @@ import { z } from "zod"
 import axios from 'axios'
 import { toast } from "sonner"
 import { useRouter } from "next/navigation"
+import { useTranslations } from "next-intl"
 
 export const FormCreateCourse = () => {
 
+    const t = useTranslations()
+    
     const router = useRouter()
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -59,7 +62,7 @@ export const FormCreateCourse = () => {
                         </FormItem>
                     )}
                 />
-    
+
                 <FormField
                     control={form.control}
                     name="slug"
@@ -74,7 +77,7 @@ export const FormCreateCourse = () => {
                     )}
                 />
 
-                <Button type="submit">Crear curso</Button>
+                <Button type="submit">{t('common.create')}</Button>
             </form>
         </Form>
     )

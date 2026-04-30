@@ -17,8 +17,11 @@ import {
 import { useRouter } from "next/navigation"
 import axios from "axios"
 import { toast } from "sonner"
+import { useTranslations } from "next-intl"
 
 export const Actions = ({ courseId }: ActionsProps) => {
+
+    const t = useTranslations()
     const router = useRouter()
 
     const onEdit = () => {
@@ -34,23 +37,23 @@ export const Actions = ({ courseId }: ActionsProps) => {
     return (
         <div className="flex flex-col gap-2 items-center w-full max-w-42">
             <Button className="w-full" onClick={onEdit}>
-                Editar <Edit className="w-4 h-4" />
+                {t('common.edit')} <Edit className="w-4 h-4" />
             </Button>
 
             <AlertDialog>
                 <AlertDialogTrigger asChild>
-                    <Button variant="outline" className="w-full text-red-500 border-red-500 hover:bg-red-100 hover:text-red-500">Eliminar <Trash className="w-4 h-4" /></Button>
+                    <Button variant="outline" className="w-full text-red-500 border-red-500 hover:bg-red-100 hover:text-red-500">{t('common.delete')} <Trash className="w-4 h-4" /></Button>
                 </AlertDialogTrigger>
                 <AlertDialogContent>
                     <AlertDialogHeader>
-                        <AlertDialogTitle>Estas seguro?</AlertDialogTitle>
+                        <AlertDialogTitle>{t('modal.deleteCourse.title')}</AlertDialogTitle>
                         <AlertDialogDescription>
-                            Esto borrara el curso y todos sus datos.
+                           {t('modal.deleteCourse.message')}
                         </AlertDialogDescription>
                     </AlertDialogHeader>
                     <AlertDialogFooter>
-                        <AlertDialogCancel>Cancel</AlertDialogCancel>
-                        <AlertDialogAction onClick={onDelete}>Eliminar</AlertDialogAction>
+                        <AlertDialogCancel>{t('common.cancel')}</AlertDialogCancel>
+                        <AlertDialogAction onClick={onDelete}>{t('common.delete')}</AlertDialogAction>
                     </AlertDialogFooter>
                 </AlertDialogContent>
             </AlertDialog>

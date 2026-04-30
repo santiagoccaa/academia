@@ -21,8 +21,11 @@ import axios from "axios"
 import { toast } from "sonner"
 import { useRouter } from "next/navigation"
 import { EditorDescription } from "@/components/Shared/EditorDescription"
+import { useTranslations } from "next-intl"
 
 export const ChapterTitleForm = ({ chapter, courseId }: ChapterTitleFormProps) => {
+
+    const t = useTranslations()
 
     const router = useRouter()
 
@@ -59,7 +62,7 @@ export const ChapterTitleForm = ({ chapter, courseId }: ChapterTitleFormProps) =
                         name="title"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Nombre del capitulo</FormLabel>
+                                <FormLabel>{t('editCourse.chapterForm.formName')}</FormLabel>
                                 <FormControl>
                                     <Input placeholder="Introduccion..." {...field} />
                                 </FormControl>
@@ -73,7 +76,7 @@ export const ChapterTitleForm = ({ chapter, courseId }: ChapterTitleFormProps) =
                         name="description"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Descripcion del capitulo</FormLabel>
+                                <FormLabel>{t('editCourse.chapterForm.formDescription')}</FormLabel>
                                 <FormControl>
                                     <EditorDescription {...field} />
                                 </FormControl>
@@ -91,9 +94,9 @@ export const ChapterTitleForm = ({ chapter, courseId }: ChapterTitleFormProps) =
                                     <Checkbox checked={field.value} onCheckedChange={field.onChange} />
                                 </FormControl>
                                 <div className="space-y-1 leading-none">
-                                    <FormLabel>Capitulo publico</FormLabel>
+                                    <FormLabel>{t('editCourse.chapterForm.check')}</FormLabel>
                                     <FormDescription>
-                                        Si quieres que este capitulo sea visible para todos los usuarios.
+                                        {t('editCourse.chapterForm.message')}
                                     </FormDescription>
                                 </div>
                                 <FormMessage />
@@ -101,7 +104,7 @@ export const ChapterTitleForm = ({ chapter, courseId }: ChapterTitleFormProps) =
                         )}
                     />
                     <div />
-                    <Button type="submit" disabled={!form.formState.isValid} className="mt-4">Guardar</Button>
+                    <Button type="submit" disabled={!form.formState.isValid} className="mt-4">{t('common.save')}</Button>
                 </form>
             </Form>
         </div>

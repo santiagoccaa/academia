@@ -6,8 +6,61 @@
         "intermedio": "Intermedio",
         "avanzado": "Avanzado",
         "published": "Publicado",
-        "chapters":"Capitulos",
-        "cancel":"Cancelar"
+        "unpublished": "Sin publicar",
+        "chapters": "Capitulos",
+        "cancel": "Cancelar",
+        "edit": "Editar",
+        "delete": "Eliminar",
+        "create": "Crear Curso",
+        "createYou": "Crea tu curso",
+        "level": "Nivel",
+        "price": "Precio",
+        "post": "Publicar",
+        "unpublish": "Despublicar",
+        "characters": "Caracteres",
+        "free": "Gratis",
+        "hidden": "Ocultar",
+        "save": "Guardar"
+    },
+    "editCourse": {
+        "header": {
+            "button": "Volver a todos los cursos"
+        },
+        "courseForm": {
+            "title": "Configuracion del curso",
+            "formTitle": "Titulo del curso",
+            "formCategory": "Categoria",
+            "formDescription": "Descripcion",
+            "msTitle": "Esto es lo que el usuario vera como titulo del curso",
+            "msSlug": "Es unica y no se puede modificar",
+            "msDescription": "Pon la descripcion completa del curso",
+            "button": "Guardar informacion basica",
+            "titleImage": "Imagen del curso",
+            "buttonImage": "Editar imagen",
+            "titlePrice": "Precio del curso",
+            "buttonPrice": "Guardar precio",
+            "titleChapters": "Capitulos del curso",
+            "subtitle": "Capitulos completos",
+            "buttonNew": "Crear capitulo"
+        },
+        "chapterForm": {
+            "buttonHeader": "Volver a la edicion del curso",
+            "title": "Configuracion del capitulo",
+            "formName": "Nombre del capitulo",
+            "formDescription": "Descripcion del capitulo",
+            "check": "Capitulo publico",
+            "message": "Si quieres que este capitulo sea visible para todos los usuarios",
+            "titleVideo": "Añade o modifica el video",
+            "button": "Editar video",
+            "selectVideo": "Selecciona el video",
+            "messageVideo": "No hay vídeo"
+        }
+    },
+    "modal": {
+        "deleteCourse": {
+            "title": "Estas seguro?",
+            "message": "Esto borrara el curso y todos sus datos."
+        }
     },
     "auth": {
         "user": "Gestionar cuenta",
@@ -218,8 +271,8 @@
         "opinions": "Opiniones",
         "progress": "Progreso del curso",
         "opinion": "Tu opinion",
-        "button":"Editar opinion",
-        "titleForm":"¿Que te parecio este curso?",
-        "buttonSave":"Guardar comentario"
+        "button": "Editar opinion",
+        "titleForm": "¿Que te parecio este curso?",
+        "buttonSave": "Guardar comentario"
     }
 }

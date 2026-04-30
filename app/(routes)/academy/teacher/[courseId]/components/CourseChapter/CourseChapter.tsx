@@ -10,8 +10,11 @@ import { DragDropContext, Droppable, DropResult, Draggable } from "@hello-pangea
 import { useRouter } from "next/navigation"
 import axios from "axios"
 import { toast } from "sonner"
+import { useTranslations } from "next-intl"
 
 export const CourseChapter = ({ chapters, idCourse }: CourseChapterProps) => {
+
+    const t = useTranslations()
 
     const router = useRouter()
 
@@ -58,13 +61,13 @@ export const CourseChapter = ({ chapters, idCourse }: CourseChapterProps) => {
 
     return (
         <div className="p-6 bg-white rounded-md h-fit relative">
-            <TitleBlock title="Capitulos del curso" icon={ListCheck} />
+            <TitleBlock title="editCourse.courseForm.titleChapters" icon={ListCheck} />
 
             <div className="flex gap-2 items-center justify-between mb-3">
-                <p>Capitulos completos</p>
+                <p>{t('editCourse.courseForm.subtitle')}</p>
                 <Button variant="outline" size="sm" onClick={() => setShowInputChapter(true)}>
                     <PlusCircle className="w-4 h-4" />
-                    Crear capitulo
+                    {t('editCourse.courseForm.buttonNew')}
                 </Button>
             </div>
 
@@ -92,11 +95,11 @@ export const CourseChapter = ({ chapters, idCourse }: CourseChapterProps) => {
                                                     {chapter.isPublised
                                                         ?
                                                         (
-                                                            <p className="py-1 px-2 text-emerald-600">Publicado</p>
+                                                            <p className="py-1 px-2 text-emerald-600">{t('common.published')}</p>
                                                         )
                                                         :
                                                         (
-                                                            <p className="py-1 px-2 text-gray-700">Sin publicar</p>
+                                                            <p className="py-1 px-2 text-gray-700">{t('common.unpublished')}</p>
                                                         )
                                                     }
                                                     <div className="cursor-pointer" onClick={() => onEditChapter(chapter.id)}>

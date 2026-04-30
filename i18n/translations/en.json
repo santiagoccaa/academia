@@ -6,8 +6,61 @@
         "intermedio": "Intermediate",
         "avanzado": "Advanced",
         "published": "Published",
+        "unpublished": "Unpublished",
         "chapters": "Chapters",
-        "cancel":"Cancel"
+        "cancel": "Cancel",
+        "edit": "Edit",
+        "delete": "Delete",
+        "create": "Create course",
+        "createYou": "Create your course",
+        "level": "Level",
+        "price": "Price",
+        "post": "Post",
+        "unpublish": "Unpublish",
+        "characters": "Characters",
+        "free": "Free",
+        "hidden": "Hide",
+        "save":"Save"
+    },
+    "editCourse": {
+        "header": {
+            "button": "Back to all courses"
+        },
+        "courseForm": {
+            "title": "Course settings",
+            "formTitle": "Course title",
+            "formCategory": "Category",
+            "formDescription": "Description",
+            "msTitle": "This is what users will see as the course title",
+            "msSlug": "It is unique and cannot be modified",
+            "msDescription": "Provide the full course description",
+            "button": "Save basic information",
+            "titleImage": "Course image",
+            "buttonImage": "Edit image",
+            "titlePrice": "Course price",
+            "buttonPrice": "Save price",
+            "titleChapters": "Course chapters",
+            "subtitle": "Completed chapters",
+            "buttonNew": "Create chapter"
+        },
+        "chapterForm": {
+            "buttonHeader": "Back to course editing",
+            "title": "Chapter settings",
+            "formName": "Chapter name",
+            "formDescription": "Chapter description",
+            "check": "Public chapter",
+            "message": "Enable this if you want this chapter to be visible to all users",
+            "titleVideo": "Add or update the video",
+            "button": "Edit video",
+            "selectVideo":"Select the video",
+            "messageVideo":"There is no video."
+        }
+    },
+    "modal": {
+        "deleteCourse": {
+            "title": "Are you sure?",
+            "message": "This will delete the course and all its data."
+        }
     },
     "auth": {
         "user": "Manage account",
@@ -220,6 +273,6 @@
         "opinion": "Your opinion",
         "button": "Edit opinion",
         "titleForm": "What did you think of this course?",
-        "buttonSave":"Save comment"
+        "buttonSave": "Save comment"
     }
 }
