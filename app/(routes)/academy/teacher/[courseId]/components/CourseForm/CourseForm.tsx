@@ -65,7 +65,7 @@ export const CourseForm = ({ course }: CourseFormProps) => {
     }
 
     return (
-        <div className="p-6 bg-white rounded-md">
+        <div className="py-6 bg-white rounded-md">
             <TitleBlock title="editCourse.courseForm.title" icon={Cog} />
 
             <Form {...form}>

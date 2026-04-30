@@ -33,7 +33,7 @@ export const ChapterVideoForm = ({ chapterId, courseId, videoUrl }: ChapterVideo
     }
 
     return (
-        <div className="mt-6 p-6 bg-white rounded-md">
+        <div className="mt-6 bg-white rounded-md">
             <TitleBlock title="editCourse.chapterForm.titleVideo" icon={Video} />
 
             {videoUrl ?
