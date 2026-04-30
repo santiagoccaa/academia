@@ -4,7 +4,7 @@ import { PageContainer } from "@/components/Shared/PageContainer"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { LOGO } from "@/const/images"
-import { ChevronDown, Menu, Search, X } from "lucide-react"
+import { ArrowRight, ArrowUpRight, ChevronDown, Menu, Search, X } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
@@ -19,6 +19,7 @@ import {
 import { ABOUT_US, CONTACT_US, COURSES, HOME } from "@/const/routes"
 import LanguageSelector from "@/components/Shared/LenguajeSelector/LenguajeSelector"
 import { useTranslations } from "next-intl"
+import { SignedIn, SignedOut } from "@clerk/nextjs"
 
 interface Nav {
     name: string
@@ -115,20 +116,28 @@ export const Navbar = () => {
                             </ul>
                         </nav>
 
-                        <div className="flex items-center gap-2">
-                            <Button variant="ghost" asChild>
-                                <Link href={"/sign-in"}>
-                                    {t("auth.signIn")}
-                                </Link>
-                            </Button>
+                        <SignedIn>
                             <Button asChild>
-                                <Link href={"/sign-in"}>
-                                    {t("auth.free")}
-
+                                <Link href={"/academy/courses"}>
+                                    Academy
+                                    <ArrowRight />
                                 </Link>
                             </Button>
-                        </div>
-
+                        </SignedIn>
+                        <SignedOut>
+                            <div className="flex items-center gap-2">
+                                <Button variant="ghost" asChild>
+                                    <Link href={"/sign-in"}>
+                                        {t("auth.signIn")}
+                                    </Link>
+                                </Button>
+                                <Button asChild>
+                                    <Link href={"/sign-in"}>
+                                        {t("auth.free")}
+                                    </Link>
+                                </Button>
+                            </div>
+                        </SignedOut>
                     </div>
                 </div>
             </PageContainer>
