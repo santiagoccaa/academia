@@ -28,7 +28,7 @@ export const CoursePrice = ({ idCourse, priceCourse }: CoursePriceProps) => {
         }
     }
     return (
-        <div className="p-6 bg-white rounded-mt h-filt">
+        <div className="py-6 bg-white rounded-mt h-filt">
             <TitleBlock title="editCourse.courseForm.titlePrice" icon={DollarSign} />
 
             <Select value={price} onValueChange={setPrice} >

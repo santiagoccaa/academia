@@ -44,14 +44,12 @@ export const ChapterForm = ({ chapter, courseId }: ChapterFormProps) => {
 
     return (
         <>
-            <div className="p-6 bg-white rounded-md">
-                <Button className="mb-4" variant="outline" onClick={() => router.push(`/academy/teacher/${courseId}`)}>
+            <div className="py-6 bg-white rounded-md flex justify-between items-center">
+                <Button variant="outline" onClick={() => router.push(`/academy/teacher/${courseId}`)}>
                     <ArrowLeft />
                     {t('editCourse.chapterForm.buttonHeader')}
                 </Button>
-            </div>
-            <div className="p-6 my-4 bg-white rounded-md flex justify-between items-center">
-                <TitleBlock title="editCourse.chapterForm.title" icon={Cog} />
+
                 <div className="flex items-center gap-2">
                     {chapter.isPublised
                         ?
@@ -72,6 +70,9 @@ export const ChapterForm = ({ chapter, courseId }: ChapterFormProps) => {
                         <Trash />
                     </Button>
                 </div>
+            </div>
+            <div className="my-4 bg-white rounded-md flex justify-between items-center">
+                <TitleBlock title="editCourse.chapterForm.title" icon={Cog} />
             </div>
 
             <ChapterTitleForm courseId={courseId} chapter={chapter} />

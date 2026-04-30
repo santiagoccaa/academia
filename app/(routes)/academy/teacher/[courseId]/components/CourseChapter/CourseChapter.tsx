@@ -60,7 +60,7 @@ export const CourseChapter = ({ chapters, idCourse }: CourseChapterProps) => {
     }
 
     return (
-        <div className="p-6 bg-white rounded-md h-fit relative">
+        <div className="py-6 bg-white rounded-md h-fit relative">
             <TitleBlock title="editCourse.courseForm.titleChapters" icon={ListCheck} />
 
             <div className="flex gap-2 items-center justify-between mb-3">

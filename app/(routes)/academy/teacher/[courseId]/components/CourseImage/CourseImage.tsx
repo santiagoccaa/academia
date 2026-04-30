@@ -30,7 +30,7 @@ export const CourseImage = ({ idCourse, imageCourse }: CourseImageProps) => {
     }
 
     return (
-        <div className="p-4 rounded-lg bg-white h-fit ">
+        <div className="py-4 rounded-lg bg-white h-fit ">
             <TitleBlock icon={FileImage} title="editCourse.courseForm.titleImage" />
 
             {

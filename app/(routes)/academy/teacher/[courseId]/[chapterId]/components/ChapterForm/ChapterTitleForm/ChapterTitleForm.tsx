@@ -54,23 +54,44 @@ export const ChapterTitleForm = ({ chapter, courseId }: ChapterTitleFormProps) =
     }
 
     return (
-        <div className='p-6 rounded-md bg-white mt-6'>
+        <div className='rounded-md bg-white'>
             <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <FormField
-                        control={form.control}
-                        name="title"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormLabel>{t('editCourse.chapterForm.formName')}</FormLabel>
-                                <FormControl>
-                                    <Input placeholder="Introduccion..." {...field} />
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    />
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 grid grid-cols-1 md:grid-cols-2 gap-6 items-start justify-start">
+                    <div className="space-y-2">
+                        <FormField
+                            control={form.control}
+                            name="title"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>{t('editCourse.chapterForm.formName')}</FormLabel>
+                                    <FormControl>
+                                        <Input placeholder="Introduccion..." {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="isFree"
+                            render={({ field }) => (
+                                <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">
+                                    <FormControl>
+                                        <Checkbox checked={field.value} onCheckedChange={field.onChange} />
+                                    </FormControl>
+                                    <div className="space-y-1 leading-none">
+                                        <FormLabel>{t('editCourse.chapterForm.check')}</FormLabel>
+                                        <FormDescription>
+                                            {t('editCourse.chapterForm.message')}
+                                        </FormDescription>
+                                    </div>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
 
+                        <Button type="submit" disabled={!form.formState.isValid} className="mt-4 w-full">{t('common.save')}</Button>
+                    </div>
                     <FormField
                         control={form.control}
                         name="description"
@@ -78,33 +99,14 @@ export const ChapterTitleForm = ({ chapter, courseId }: ChapterTitleFormProps) =
                             <FormItem>
                                 <FormLabel>{t('editCourse.chapterForm.formDescription')}</FormLabel>
                                 <FormControl>
-                                    <EditorDescription {...field} />
+                                    <EditorDescription  {...field} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
                         )}
                     />
 
-                    <FormField
-                        control={form.control}
-                        name="isFree"
-                        render={({ field }) => (
-                            <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">
-                                <FormControl>
-                                    <Checkbox checked={field.value} onCheckedChange={field.onChange} />
-                                </FormControl>
-                                <div className="space-y-1 leading-none">
-                                    <FormLabel>{t('editCourse.chapterForm.check')}</FormLabel>
-                                    <FormDescription>
-                                        {t('editCourse.chapterForm.message')}
-                                    </FormDescription>
-                                </div>
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    />
                     <div />
-                    <Button type="submit" disabled={!form.formState.isValid} className="mt-4">{t('common.save')}</Button>
                 </form>
             </Form>
         </div>
