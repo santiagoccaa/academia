@@ -20,7 +20,8 @@
         "characters": "Characters",
         "free": "Free",
         "hidden": "Hide",
-        "save": "Save"
+        "save": "Save",
+        "loading": "Loading"
     },
     "editCourse": {
         "header": {
@@ -221,6 +222,7 @@
     "academy": {
         "allCourses": "All Courses",
         "search": "Search course",
+        "searchHome": "Want to learn?",
         "myCourses": "My Courses",
         "certificated": "Course Certificates",
         "teacherMode": "Teacher mode",
