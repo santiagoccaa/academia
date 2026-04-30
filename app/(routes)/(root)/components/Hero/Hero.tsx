@@ -7,6 +7,8 @@ import { Decorador } from "../Decorador";
 import { CollaBoration } from "./CollaBoration";
 import { Board, Career, Computer, Loader, Speaking, Thinking } from "@/components/Icons";
 import { useLocale, useTranslations } from "next-intl";
+import { SignedIn, SignedOut, SignIn } from "@clerk/nextjs";
+import Link from "next/link";
 
 const items = [
     {
@@ -55,13 +57,27 @@ export const Hero = () => {
                                 </p>
 
                                 <div className="flex gap-8 mt-4">
-                                    <Button size="lg" className="hover:shadow-xl">
-                                        {t('buttons.started')}
+                                    <Button size="lg" className="hover:shadow-xl" asChild>
+                                        <Link href={"/subscription"}>
+                                            {t('buttons.started')}
+                                        </Link>
                                     </Button>
 
-                                    <Button className="bg-accent text-primary hover:text-white transition-colors duration-300" size="lg">
-                                        {t('buttons.freeTrial')}
-                                    </Button>
+                                    <SignedIn>
+                                        <Button className="bg-accent text-primary hover:text-white transition-colors duration-300" size="lg" asChild>
+                                            <Link href={"/academy/courses"}>
+                                                Academy
+                                            </Link>
+                                        </Button>
+                                    </SignedIn>
+
+                                    <SignedOut>
+                                        <Button className="bg-accent text-primary hover:text-white transition-colors duration-300" size="lg" asChild>
+                                            <Link href={"/academy/courses"}>
+                                                {t('buttons.freeTrial')}
+                                            </Link>
+                                        </Button>
+                                    </SignedOut>
                                 </div>
                             </div>
                             {/* Item icons */}
@@ -118,8 +134,8 @@ export const Hero = () => {
                     </div>
                     <CollaBoration />
                 </div>
-            </PageContainer>
-        </div>
+            </PageContainer >
+        </div >
     )
 }
 

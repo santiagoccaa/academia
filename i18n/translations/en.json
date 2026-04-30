@@ -20,7 +20,7 @@
         "characters": "Characters",
         "free": "Free",
         "hidden": "Hide",
-        "save":"Save"
+        "save": "Save"
     },
     "editCourse": {
         "header": {
@@ -52,8 +52,8 @@
             "message": "Enable this if you want this chapter to be visible to all users",
             "titleVideo": "Add or update the video",
             "button": "Edit video",
-            "selectVideo":"Select the video",
-            "messageVideo":"There is no video."
+            "selectVideo": "Select the video",
+            "messageVideo": "There is no video."
         }
     },
     "modal": {
@@ -79,8 +79,8 @@
             },
             "description": "Learn UI-UX Design skills with weekend UX . The latest online learning system and material that help your knowledge growing.",
             "buttons": {
-                "started": "Get Started",
-                "freeTrial": "Get Free Trial"
+                "started": "Share your experience",
+                "freeTrial": "View courses"
             },
             "icons": {
                 "speaking": "Public Speaking",
@@ -274,5 +274,21 @@
         "button": "Edit opinion",
         "titleForm": "What did you think of this course?",
         "buttonSave": "Save comment"
+    },
+    "subscriptionPage": {
+        "title1": "Be part of",
+        "title3": "and help others grow",
+        "description": "Turn your knowledge into income and build your own academy.",
+        "card": {
+            "title": "Master Plan",
+            "days": "days",
+            "button": "Activate Plan",
+            "item1": "Reach students worldwide",
+            "item2": "Earn 90% of your revenue",
+            "item3": "Publish and update anytime",
+            "item4": "Build your personal brand",
+            "item5": "Generate recurring income",
+            "item6": "Full control over your content"
+        }
     }
 }

@@ -64,22 +64,11 @@ export function AppSidebar() {
                     </SidebarMenu>
                     <SidebarMenu className="mt-4 space-y-2">
                         <SidebarGroupLabel>
-                           {t('teacher')}
+                            {t('teacher')}
                         </SidebarGroupLabel>
-
                         <SidebarMenuItem>
                             <SidebarMenuSub>
-
-                                {role !== "teacher" ? (
-                                    <SidebarMenuSubItem>
-                                        <SidebarMenuSubButton href={"/academy/being-teacher"} className="hover:bg-muted transition">
-                                            <div className="p-1 rounded-lg text-black bg-amber-400">
-                                                <ArrowBigUpDash className="w-4 h-4" />
-                                            </div>
-                                            Ser Profesor
-                                        </SidebarMenuSubButton>
-                                    </SidebarMenuSubItem>
-                                ) : (
+                                {role === "teacher" && (
                                     routesTeacher.map((routeTeacher) => (
                                         <SidebarMenuSubItem key={routeTeacher.title}>
                                             <SidebarMenuSubButton href={routeTeacher.url} className="hover:bg-muted transition">
@@ -93,7 +82,6 @@ export function AppSidebar() {
                                 )}
                             </SidebarMenuSub>
                         </SidebarMenuItem>
-
                     </SidebarMenu>
                 </SidebarGroup>
             </SidebarContent >
