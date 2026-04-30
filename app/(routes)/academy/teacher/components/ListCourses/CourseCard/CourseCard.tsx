@@ -2,8 +2,11 @@ import Image from "next/image"
 import { CourseCardProps } from "./CourseCard.type"
 import { ChartNoAxesColumn, ChartNoAxesGantt, DollarSign } from "lucide-react"
 import { Action } from "./Actions"
+import { useTranslations } from "next-intl"
 
 export const CourseCard = ({ course }: CourseCardProps) => {
+
+    const t = useTranslations()
 
     const { title, id, price, level, imageUrl, description, isPublished } = course
     return (
@@ -15,7 +18,7 @@ export const CourseCard = ({ course }: CourseCardProps) => {
                         <div className="flex items-center gap-2">
                             <h2 className="text-xl font-medium">{title}</h2>
                             {
-                                isPublished ? <span className="inline-block bg-emerald-100 text-emerald-600 text-xs font-medium px-2 py-1 rounded-md mt-1">Publicado</span> : <span className="inline-block bg-gray-100 text-grat-600 text-xs font-medium px-2 py-1 rounded-md mt-1">Sin publicar</span>
+                                isPublished ? <span className="inline-block bg-emerald-100 text-emerald-600 text-xs font-medium px-2 py-1 rounded-md mt-1">{t('common.published')}</span> : <span className="inline-block bg-gray-100 text-grat-600 text-xs font-medium px-2 py-1 rounded-md mt-1">{t('common.unpublished')}</span>
                             }
                         </div>
                         {description &&
@@ -26,14 +29,14 @@ export const CourseCard = ({ course }: CourseCardProps) => {
                         <div className="flex flex-col md:flex-row items-center gap-4">
                             <div className="flex gap-1 items-center text-sm mt-2">
                                 <DollarSign className="w-4 h-4 text-gray-400" />
-                                <span className="text-gray-400">Precio:</span>
+                                <span className="text-gray-400">{t('common.price')}:</span>
                                 <span className="font-semibold">{price || 0}</span>
                             </div>
 
                             <div className="flex gap-1 items-center text-sm mt-2">
                                 <ChartNoAxesColumn className="w-4 h-4 text-gray-800" />
-                                <span className="text-gray-400">Nivel:</span>
-                                <span className="font-semibold">{level || "Principiante"}</span>
+                                <span className="text-gray-400">{t('common.level')}:</span>
+                                <span className="font-semibold">{level ? t(`common.${level.toLocaleLowerCase()}`) : ''}</span>
                             </div>
                         </div>
                     </div>

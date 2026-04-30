@@ -8,24 +8,28 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import axios from "axios"
 import { toast } from "sonner"
+import { useTranslations } from "next-intl"
 
 export const CoursePrice = ({ idCourse, priceCourse }: CoursePriceProps) => {
+
+    const t = useTranslations()
+
     const [price, setPrice] = useState<string | undefined>(priceCourse || "Gratis")
 
-    const onChangePrice = async () => { 
+    const onChangePrice = async () => {
         try {
-            axios.patch(`/api/course/${idCourse}`,{
+            axios.patch(`/api/course/${idCourse}`, {
                 price
             })
 
             toast("Precio actualizaco correctamente")
         } catch (error) {
-            
+            toast("Ups... algo salio mal")
         }
     }
     return (
         <div className="p-6 bg-white rounded-mt h-filt">
-            <TitleBlock title="Precio del curso" icon={DollarSign} />
+            <TitleBlock title="editCourse.courseForm.titlePrice" icon={DollarSign} />
 
             <Select value={price} onValueChange={setPrice} >
                 <SelectTrigger className="w-full">
@@ -34,10 +38,10 @@ export const CoursePrice = ({ idCourse, priceCourse }: CoursePriceProps) => {
                 <SelectContent position="popper" side="bottom" align="start">
                     <SelectGroup>
                         <SelectLabel>
-                            Precio del curso
+                            {t('editCourse.courseForm.titlePrice')}
                         </SelectLabel>
                         <SelectItem value="Gratis">
-                            Gratis
+                            {t('common.free')}
                         </SelectItem>
                         <SelectItem value="19.99">
                             19.99$
@@ -51,7 +55,7 @@ export const CoursePrice = ({ idCourse, priceCourse }: CoursePriceProps) => {
                     </SelectGroup>
                 </SelectContent>
                 <Button onClick={onChangePrice} disabled={!price} className="mt-3">
-                    Guardar precio
+                    {t('editCourse.courseForm.buttonPrice')}
                 </Button>
             </Select>
         </div>

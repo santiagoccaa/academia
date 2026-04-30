@@ -7,8 +7,11 @@ import { Button } from "@/components/ui/button"
 import { Eye, EyeOff, MoveLeft, Trash } from "lucide-react"
 import axios from "axios"
 import { toast } from "sonner"
+import { useTranslations } from "next-intl"
 
 export const HeaderCourse = ({ idCourse, isPublished }: HeaderCourseProps) => {
+
+    const t = useTranslations()
 
     const router = useRouter()
     const [isLoading, setIsLoading] = useState(false)
@@ -36,7 +39,7 @@ export const HeaderCourse = ({ idCourse, isPublished }: HeaderCourseProps) => {
         <div className="mb-4">
             <div className="flex flex-col md:flex-row justify-between items-center">
                 <Button onClick={() => router.push("/teacher")}>
-                    <MoveLeft className="h-4 w-4" /> Volver a todos los cursos
+                    <MoveLeft className="h-4 w-4" /> {t('editCourse.header.button')}
                 </Button>
 
                 <div className="flex gap-2 items-center">
@@ -47,14 +50,14 @@ export const HeaderCourse = ({ idCourse, isPublished }: HeaderCourseProps) => {
                                 disabled={isLoading}
                                 onClick={() => onPublish(false)}
                             >
-                                Despublicar <EyeOff />
+                                {t('common.unpublish')} <EyeOff />
                             </Button>
                             :
                             <Button
                                 disabled={isLoading}
                                 onClick={() => onPublish(true)}
                             >
-                                Publicar <Eye />
+                                {t('common.post')} <Eye />
                             </Button>
                     }
 

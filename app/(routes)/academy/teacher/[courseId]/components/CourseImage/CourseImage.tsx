@@ -9,8 +9,11 @@ import { Button } from "@/components/ui/button"
 import { UploadButton } from "@/utils/uploadthing"
 import { toast } from "sonner"
 import axios from "axios"
+import { useTranslations } from "next-intl"
 
 export const CourseImage = ({ idCourse, imageCourse }: CourseImageProps) => {
+
+    const t = useTranslations()
 
     const [isEditing, setIsEditing] = useState(false)
     const [image, setImage] = useState(imageCourse)
@@ -28,7 +31,7 @@ export const CourseImage = ({ idCourse, imageCourse }: CourseImageProps) => {
 
     return (
         <div className="p-4 rounded-lg bg-white h-fit ">
-            <TitleBlock icon={FileImage} title="Imagen del curso" />
+            <TitleBlock icon={FileImage} title="editCourse.courseForm.titleImage" />
 
             {
                 isEditing ?
@@ -70,7 +73,7 @@ export const CourseImage = ({ idCourse, imageCourse }: CourseImageProps) => {
                 onClick={() => setIsEditing(!isEditing)}
             >
                 <Pencil className="h-4 w-4" />
-                Editar imagen
+                {t('editCourse.courseForm.buttonImage')}
             </Button>
         </div>
     )

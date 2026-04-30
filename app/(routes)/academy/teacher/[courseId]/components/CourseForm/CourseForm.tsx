@@ -31,8 +31,11 @@ import axios from "axios"
 import { toast } from "sonner"
 import { useState } from "react"
 import { countCharacteres } from "@/utils/countCharacteres"
+import { useTranslations } from "next-intl"
 
 export const CourseForm = ({ course }: CourseFormProps) => {
+
+    const t = useTranslations()
 
     const [charactersDescription, setCharactersDescription] = useState(course.description?.length)
 
@@ -63,7 +66,7 @@ export const CourseForm = ({ course }: CourseFormProps) => {
 
     return (
         <div className="p-6 bg-white rounded-md">
-            <TitleBlock title="Configuracion del curso" icon={Cog} />
+            <TitleBlock title="editCourse.courseForm.title" icon={Cog} />
 
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 mt-4">
@@ -73,12 +76,12 @@ export const CourseForm = ({ course }: CourseFormProps) => {
                             name="title"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Titulo del curso</FormLabel>
+                                    <FormLabel>{t('editCourse.courseForm.formTitle')}</FormLabel>
                                     <FormControl>
                                         <Input placeholder="Curso de ReactJS" {...field} />
                                     </FormControl>
                                     <FormDescription>
-                                        Esto es lo que el usuario vera como titulo del curso
+                                        {t('editCourse.courseForm.msTitle')}
                                     </FormDescription>
                                     <FormMessage />
                                 </FormItem>
@@ -90,12 +93,12 @@ export const CourseForm = ({ course }: CourseFormProps) => {
                             name="slug"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Url del curso</FormLabel>
+                                    <FormLabel>Slug</FormLabel>
                                     <FormControl>
                                         <Input placeholder="curso-de-react-js" disabled {...field} />
                                     </FormControl>
                                     <FormDescription>
-                                        Es unica y no se puede modificar
+                                        {t('editCourse.courseForm.msSlug')}
                                     </FormDescription>
                                     <FormMessage />
                                 </FormItem>
@@ -107,7 +110,9 @@ export const CourseForm = ({ course }: CourseFormProps) => {
                             name="category"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Categoria</FormLabel>
+                                    <FormLabel>
+                                        {t('editCourse.courseForm.formCategory')}
+                                    </FormLabel>
                                     <Select value={field.value} onValueChange={field.onChange}>
                                         <FormControl>
                                             <SelectTrigger>
@@ -115,7 +120,7 @@ export const CourseForm = ({ course }: CourseFormProps) => {
                                             </SelectTrigger>
                                         </FormControl>
                                         <SelectContent
-                                            position="item-aligned"
+                                            position="popper"
                                         >
                                             <SelectGroup>
                                                 <SelectItem value="Frontend">Frontend</SelectItem>
@@ -136,7 +141,7 @@ export const CourseForm = ({ course }: CourseFormProps) => {
                             name="level"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Level</FormLabel>
+                                    <FormLabel>{t('common.level')}</FormLabel>
                                     <Select value={field.value} onValueChange={field.onChange}>
                                         <FormControl>
                                             <SelectTrigger>
@@ -144,12 +149,12 @@ export const CourseForm = ({ course }: CourseFormProps) => {
                                             </SelectTrigger>
                                         </FormControl>
                                         <SelectContent
-                                            position="item-aligned"
+                                            position="popper"
                                         >
                                             <SelectGroup>
-                                                <SelectItem value="Principiante">Principiante</SelectItem>
-                                                <SelectItem value="Intermedio">Intermedio</SelectItem>
-                                                <SelectItem value="Avanzado">Avanzado</SelectItem>
+                                                <SelectItem value="Principiante">{t('common.principiante')}</SelectItem>
+                                                <SelectItem value="Intermedio">{t('common.intermedio')}</SelectItem>
+                                                <SelectItem value="Avanzado">{t('common.avanzado')}</SelectItem>
                                             </SelectGroup>
                                         </SelectContent>
                                     </Select>
@@ -163,7 +168,9 @@ export const CourseForm = ({ course }: CourseFormProps) => {
                             name="description"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Descripcion</FormLabel>
+                                    <FormLabel>
+                                        {t('editCourse.courseForm.formDescription')}
+                                    </FormLabel>
                                     <FormControl>
                                         <Textarea
                                             placeholder="Descripcion del curso"
@@ -180,17 +187,17 @@ export const CourseForm = ({ course }: CourseFormProps) => {
                                         </Textarea>
                                     </FormControl>
                                     <FormDescription>
-                                        {charactersDescription} / 600 caracteres
+                                        {charactersDescription} / 600 {t('common.characters')}
                                     </FormDescription>
                                     <FormDescription>
-                                        Pon la descripcion completa del curso
+                                        {t('editCourse.courseForm.msDescription')}
                                     </FormDescription>
                                     <FormMessage />
                                 </FormItem>
                             )}
                         />
                     </div>
-                    <Button type="submit" disabled={!form.formState.isDirty}>Guardar informacion basica</Button>
+                    <Button type="submit" disabled={!form.formState.isDirty}>{t('editCourse.courseForm.button')}</Button>
                 </form>
             </Form>
         </div>
