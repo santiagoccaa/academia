@@ -79,8 +79,8 @@
             },
             "description": "Aprende habilidades de diseño UI-UX con Weekend UX. El sistema de aprendizaje en línea más reciente para hacer crecer tu conocimiento.",
             "buttons": {
-                "started": "Comenzar",
-                "freeTrial": "Prueba Gratis"
+                "started": "Comparte tu experiencia",
+                "freeTrial": "Ver cursos"
             },
             "icons": {
                 "speaking": "Oratoria",
@@ -274,5 +274,21 @@
         "button": "Editar opinion",
         "titleForm": "¿Que te parecio este curso?",
         "buttonSave": "Guardar comentario"
+    },
+    "subscriptionPage": {
+        "title1": "Sé parte de",
+        "title3": "y ayuda a otros a crecer",
+        "description": "Convierte tu conocimiento en ingresos y crea tu propia academia.",
+        "card": {
+            "title": "Plan Maestro",
+            "days": "dias",
+            "button": "Activar Plan",
+            "item1": "Llega a estudiantes de todo el mundo",
+            "item2": "Recibe el 90% de las ganancias",
+            "item3": "Publica y actualiza en cualquier momento",
+            "item4": "Construye tu marca personal",
+            "item5": "Genera ingresos recurrentes",
+            "item6": "Control total sobre tu contenido"
+        }
     }
 }
