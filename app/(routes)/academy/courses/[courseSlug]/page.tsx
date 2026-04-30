@@ -12,12 +12,15 @@ import {
     AccordionItem,
     AccordionTrigger,
 } from "@/components/ui/accordion"
+import { getTranslations } from "next-intl/server"
 
 interface Params {
     params: Promise<{ courseSlug: string }>
 }
 
 export default async function CourseSlugPage({ params }: Params) {
+
+    const t = await getTranslations('infoCourse')
 
     const client = await clerkClient();
 
@@ -49,7 +52,7 @@ export default async function CourseSlugPage({ params }: Params) {
             </div>
             {feedback &&
                 <div className="my-4 mx-6 border rounded-lg bg-white p-6">
-                    <h2 className='text-3xl font-semibold mb-4'>Opiniones</h2>
+                    <h2 className='text-3xl font-semibold mb-4'>{t('opinions')}</h2>
                     {feedback.map(async (item, index) => {
                         const user = await client.users.getUser(item.userId)
                         return (
