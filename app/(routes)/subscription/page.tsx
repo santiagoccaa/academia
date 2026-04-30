@@ -1,10 +1,9 @@
 import { PageContainer } from '@/components/Shared/PageContainer'
-import { CardPricing } from '../academy/being-teacher/components'
-import { Button } from '@/components/ui/button'
 import { Decorador } from '../(root)/components'
 import { ArrowLeft } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
+import { CardPricing } from '@/components/Shared'
 
 export default function SubscriptionPage() {
 
