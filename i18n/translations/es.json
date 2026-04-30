@@ -5,7 +5,9 @@
         "principiante": "Principiante",
         "intermedio": "Intermedio",
         "avanzado": "Avanzado",
-        "published": "Publicado"
+        "published": "Publicado",
+        "chapters":"Capitulos",
+        "cancel":"Cancelar"
     },
     "auth": {
         "user": "Gestionar cuenta",
@@ -213,6 +215,11 @@
         "viewCourse": "Ver Curso",
         "enroll": "Inscribirse",
         "content": "Contenido del curso",
-        "opinions": "Opiniones"
+        "opinions": "Opiniones",
+        "progress": "Progreso del curso",
+        "opinion": "Tu opinion",
+        "button":"Editar opinion",
+        "titleForm":"¿Que te parecio este curso?",
+        "buttonSave":"Guardar comentario"
     }
 }

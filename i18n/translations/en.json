@@ -5,7 +5,9 @@
         "principiante": "Beginner",
         "intermedio": "Intermediate",
         "avanzado": "Advanced",
-        "published":"Published"
+        "published": "Published",
+        "chapters": "Chapters",
+        "cancel":"Cancel"
     },
     "auth": {
         "user": "Manage account",
@@ -213,6 +215,11 @@
         "viewCourse": "View Course",
         "enroll": "Enrolled",
         "content": "Course content",
-        "opinions": "Opinions"
+        "opinions": "Opinions",
+        "progress": "Course progress",
+        "opinion": "Your opinion",
+        "button": "Edit opinion",
+        "titleForm": "What did you think of this course?",
+        "buttonSave":"Save comment"
     }
 }

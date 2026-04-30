@@ -5,6 +5,7 @@ import { FormFedback } from "./components"
 import { FeedbackCourse } from "@/app/generated/prisma/client"
 import { Star } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { useTranslations } from "next-intl"
 
 export interface FeedbackCourseProps {
     id: string
@@ -13,6 +14,8 @@ export interface FeedbackCourseProps {
 
 export const FeedbackUserCourse = ({ id, feedback }: FeedbackCourseProps) => {
 
+    const t = useTranslations()
+
     const [edit, setEdit] = useState(false)
 
     const [stars, setStars] = useState<number>(feedback?.stars ?? 0)
@@ -20,10 +23,20 @@ export const FeedbackUserCourse = ({ id, feedback }: FeedbackCourseProps) => {
 
     return (
         <div className='mt-4 bg-white rounded-md p-6 shadow-md'>
-            {feedback &&
-                <h2 className='text-2xl font-semibold text-gray-800 mb-4'>Tu Calificacion</h2>
+            {feedback && !edit &&
+                <h2 className='text-2xl font-semibold text-gray-800 mb-4'>{t('infoCourse.opinion')}</h2>
             }
-            {!edit && description || stars ? (
+            {edit ? (
+                <FormFedback
+                    id={id}
+                    description={description}
+                    stars={stars}
+                    setEdit={setEdit}
+                    setDescription={setDescription}
+                    setStarts={setStars}
+                />
+
+            ) : (
                 <div>
                     <div className="flex gap-4 mb-4">
                         {[1, 2, 3, 4, 5].map((item) => (
@@ -37,18 +50,9 @@ export const FeedbackUserCourse = ({ id, feedback }: FeedbackCourseProps) => {
                     <p className="text-sm font-light text-gray-600">{description}</p>
 
                     <Button className="mt-8" onClick={() => setEdit(true)}>
-                        Editar comentario
+                        {t('infoCourse.button')}
                     </Button>
                 </div>
-            ) : (
-                <FormFedback
-                    id={id}
-                    description={description}
-                    stars={stars}
-                    setEdit={setEdit}
-                    setDescription={setDescription}
-                    setStarts={setStars}
-                />
             )}
         </div>
     )
