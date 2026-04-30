@@ -1,6 +1,11 @@
 {
     "common": {
-        "filled": "Completado"
+        "filled": "Completado",
+        "course": "Curso",
+        "principiante": "Principiante",
+        "intermedio": "Intermedio",
+        "avanzado": "Avanzado",
+        "published": "Publicado"
     },
     "auth": {
         "user": "Gestionar cuenta",
@@ -198,9 +203,16 @@
             "colum4": "Precio"
         }
     },
-    "cardCourse":{
-        "createdAt":"Creado",
-        "subs":"Inscritos",
-        "message":"Inscrito"
+    "cardCourse": {
+        "createdAt": "Creado",
+        "subs": "Inscritos",
+        "message": "Inscrito"
+    },
+    "infoCourse": {
+        "lastUpdate": "Última actualización",
+        "viewCourse": "Ver Curso",
+        "enroll": "Inscribirse",
+        "content": "Contenido del curso",
+        "opinions": "Opiniones"
     }
 }

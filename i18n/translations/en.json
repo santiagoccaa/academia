@@ -1,6 +1,11 @@
 {
     "common": {
-        "filled": "Filled"
+        "filled": "Filled",
+        "course": "Course",
+        "principiante": "Beginner",
+        "intermedio": "Intermediate",
+        "avanzado": "Advanced",
+        "published":"Published"
     },
     "auth": {
         "user": "Manage account",
@@ -202,5 +207,12 @@
         "createdAt": "Created",
         "subs": "Subscribers",
         "message": "Enrolled"
+    },
+    "infoCourse": {
+        "lastUpdate": "Last update",
+        "viewCourse": "View Course",
+        "enroll": "Enrolled",
+        "content": "Course content",
+        "opinions": "Opinions"
     }
 }

@@ -4,8 +4,11 @@ import { Calendar, ChartNoAxesColumn, Timer } from 'lucide-react'
 import { formatPrice } from '@/lib/formatPrice'
 import { PurchaseButtons } from './PurchaseButtons'
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 
 export const HeroBlockCourse = ({ course, purchase }: HeroBlockCourseProps) => {
+
+  const t = useTranslations()
 
   const { description, price, level, imageUrl, updateAt, slug, chapters, title, id, userID } = course
 
@@ -17,10 +20,10 @@ export const HeroBlockCourse = ({ course, purchase }: HeroBlockCourseProps) => {
 
         <div className='flex flex-col gap-3 my-4 text-gray-600'>
           <IconBadge icon={Timer} text='70h 40m' />
-          <IconBadge icon={Calendar} text={`Ultima actualizacion: ${new Date(updateAt).toLocaleDateString("es-ES")}`} />
-          <IconBadge icon={ChartNoAxesColumn} text={level || ''} />
+          <IconBadge icon={Calendar} text={`${t('infoCourse.lastUpdate')}: ${new Date(updateAt).toLocaleDateString("es-ES")}`} />
+          <IconBadge icon={ChartNoAxesColumn} text={level ? t(`common.${level.toLocaleLowerCase()}`) : ''} />
         </div>
-        
+
         {!purchase && <h2 className='text-xl font-semibold mb-4'>{formatPrice(price)}</h2>}
         <PurchaseButtons purchase={purchase} slug={slug} chapters={chapters} price={price} id={id} userID={userID} />
       </div>

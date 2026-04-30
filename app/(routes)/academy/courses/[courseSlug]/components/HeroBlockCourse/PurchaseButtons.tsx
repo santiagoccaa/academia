@@ -4,6 +4,7 @@ import { Chapter } from '@/app/generated/prisma/client'
 import { Button } from '@/components/ui/button'
 import { useAuth } from '@clerk/nextjs'
 import axios from 'axios'
+import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
@@ -19,6 +20,8 @@ interface PurchaseButtonsProps {
 }
 
 export const PurchaseButtons = ({ purchase, slug, chapters, price, id, userID }: PurchaseButtonsProps) => {
+
+    const t = useTranslations('infoCourse')
 
     const { userId } = useAuth()
 
@@ -62,7 +65,7 @@ export const PurchaseButtons = ({ purchase, slug, chapters, price, id, userID }:
                         asChild
                     >
                         <Link href={`/academy/courses/${slug}/${chapters[0].id}`}>
-                            Ver curso
+                            {t('viewCourse')}
                         </Link>
                     </Button>
                 ) : (
@@ -72,7 +75,7 @@ export const PurchaseButtons = ({ purchase, slug, chapters, price, id, userID }:
                         disabled={isLoading}
                         onClick={enrollCourse}
                     >
-                        Inscribirse
+                        {t('enroll')}
                     </Button>
                 )
             }
