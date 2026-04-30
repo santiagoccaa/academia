@@ -11,6 +11,7 @@ import axios from "axios"
 import { toast } from "sonner"
 import { formSchema } from "./FeedbackCourse.form"
 import React from "react"
+import { useTranslations } from "next-intl"
 
 interface FormFedbackProps {
     id: string
@@ -22,6 +23,9 @@ interface FormFedbackProps {
 }
 
 export const FormFedback = ({ id, description, stars, setEdit, setStarts, setDescription }: FormFedbackProps) => {
+
+    const t = useTranslations()
+
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -46,7 +50,7 @@ export const FormFedback = ({ id, description, stars, setEdit, setStarts, setDes
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)}>
-                <h2 className='text-2xl font-semibold text-gray-800 mb-4'>¿Que te parecio este curso?</h2>
+                <h2 className='text-2xl font-semibold text-gray-800 mb-4'>{t('infoCourse.titleForm')}</h2>
                 <FormField
                     control={form.control}
                     name="stars"
@@ -92,10 +96,16 @@ export const FormFedback = ({ id, description, stars, setEdit, setStarts, setDes
                     )}
                 />
 
-
-                <Button className="mt-6" type="submit">
-                    Guardar comentario
-                </Button>
+                {form.formState.isDirty && form.formState.isValid
+                    ?
+                    <Button className="mt-6" type="submit" >
+                        {t('infoCourse.buttonSave')}
+                    </Button>
+                    :
+                    <Button className="mt-6" type="button" onClick={() => setEdit(false)} >
+                        {t('common.cancel')}
+                    </Button>
+                }
             </form>
         </Form>
     )

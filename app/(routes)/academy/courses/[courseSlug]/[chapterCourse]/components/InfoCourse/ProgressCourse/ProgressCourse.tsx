@@ -7,9 +7,12 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { toast } from 'sonner'
 import { useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 
 export const ProgressCourse = ({ chapterCourseId, infoCourse, userProgress }: ProgressCourseProps) => {
 
+  const t = useTranslations()
+  
   const router = useRouter()
 
   const { id, slug, chapters } = infoCourse
@@ -56,7 +59,7 @@ export const ProgressCourse = ({ chapterCourseId, infoCourse, userProgress }: Pr
   return (
     <div className=''>
       <div className='my-4 p-2 w-full flex items-center gap-2 flex-col rounded-md border shadow-md bg-white'>
-        <span className='text-sm'>Progreso del curso | {progressPercentage}%</span>
+        <span className='text-sm'>{t('infoCourse.progress')} | {progressPercentage}%</span>
         <Progress value={progressPercentage} className='*:bg-violet-300' />
       </div>
 
