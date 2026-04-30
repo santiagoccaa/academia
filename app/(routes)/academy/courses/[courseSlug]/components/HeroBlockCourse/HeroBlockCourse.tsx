@@ -5,12 +5,19 @@ import { formatPrice } from '@/lib/formatPrice'
 import { PurchaseButtons } from './PurchaseButtons'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
+import { formatDuration } from '@/utils'
 
 export const HeroBlockCourse = ({ course, purchase }: HeroBlockCourseProps) => {
 
   const t = useTranslations()
 
   const { description, price, level, imageUrl, updateAt, slug, chapters, title, id, userID } = course
+
+  const duration = chapters.reduce((acc, chapter) => {
+    return acc + (chapter.duration ?? 0)
+  }, 0)
+
+  const formatted = formatDuration(duration)
 
   return (
     <div className='grid grid-cols-1 md:grid-cols-2 gap-4 mt-6'>
@@ -19,7 +26,7 @@ export const HeroBlockCourse = ({ course, purchase }: HeroBlockCourseProps) => {
         <p className='text-balance mt-2'>{description}</p>
 
         <div className='flex flex-col gap-3 my-4 text-gray-600'>
-          <IconBadge icon={Timer} text='70h 40m' />
+          <IconBadge icon={Timer} text={formatted} />
           <IconBadge icon={Calendar} text={`${t('infoCourse.lastUpdate')}: ${new Date(updateAt).toLocaleDateString("es-ES")}`} />
           <IconBadge icon={ChartNoAxesColumn} text={level ? t(`common.${level.toLocaleLowerCase()}`) : ''} />
         </div>
