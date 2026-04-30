@@ -2,9 +2,8 @@
 
 import { PageContainer } from "@/components/Shared/PageContainer"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
 import { LOGO } from "@/const/images"
-import { ArrowRight, ArrowUpRight, ChevronDown, Menu, Search, X } from "lucide-react"
+import { ArrowRight, Menu, X } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
@@ -20,6 +19,7 @@ import { ABOUT_US, CONTACT_US, COURSES, HOME } from "@/const/routes"
 import LanguageSelector from "@/components/Shared/LenguajeSelector/LenguajeSelector"
 import { useTranslations } from "next-intl"
 import { SignedIn, SignedOut } from "@clerk/nextjs"
+import { Search } from "./Search"
 
 interface Nav {
     name: string
@@ -65,11 +65,7 @@ export const Navbar = () => {
                             <Image src={LOGO} fill alt="Logo" sizes='80px' />
                         </div>
                         <div className="hidden lg:block relative">
-                            <Input placeholder={t("input.title")} className="pl-7 pr-28 border bg-white" />
-                            <Search className="absolute text-gray-300 top-1/2 -translate-y-1/2 left-2 w-4 h-4" />
-                            <Button className="absolute top-1/2 -translate-y-1/2 right-2 h-8 text-xs bg-accent text-primary hover:text-white transition-colors duration-300">
-                                {t("input.button")}  <ChevronDown className="w-3 h-2" />
-                            </Button>
+                            <Search />
                         </div>
                         <LanguageSelector />
 
