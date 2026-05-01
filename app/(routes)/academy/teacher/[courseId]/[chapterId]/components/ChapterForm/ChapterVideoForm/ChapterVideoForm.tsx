@@ -25,10 +25,10 @@ export const ChapterVideoForm = ({ chapterId, courseId, videoUrl }: ChapterVideo
                 duration
             })
 
-            toast("Video actualizado con exito")
+            toast(t('alerts.alert10'))
             router.refresh()
         } catch {
-            toast.error("Algo salio mal")
+            toast.error(t('alerts.error'))
         }
     }
 

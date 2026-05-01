@@ -21,7 +21,7 @@
         "free": "Gratis",
         "hidden": "Ocultar",
         "save": "Guardar",
-        "loading":"Cargando"
+        "loading": "Cargando"
     },
     "editCourse": {
         "header": {
@@ -292,5 +292,25 @@
             "item5": "Genera ingresos recurrentes",
             "item6": "Control total sobre tu contenido"
         }
+    },
+    "alerts": {
+        "alert1": "Tu comentario fue enviado",
+        "error": "Ups... Algo salio mal",
+        "alert3": "Capitulo completado",
+        "alert4": "Capitulo no complicado",
+        "alert5": "Inscripcion exitosa",
+        "alert6": "Capitulo publicado",
+        "alert7": "Capitulo oculto",
+        "alert8": "Capitulo eliminado con existo",
+        "alert9": "Capitulo modificado",
+        "alert10": "Video actualizado con exito",
+        "alert11": "Capitulo creado",
+        "alert12": "Curso actualizado correctamente",
+        "alert13": "Imagen actualizada correctamente",
+        "alert14": "Precio actualizaco correctamente",
+        "alert15": "Curso publicado",
+        "alert16": "Curso oculto",
+        "alert17": "Curso eliminado correctamente",
+        "alert18": "Curso creado correctamente"
     }
 }

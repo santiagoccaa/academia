@@ -38,9 +38,9 @@ export const FormFedback = ({ id, description, stars, setEdit, setStarts, setDes
         const { description, stars } = values
         try {
             await axios.post(`/api/course/${id}/feedback`, { description, stars })
-            toast("Tu comentario fue enviado")
+            toast(t('alerts.alert1'))
         } catch (error) {
-            toast("Algo salio mal")
+            toast.error(t('alerts.alert1'))
         } finally {
             setDescription(description)
             setStarts(stars)

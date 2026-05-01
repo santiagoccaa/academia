@@ -22,9 +22,9 @@ export const CoursePrice = ({ idCourse, priceCourse }: CoursePriceProps) => {
                 price
             })
 
-            toast("Precio actualizaco correctamente")
+            toast(t('alerts.alert14'))
         } catch (error) {
-            toast("Ups... algo salio mal")
+            toast(t('alerts.error'))
         }
     }
     return (

@@ -58,9 +58,9 @@ export const CourseForm = ({ course }: CourseFormProps) => {
             axios.patch(`/api/course/${course.id}`, values)
             form.reset(values)
 
-            toast('Curso actualizado correctamente')
+            toast(t('alerts.alert12'))
         } catch (error) {
-            toast.error('Ups, algo salio mal')
+            toast.error(t('alerts.error'))
         }
     }
 

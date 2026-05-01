@@ -292,5 +292,25 @@
             "item5": "Generate recurring income",
             "item6": "Full control over your content"
         }
+    },
+    "alerts": {
+        "alert1": "Your comment has been submitted",
+        "error": "Oops... Something went wrong",
+        "alert3": "Chapter completed",
+        "alert4": "Chapter not completed",
+        "alert5": "Enrollment successful",
+        "alert6": "Chapter published",
+        "alert7": "Chapter hidden",
+        "alert8": "Chapter successfully deleted",
+        "alert9": "Chapter updated",
+        "alert10": "Video successfully updated",
+        "alert11": "Chapter created",
+        "alert12": "Course successfully updated",
+        "alert13": "Image successfully updated",
+        "alert14": "Price successfully updated",
+        "alert15": "Course published",
+        "alert16": "Course hidden",
+        "alert17": "Course successfully deleted",
+        "alert18": "Course successfully created"
     }
 }

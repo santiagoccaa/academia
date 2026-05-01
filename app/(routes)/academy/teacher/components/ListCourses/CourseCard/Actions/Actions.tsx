@@ -30,7 +30,7 @@ export const Actions = ({ courseId }: ActionsProps) => {
 
     const onDelete = () => {
         axios.delete(`/api/course/${courseId}`)
-        toast("Curso eliminado correctamente")
+        toast(t('alerts.alert17'))
         router.refresh()
     }
 
