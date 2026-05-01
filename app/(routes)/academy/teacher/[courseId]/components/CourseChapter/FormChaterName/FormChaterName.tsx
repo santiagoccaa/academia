@@ -15,10 +15,12 @@ import { toast } from "sonner"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { useTranslations } from "next-intl"
+import { useState } from "react"
 
 export const FormChaterName = ({ idCourse, setShowInputChapter, setChapterList, chapters }: FormChaterNameProps) => {
 
     const t = useTranslations()
+    const [loading, setLoading] = useState(false)
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -28,17 +30,20 @@ export const FormChaterName = ({ idCourse, setShowInputChapter, setChapterList, 
     })
 
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
+        setLoading(true)
         try {
             const res = await axios.post(`/api/course/${idCourse}/chapter`, {
                 title: values.title
             })
 
             setChapterList([...chapters, res.data])
-            setShowInputChapter(false)
             toast(t('alerts.alert11'))
         } catch (error) {
             console.log(error);
             toast.error(t('alerts.error'))
+        } finally {
+            setShowInputChapter(false)
+            setLoading(false)
         }
     }
 
@@ -57,7 +62,7 @@ export const FormChaterName = ({ idCourse, setShowInputChapter, setChapterList, 
                         </FormItem>
                     )}
                 />
-                <Button type="submit" disabled={!form.formState.isValid}>Crear</Button>
+                <Button type="submit" disabled={!form.formState.isValid || loading}>{t('common.save')}</Button>
             </form>
         </Form>
     )
