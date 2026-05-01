@@ -40,21 +40,23 @@ export const Search = () => {
     }, [])
 
     return (
-        <Combobox items={names}>
+        <Combobox items={loading ? [""] : names}>
             <ComboboxInput placeholder={t('academy.searchHome')} className="w-70" />
             <ComboboxContent>
                 <ComboboxEmpty>{t('academy.notFound')}</ComboboxEmpty>
-                <ComboboxList>
-                    {(item) => (
-                        <ComboboxItem
-                            key={item.slug}
-                            value={item.title}
-                            onClick={() => router.push(`/academy/courses/${item.slug}`)}
-                        >
-                            {loading ? t('common.loading') : item.title}
-                        </ComboboxItem>
-                    )}
-                </ComboboxList>
+                {!loading &&
+                    <ComboboxList>
+                        {(item) => (
+                            <ComboboxItem
+                                key={item.slug}
+                                value={item.title}
+                                onClick={() => router.push(`/academy/courses/${item.slug}`)}
+                            >
+                                {loading ? t('common.loading') : item.title}
+                            </ComboboxItem>
+                        )}
+                    </ComboboxList>
+                }
             </ComboboxContent>
         </Combobox >
     )
