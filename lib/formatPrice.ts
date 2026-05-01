@@ -1,6 +1,6 @@
 export const formatPrice = (price: string | null): string => {
-    if (price === "Gratis") {
-        return "Gratis"
+    if (price === "Gratis" || !price) {
+        return "free"
     }
 
     const priceNumber = price ? parseFloat(price.replace(",", ".")) : 0

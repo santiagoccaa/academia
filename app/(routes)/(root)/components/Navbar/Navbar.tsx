@@ -65,7 +65,7 @@ export const Navbar = () => {
                             <Image src={LOGO} fill alt="Logo" sizes='80px' />
                         </div>
                         <div className="hidden lg:block relative">
-                            <Search />
+                            {/* <Search /> */}
                         </div>
                         <LanguageSelector />
 

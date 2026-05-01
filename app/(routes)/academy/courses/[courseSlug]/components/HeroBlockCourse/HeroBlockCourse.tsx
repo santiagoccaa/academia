@@ -31,7 +31,7 @@ export const HeroBlockCourse = ({ course, purchase }: HeroBlockCourseProps) => {
           <IconBadge icon={ChartNoAxesColumn} text={level ? t(`common.${level.toLocaleLowerCase()}`) : ''} />
         </div>
 
-        {!purchase && <h2 className='text-xl font-semibold mb-4'>{formatPrice(price)}</h2>}
+        {!purchase && <h2 className='text-xl font-semibold mb-4'>{!price ? t('common.free') : formatPrice(price)}</h2>}
         <PurchaseButtons purchase={purchase} slug={slug} chapters={chapters} price={price} id={id} userID={userID} />
       </div>
 
