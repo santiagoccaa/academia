@@ -5,7 +5,6 @@ import { currentUser } from "@clerk/nextjs/server"
 import { redirect } from "next/navigation"
 import { ChaptersCourse, InfoCourse } from "./components"
 import { getTeacherId } from "@/actios/getTeacherId"
-import { getFedbackCourse } from "@/actios/getFedbackCourse"
 
 interface Params {
     params: Promise<{ courseSlug: string, chapterCourse: string }>
