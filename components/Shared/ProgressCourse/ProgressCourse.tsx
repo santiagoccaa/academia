@@ -36,7 +36,7 @@ export const ProgressCourse = ({ courseId, price, totalChapters }: ProgressCours
     }
 
     if (loading) {
-        return <p className='text-sm mt-2'>Cargando...</p>
+        return <p className='text-sm mt-2'>{t('common.loading')}...</p>
     }
     return (
         <div className='mt-5'>
@@ -48,7 +48,7 @@ export const ProgressCourse = ({ courseId, price, totalChapters }: ProgressCours
                     </div>
                 ) :
                     (
-                        <h4>{formatPrice(price)}</h4>
+                        <h4>{!price ? t('common.free') : formatPrice(price)}</h4>
                     )
             }
         </div>
