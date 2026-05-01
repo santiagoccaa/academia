@@ -21,10 +21,10 @@ export const HeaderCourse = ({ idCourse, isPublished }: HeaderCourseProps) => {
         try {
             axios.patch(`/api/course/${idCourse}`, { isPublished: state })
             router.refresh()
-            toast(state ? 'Curso publicado' : 'Curso oculto')
+            toast(state ? t('alerts.alert15') : t('alerts.alert16'))
         } catch {
             router.refresh()
-            toast('Ups, algo ha salido mal')
+            toast.error(t('alerts.error'))
         }
         setIsLoading(false)
     }
@@ -32,7 +32,7 @@ export const HeaderCourse = ({ idCourse, isPublished }: HeaderCourseProps) => {
     const onRemoveCourse = async () => {
         axios.delete(`/api/course/${idCourse}`)
         router.push('/teacher')
-        toast('Curso eliminado correctamente')
+        toast(t('alerts.alert17'))
     }
 
     return (

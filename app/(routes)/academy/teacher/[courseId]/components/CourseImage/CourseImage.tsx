@@ -23,9 +23,9 @@ export const CourseImage = ({ idCourse, imageCourse }: CourseImageProps) => {
             axios.patch(`/api/course/${idCourse}`, {
                 imageUrl
             })
-            toast("Imagen actualizada correctamente")
+            toast(t('alerts.alert13'))
         } catch (error) {
-            toast.error("No se pudo actualizar la imagen")
+            toast.error(t('alerts.error'))
         }
     }
 

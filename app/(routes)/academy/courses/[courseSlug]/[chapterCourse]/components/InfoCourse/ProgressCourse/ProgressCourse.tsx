@@ -36,7 +36,7 @@ export const ProgressCourse = ({ chapterCourseId, infoCourse, userProgress }: Pr
     try {
       await axios.patch(`/api/course/${id}/chapter/${chapterCourseId}/progress`, JSON.stringify({ isCompleted }))
 
-      toast(isCompleted ? 'Capitulo completado' : 'capitulo no complicado')
+      toast(isCompleted ? t('alerts.alert3') : t('alerts.alert4'))
 
       if (isCompleted) {
         const currentIndex = chapters.findIndex((chapter) => chapter.id === chapterCourseId)
@@ -52,7 +52,7 @@ export const ProgressCourse = ({ chapterCourseId, infoCourse, userProgress }: Pr
       router.refresh()
     } catch (error) {
       console.log(error);
-      toast("Ups... algo salio mal")
+      toast.error(t('alerts.error'))
     }
   }
 

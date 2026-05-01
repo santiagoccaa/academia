@@ -14,8 +14,11 @@ import axios from 'axios'
 import { toast } from "sonner"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
+import { useTranslations } from "next-intl"
 
 export const FormChaterName = ({ idCourse, setShowInputChapter, setChapterList, chapters }: FormChaterNameProps) => {
+
+    const t = useTranslations()
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -32,10 +35,10 @@ export const FormChaterName = ({ idCourse, setShowInputChapter, setChapterList, 
 
             setChapterList([...chapters, res.data])
             setShowInputChapter(false)
-            toast("Capitulo creado")
+            toast(t('alerts.alert11'))
         } catch (error) {
             console.log(error);
-            toast.error("Hubo un error al momento de crear el capitulo")
+            toast.error(t('alerts.error'))
         }
     }
 

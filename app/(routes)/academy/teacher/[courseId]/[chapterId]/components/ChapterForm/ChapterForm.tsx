@@ -26,9 +26,9 @@ export const ChapterForm = ({ chapter, courseId }: ChapterFormProps) => {
                 isPublised: state
             })
             router.refresh()
-            toast(state ? "Capitulo publicado" : "Capitulo oculto")
+            toast(state ? t('alerts.alert6') : t('alerts.alert7'))
         } catch (error) {
-            toast("Algo ha salido mal")
+            toast.error(t('alerts.error'))
         }
     }
 
@@ -36,9 +36,9 @@ export const ChapterForm = ({ chapter, courseId }: ChapterFormProps) => {
         try {
             axios.delete(`/api/course/${courseId}/chapter/${chapter.id}`)
             router.push(`/academy/teacher/${courseId}`)
-            toast("Capitulo eliminado con existo")
+            toast(t('alerts.alert8'))
         } catch (error) {
-            toast("Ocurrio un error al momento de intenter eliminar el capitulo")
+            toast.error(t('alerts.alert4'))
         }
     }
 
