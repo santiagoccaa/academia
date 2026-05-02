@@ -1,5 +1,5 @@
 
-export const LOGO = '/logo.png'
+export const LOGO = '/general/logo.png'
 export const STUDENT_HOME = "/student-home.png"
 export const DEFAULT_IMAGE_COURSE = "/image-default-course.webp"
 
