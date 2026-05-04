@@ -65,7 +65,9 @@
     },
     "auth": {
         "user": "Gestionar cuenta",
-        "signOut": "Cerrar session"
+        "signOut": "Cerrar session",
+        "title":"Bienvenido de vuelta",
+        "subtitle":"Inicia sesion"
     },
     "homePage": {
         "hero": {

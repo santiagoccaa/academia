@@ -65,7 +65,9 @@
     },
     "auth": {
         "user": "Manage account",
-        "signOut": "Sign Out"
+        "signOut": "Sign Out",
+        "title": "Welcome Back",
+        "subtitle": "Login Page"
     },
     "homePage": {
         "hero": {
