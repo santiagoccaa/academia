@@ -198,8 +198,8 @@
     },
     "contactUsPage": {
         "title": "Contact Us",
-        "subtitle": "Leave us a message",
         "form": {
+            "subtitle": "Leave us a message",
             "name": {
                 "title": "Name",
                 "placeholder": "Your name"
@@ -209,7 +209,11 @@
                 "placeholder": "example@example.com"
             },
             "description": "Your message",
-            "button": "Send"
+            "button": "Send",
+            "alerts": {
+                "success": "Message sent successfully",
+                "error": "Something went wrong, please verify that the fields are correct"
+            }
         }
     },
     "appSidebar": {
