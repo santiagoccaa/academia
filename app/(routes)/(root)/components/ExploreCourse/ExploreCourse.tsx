@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button"
 import { useTranslations } from "next-intl"
 import { getHomeCourses } from "@/actios/getHomeCourses"
 import { CardCourse } from "@/components/Shared"
+import Link from "next/link"
 
 export const ExploreCourse = async () => {
 
@@ -44,8 +45,10 @@ export const ExploreCourse = async () => {
             </PageContainer>
 
             <div className="flex justify-center mt-8">
-                <Button className="shadow-md">
-                    {t('button')}
+                <Button className="shadow-md" asChild>
+                    <Link href={"/acadey/courses"}>
+                        {t('button')}
+                    </Link>
                 </Button>
             </div>
         </PageContainer>
