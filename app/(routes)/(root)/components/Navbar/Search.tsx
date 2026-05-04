@@ -23,7 +23,10 @@ export const Search = () => {
     const router = useRouter()
     const t = useTranslations()
 
-    const [names, setNames] = useState<NameSlug[] | []>([])
+    const [names, setNames] = useState<NameSlug[]>([{
+        title: t('common.loading'),
+        slug: "/"
+    }])
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
@@ -34,30 +37,31 @@ export const Search = () => {
             } finally {
                 setLoading(false)
             }
-
         }
         getNames()
     }, [])
 
     return (
-        <Combobox items={loading ? [""] : names}>
+        <Combobox>
             <ComboboxInput placeholder={t('academy.searchHome')} className="w-70" />
-            <ComboboxContent>
-                <ComboboxEmpty>{t('academy.notFound')}</ComboboxEmpty>
-                {!loading &&
+            {!loading &&
+                <ComboboxContent>
+                    {!names && <ComboboxEmpty>{t('academy.notFound')}</ComboboxEmpty>}
                     <ComboboxList>
-                        {(item) => (
+                        {names.map(({ slug, title }, index) => (
                             <ComboboxItem
-                                key={item.slug}
-                                value={item.title}
-                                onClick={() => router.push(`/academy/courses/${item.slug}`)}
+                                key={index}
+                                value={title}
+                                onClick={() => {
+                                    router.push(`/academy/courses/${slug}`)
+                                }}
                             >
-                                {loading ? t('common.loading') : item.title}
+                                {title}
                             </ComboboxItem>
-                        )}
+                        ))}
                     </ComboboxList>
-                }
-            </ComboboxContent>
+                </ComboboxContent>
+            }
         </Combobox >
     )
 }
