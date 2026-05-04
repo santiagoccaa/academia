@@ -1,7 +1,7 @@
 import { z } from "zod"
 
 export const formSchema = z.object({
+    title: z.email().min(2).max(200),
     name: z.string().min(2).max(200),
-    email: z.string().min(2).max(200),
-    description: z.string().max(600)
+    message: z.string().max(600)
 })

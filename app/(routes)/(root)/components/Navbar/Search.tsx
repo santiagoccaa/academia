@@ -43,7 +43,7 @@ export const Search = () => {
 
     return (
         <Combobox>
-            <ComboboxInput placeholder={t('academy.searchHome')} className="w-70" />
+            <ComboboxInput placeholder={t('academy.searchHome')} className="w-70 bg-white" />
             {!loading &&
                 <ComboboxContent>
                     {!names && <ComboboxEmpty>{t('academy.notFound')}</ComboboxEmpty>}

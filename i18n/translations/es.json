@@ -66,8 +66,8 @@
     "auth": {
         "user": "Gestionar cuenta",
         "signOut": "Cerrar session",
-        "title":"Bienvenido de vuelta",
-        "subtitle":"Inicia sesion"
+        "title": "Bienvenido de vuelta",
+        "subtitle": "Inicia sesion"
     },
     "homePage": {
         "hero": {
@@ -198,8 +198,8 @@
     },
     "contactUsPage": {
         "title": "Contáctanos",
-        "subtitle": "Déjanos un mensaje",
         "form": {
+            "subtitle": "Déjanos un mensaje",
             "name": {
                 "title": "Nombre",
                 "placeholder": "Tu nombre"
@@ -209,7 +209,11 @@
                 "placeholder": "ejemplo@ejemplo.com"
             },
             "description": "Tu mensaje",
-            "button": "Enviar"
+            "button": "Enviar",
+            "alerts":{
+                "success":"Mensaje enviado con exito",
+                "error":"Algo salio mal, verifica que los campos esten correctos"
+            }
         }
     },
     "appSidebar": {

@@ -17,27 +17,51 @@ import { toast } from "sonner"
 import { Textarea } from "@/components/ui/textarea"
 import { formSchema } from "./formulario.form"
 import { useTranslations } from "next-intl"
+import emailjs from "@emailjs/browser"
+import { useState } from "react"
 
 export const Formulario = () => {
-    const t = useTranslations('contactUsPage.form')
 
+    const [loading, setLoading] = useState(false)
+    const t = useTranslations('contactUsPage.form')
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            description: "",
-            email: "",
+            message: "",
+            title: "",
             name: ""
         },
     })
 
-    const onSubmit = (values: z.infer<typeof formSchema>) => {
+    const sendEmail = async (values: z.infer<typeof formSchema>) => {
+        setLoading(true)
+        try {
+            await emailjs.send(
+                process.env.NEXT_PUBLIC_EMAIL_SERVICE_ID!,
+                process.env.NEXT_PUBLIC_EMAIL_TEMPLATE_ID!,
+                {
+                    user_name: values.name,
+                    user_email: values.title,
+                    message: values.message,
+                },
+                process.env.NEXT_PUBLIC_EMAIL_PUBLIC_KEY_ID!
+            )
 
+            return toast(t('alerts.success'))
+        } catch (error) {
+            console.log('EMAILJS FAILED...', error);
+            return toast(t('alerts.error'))
+        } finally {
+            setLoading(false)
+            form.reset()
+        }
     }
+
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-                <h3 className="mb-4 text-lg font-medium text-gray-800 text-left">Leave us a message</h3>
+            <form onSubmit={form.handleSubmit(sendEmail)} className="space-y-4">
+                <h3 className="mb-4 text-lg font-medium text-gray-800 text-left">{t('subtitle')}</h3>
                 <FormField
                     control={form.control}
                     name="name"
@@ -45,42 +69,38 @@ export const Formulario = () => {
                         <FormItem>
                             <FormLabel>{t('name.title')}</FormLabel>
                             <FormControl>
-                                <Input placeholder={t('name.placeholder')} {...field} />
+                                <Input placeholder={t('name.placeholder')} {...field} className="bg-white" />
                             </FormControl>
-                            <FormMessage />
                         </FormItem>
                     )}
                 />
 
                 <FormField
                     control={form.control}
-                    name="email"
+                    name="title"
                     render={({ field }) => (
                         <FormItem>
                             <FormLabel>{t('email.title')}</FormLabel>
                             <FormControl>
-                                <Input placeholder={t('email.placeholder')} {...field} />
+                                <Input placeholder={t('email.placeholder')} {...field} className="bg-white" />
                             </FormControl>
-                            <FormMessage />
                         </FormItem>
                     )}
                 />
-
                 <FormField
                     control={form.control}
-                    name="description"
+                    name="message"
                     render={({ field }) => (
                         <FormItem>
                             <FormControl>
-                                <Textarea placeholder={t('description')} />
+                                <Textarea placeholder={t('description')} {...field} className="bg-white" />
                             </FormControl>
-                            <FormMessage />
                         </FormItem>
                     )}
                 />
 
                 <div />
-                <Button type="submit" className="mt-4 w-full cursor-pointer">{t('button')}</Button>
+                <Button type="submit" className="mt-4 w-full cursor-pointer" disabled={loading}>{t('button')}</Button>
             </form>
         </Form>
     )
