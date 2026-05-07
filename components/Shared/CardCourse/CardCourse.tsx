@@ -1,28 +1,21 @@
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
-import { ArrowUpRight, Clock } from "lucide-react"
+import { ArrowUpRight } from "lucide-react"
 import Image from "next/image"
 import { DEFAULT_IMAGE_COURSE } from "@/const/images"
 import { formatPrice } from "@/lib/formatPrice"
 import { clerkClient } from "@clerk/nextjs/server"
 import Link from "next/link"
-import { formatDuration } from "@/utils"
-import { CourseWithExtras } from "../ListCourses/ListCourses.types"
 import { StarRating } from "../StarRating"
 import { getPurchaseCourseById } from "@/actios/getPurchaseCourseById"
 import { getTranslations } from "next-intl/server"
+import { CoursesCardHome } from "@/actios/courses"
 
-export const CardCourse = async (course: CourseWithExtras) => {
+export const CardCourse = async (course: CoursesCardHome) => {
 
     const t = await getTranslations()
-
     const client = await clerkClient();
-    const { _count, chapters, userID, imageUrl, category, description, slug, createdAt, title, price, avgStars, feedback, id } = course
 
-    const duration = chapters.reduce((acc, chapter) => {
-        return acc + (chapter.duration ?? 0)
-    }, 0)
-
-    const formatted = formatDuration(duration)
+    const { _count, userID, imageUrl, category, description, slug, createdAt, title, price, avgStars, id } = course
 
     const user = await client.users.getUser(userID)
 
@@ -36,9 +29,9 @@ export const CardCourse = async (course: CourseWithExtras) => {
                     <div className="relative w-full h-50 rounded-sm overflow-hidden">
                         <Image src={imageUrl || DEFAULT_IMAGE_COURSE} fill alt="image courses" className="w-full" />
 
-                        <div className="absolute top-1 right-1 bg-white gap-1 text-xs font-light text-gray-400 flex items-center p-1 rounded-sm shadow-md z-20">
+                        {/* <div className="absolute top-1 right-1 bg-white gap-1 text-xs font-light text-gray-400 flex items-center p-1 rounded-sm shadow-md z-20">
                             <Clock size={15} /> {formatted}
-                        </div>
+                        </div> */}
                     </div>
 
                 </CardHeader>
@@ -59,7 +52,7 @@ export const CardCourse = async (course: CourseWithExtras) => {
                         <div className="flex items-center gap-1">
                             <StarRating rating={avgStars} />
                         </div>
-                        <span className="text-xs font-light text-gray-400">{feedback.length}</span>
+                        <span className="text-xs font-light text-gray-400">{_count.feedback}</span>
                     </div>
                     <div className="flex items-center gap-2 mt-2">
                         <h2 className="text-xs font-medium text-primary">{t('cardCourse.subs')}: <span className="text-gray-400 font-light">{_count.purchases}</span></h2>

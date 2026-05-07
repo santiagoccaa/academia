@@ -8,15 +8,15 @@ import {
 import { PageContainer } from "@/components/Shared/PageContainer"
 import { Button } from "@/components/ui/button"
 import { useTranslations } from "next-intl"
-import { getHomeCourses } from "@/actios/getHomeCourses"
 import { CardCourse } from "@/components/Shared"
 import Link from "next/link"
+import { coursesCardHome } from "@/actios/courses"
 
 export const ExploreCourse = async () => {
 
     const t = useTranslations('homePage.exploreCourses')
 
-    const courses = await getHomeCourses()
+    const courses = await coursesCardHome()
 
     return (
         <PageContainer>
