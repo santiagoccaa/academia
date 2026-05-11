@@ -2,24 +2,18 @@ import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { ArrowUpRight } from "lucide-react"
 import Image from "next/image"
 import { DEFAULT_IMAGE_COURSE } from "@/const/images"
-import { formatPrice } from "@/lib/formatPrice"
-import { clerkClient } from "@clerk/nextjs/server"
 import Link from "next/link"
 import { StarRating } from "../StarRating"
-import { getPurchaseCourseById } from "@/actios/getPurchaseCourseById"
-import { getTranslations } from "next-intl/server"
 import { CoursesCardHome } from "@/actios/courses"
+import { useTranslations } from "next-intl"
+import { formatPrice } from "@/lib/formatPrice"
 
-export const CardCourse = async (course: CoursesCardHome) => {
+export const CardCourse = (course: CoursesCardHome) => {
 
-    const t = await getTranslations()
-    const client = await clerkClient();
+    const t = useTranslations()
 
-    const { _count, userID, imageUrl, category, description, slug, createdAt, title, price, avgStars, id } = course
+    const { _count, userID, imageUrl, category, description, slug, createdAt, title, price, avgStars } = course
 
-    const user = await client.users.getUser(userID)
-
-    const purschase = await getPurchaseCourseById(userID, id)
 
     return (
         <Link href={`/academy/courses/${slug}`} className="group">
@@ -28,10 +22,6 @@ export const CardCourse = async (course: CoursesCardHome) => {
 
                     <div className="relative w-full h-50 rounded-sm overflow-hidden">
                         <Image src={imageUrl || DEFAULT_IMAGE_COURSE} fill alt="image courses" className="w-full" />
-
-                        {/* <div className="absolute top-1 right-1 bg-white gap-1 text-xs font-light text-gray-400 flex items-center p-1 rounded-sm shadow-md z-20">
-                            <Clock size={15} /> {formatted}
-                        </div> */}
                     </div>
 
                 </CardHeader>
@@ -43,7 +33,7 @@ export const CardCourse = async (course: CoursesCardHome) => {
                             <ArrowUpRight />
                         </span>
                     </div>
-                    <h2 className="text-xs font-medium text-primary">{t('cardCourse.createdAt')}: <span className="text-gray-400 font-light">{createdAt.toLocaleDateString()}</span></h2>
+                    <h2 className="text-xs font-medium text-primary">{t('cardCourse.createdAt')}: <span className="text-gray-400 font-light">{new Date(createdAt).toLocaleDateString()}</span></h2>
 
                     <p className="text-xs font-light text-gray-400 line-clamp-3">{description}</p>
 
@@ -61,23 +51,22 @@ export const CardCourse = async (course: CoursesCardHome) => {
                 </CardContent>
                 <CardFooter className="justify-between items-end">
                     <div className="flex items-center gap-2">
-                        <div className="w-10 aspect-square rounded-full relative overflow-hidden">
-                            <Image src={user.imageUrl} fill alt={user.firstName || 'teacher'} />
+                        <div className="w-10 aspect-square bg-red-500 rounded-full relative overflow-hidden">
+                            {/* <Image src={user.imageUrl} fill alt={user.firstName || 'teacher'} /> */}
                         </div>
                         <div className="flex flex-col">
-                            <span className="text-xs font-bold text-gray-800 capitalize">{user.firstName}</span>
-                            <span className="text-xs font-bold text-gray-800 capitalize">{user.lastName}</span>
+                            {/* <span className="text-xs font-bold text-gray-800 capitalize">{user.firstName}</span> */}
+                            {/* <span className="text-xs font-bold text-gray-800 capitalize">{user.lastName}</span> */}
                         </div>
                     </div>
-                    {purschase ? (
+                    {/* { ? (
                         <h3 className="bg-accent text-primary font-semibold text-xs p-1 rounded-md">{t('cardCourse.message')}</h3>
                     ) : (
                         <h3 className="text-xl font-bold text-primary">{!price ? t('common.free') : formatPrice(price)}</h3>
-                    )}
+                    )} */}
+                    <h3 className="text-xl font-bold text-primary">{!price ? t('common.free') : formatPrice(price)}</h3>
                 </CardFooter>
             </Card>
         </Link>
     )
 }
-
-export default CardCourse

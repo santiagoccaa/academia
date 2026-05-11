@@ -4,8 +4,6 @@ import { error } from "console";
 
 export const getIsPurchasedCourse = async (userId: string, courseId: string, teacherId: string): Promise<boolean> => {
 
-    const user = await auth()
-
     try {
         if (teacherId === userId) {
             return true
