@@ -1,3 +1,5 @@
+"use client"
+
 import {
     Carousel,
     CarouselContent,
@@ -10,13 +12,19 @@ import { Button } from "@/components/ui/button"
 import { useTranslations } from "next-intl"
 import { CardCourse } from "@/components/Shared"
 import Link from "next/link"
-import { coursesCardHome } from "@/actios/courses"
+import { useEffect } from "react"
+import { useCourse } from "@/store"
 
-export const ExploreCourse = async () => {
+export const ExploreCourse = () => {
 
     const t = useTranslations('homePage.exploreCourses')
 
-    const courses = await coursesCardHome()
+    const getCourses = useCourse((state) => state.getCourses)
+    const betsCourses = useCourse((state) => state.betsCourses)
+
+    useEffect(() => {
+        getCourses()
+    }, [getCourses])
 
     return (
         <PageContainer>
@@ -33,7 +41,7 @@ export const ExploreCourse = async () => {
             <PageContainer>
                 <Carousel>
                     <CarouselContent className="-ml-2 md:-ml-4">
-                        {courses?.map((course, index) => (
+                        {betsCourses && betsCourses.map((course, index) => (
                             <CarouselItem key={index} className="basis-1/2 lg:basis-1/3 pl-2 md:pl-4">
                                 <CardCourse {...course} />
                             </CarouselItem>

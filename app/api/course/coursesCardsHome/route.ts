@@ -1,9 +1,11 @@
-"use server"
-
+import { CoursesCardHome } from "@/actios/courses"
 import prisma from "@/lib/prisma"
-import { CoursesCardHome } from "./coursesCardHome.types"
+import { apiResponse, ApiResponse } from "@/types/apiResponse/types"
+import { NextResponse } from "next/server"
 
-export const coursesCardHome = async (): Promise<CoursesCardHome[] | null> => {
+export async function GET(
+    req: Request
+): Promise<NextResponse<ApiResponse<CoursesCardHome[]>>> {
     try {
         const courses = await prisma.course.findMany({
             take: 9,
@@ -48,8 +50,16 @@ export const coursesCardHome = async (): Promise<CoursesCardHome[] | null> => {
             }
         })
 
-        return coursesWithAvg
+        return apiResponse<CoursesCardHome[]>({
+            data: coursesWithAvg,
+            message: "success",
+            status: 200
+        })
     } catch (error) {
-        return null
+        return apiResponse<CoursesCardHome[]>({
+            data: null,
+            message: "Internal server error",
+            status: 500
+        }, { status: 500 })
     }
 }
