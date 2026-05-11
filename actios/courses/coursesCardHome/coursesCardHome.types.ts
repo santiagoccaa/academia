@@ -6,7 +6,7 @@ export type CoursesCardHome = Prisma.CourseGetPayload<{
         category: true
         title: true
         createdAt: true
-        userID: true
+        userId: true
         price: true
         imageUrl: true
         description: true

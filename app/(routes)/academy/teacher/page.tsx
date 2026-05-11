@@ -8,7 +8,7 @@ export default async function TeacherPage() {
 
     const courses = await prisma.course.findMany({
         where: {
-            userID: user.id
+            userId: user.id
         }
     })
 

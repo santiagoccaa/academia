@@ -15,7 +15,7 @@ datasource db {
 
 model Course {
   id          String  @id @default(uuid())
-  userID      String
+  userId      String
   title       String  @db.Text
   slug        String  @unique @db.Text
   description String? @db.Text
@@ -38,7 +38,7 @@ model Course {
 
 model CourseAuthor {
   id        String @id @default(uuid())
-  userId    String
+  userId    String @unique
   firstName String
   lastName  String
   imageUrl  String

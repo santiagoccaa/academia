@@ -8,7 +8,7 @@ export type CardCourseProps = {
     slug: string
     category: string | null
     chapters: Chapter[]
-    userID: string
+    userId: string
     createdAt: Date
     coursePurchase: number
 }

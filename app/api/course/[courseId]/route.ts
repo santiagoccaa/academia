@@ -18,7 +18,7 @@ export async function DELETE(req: Request, { params }: Params) {
         const course = await prisma.course.delete({
             where: {
                 id: courseId,
-                userID: userId
+                userId: userId
             }
         })
 
@@ -43,7 +43,7 @@ export async function PATCH(req: Request, { params }: Params) {
         const course = await prisma.course.update({
             where: {
                 id: courseId,
-                userID: userId
+                userId: userId
             },
             data: {
                 ...values

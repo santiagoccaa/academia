@@ -20,26 +20,28 @@ import axios from 'axios'
 import { toast } from "sonner"
 import { useRouter } from "next/navigation"
 import { useTranslations } from "next-intl"
+import { CreateCoursePayload } from "@/types/course"
 
 export const FormCreateCourse = () => {
 
     const t = useTranslations()
     
     const router = useRouter()
+
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            courseName: "",
+            title: "",
             slug: ""
         },
     })
 
-    const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    const onSubmit = async (values: CreateCoursePayload) => {
+
         try {
             const course = await axios.post('/api/course', values)
-            toast(t('alerts.alert18'))
-
             router.push(`/academy/teacher/${course.data.id}`)
+            toast(t('alerts.alert18'))
         } catch (error) {
             console.log(error);
             toast.error(t('alerts.error'))
@@ -51,12 +53,12 @@ export const FormCreateCourse = () => {
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 mt-4">
                 <FormField
                     control={form.control}
-                    name="courseName"
+                    name="title"
                     render={({ field }) => (
                         <FormItem>
                             <FormLabel>Nombre del curso</FormLabel>
                             <FormControl>
-                                <Input placeholder="Curso de NextJS" {...field} />
+                                <Input placeholder="Curso de NextJS" {...field} autoComplete="off" />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
@@ -70,7 +72,7 @@ export const FormCreateCourse = () => {
                         <FormItem>
                             <FormLabel>Slug del curso</FormLabel>
                             <FormControl>
-                                <Input placeholder="curso-nextjs" {...field} />
+                                <Input placeholder="curso-nextjs" {...field} autoComplete="off" />
                             </FormControl>
                             <FormMessage />
                         </FormItem>

@@ -21,7 +21,7 @@ export async function PUT(req: Request, { params }: Params) {
         const course = await prisma.course.findUnique({
             where: {
                 id: courseId,
-                userID: userId
+                userId: userId
             }
         })
 
