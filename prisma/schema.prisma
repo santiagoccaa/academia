@@ -29,6 +29,22 @@ model Course {
   purchases Purchase[]
   feedback  FeedbackCourse[]
 
+  userAuthorId String
+  createdBy    CourseAuthor @relation(fields: [userAuthorId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updateAt  DateTime @updatedAt
+}
+
+model CourseAuthor {
+  id        String @id @default(uuid())
+  userId    String
+  firstName String
+  lastName  String
+  imageUrl  String
+
+  courses Course[]
+
   createdAt DateTime @default(now())
   updateAt  DateTime @updatedAt
 }
@@ -97,7 +113,6 @@ model Purchase {
   @@unique([userId, courseId])
   @@index([courseId])
 }
-
 
 model StripeCustomer {
   id               String @id @default(uuid())
