@@ -1,9 +1,7 @@
 import prisma from "@/lib/prisma"
-import { auth } from "@clerk/nextjs/server";
 import { error } from "console";
 
 export const getIsPurchasedCourse = async (userId: string, courseId: string, teacherId: string): Promise<boolean> => {
-
     try {
         if (teacherId === userId) {
             return true
