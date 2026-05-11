@@ -7,11 +7,11 @@ export const getTeacherId = async (courseSlug: string): Promise<string | null> =
                 slug: courseSlug
             },
             select: {
-                userID: true
+                userId: true
             }
         })
 
-        return teacherId?.userID ?? null
+        return teacherId?.userId ?? null
     } catch (error) {
         return null
     }

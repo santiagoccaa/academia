@@ -16,10 +16,10 @@ interface PurchaseButtonsProps {
     chapters: Chapter[]
     price: string | null
     id: string
-    userID: string
+    userId: string
 }
 
-export const PurchaseButtons = ({ purchase, slug, chapters, price, id, userID }: PurchaseButtonsProps) => {
+export const PurchaseButtons = ({ purchase, slug, chapters, price, id, userId }: PurchaseButtonsProps) => {
 
     const t = useTranslations('infoCourse')
 
@@ -54,7 +54,7 @@ export const PurchaseButtons = ({ purchase, slug, chapters, price, id, userID }:
         }
     }
 
-    const autor = userID === userId
+    const autor = userId === userId
 
     return (
         <>

@@ -15,7 +15,7 @@ export const getPurchasesCoureses = async (): Promise<CourseWithExtras[] | null>
             where: {
                 OR: [
                     {
-                        userID: user.id
+                        userId: user.id
                     },
                     {
                         purchases: {

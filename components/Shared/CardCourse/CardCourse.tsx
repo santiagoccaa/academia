@@ -12,7 +12,7 @@ export const CardCourse = (course: CoursesCardHome) => {
 
     const t = useTranslations()
 
-    const { _count, userID, imageUrl, category, description, slug, createdAt, title, price, avgStars } = course
+    const { _count, userId, imageUrl, category, description, slug, createdAt, title, price, avgStars } = course
 
 
     return (

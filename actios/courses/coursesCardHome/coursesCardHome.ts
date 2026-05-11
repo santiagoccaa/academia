@@ -18,7 +18,7 @@ export const coursesCardHome = async (): Promise<CoursesCardHome[] | null> => {
                 category: true,
                 title: true,
                 createdAt: true,
-                userID: true,
+                userId: true,
                 price: true,
                 imageUrl: true,
                 description: true,

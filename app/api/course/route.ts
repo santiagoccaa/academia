@@ -1,21 +1,47 @@
 import prisma from '@/lib/prisma'
-import { auth } from '@clerk/nextjs/server'
+import { CreateCoursePayload } from '@/types/course/CreateCoursePayload'
+import { auth, clerkClient } from '@clerk/nextjs/server'
 import { NextResponse } from 'next/server'
 
 export async function POST(req: Request) {
+
     try {
         const { userId } = await auth()
-        const { courseName, slug } = await req.json()
+        const client = await clerkClient()
 
         if (!userId) {
-            return new NextResponse("Unauthorized", { status: 401 })
+            return NextResponse.json({ message: "Unauthorized" }, { status: 401 })
         }
+
+        const user = await client.users.getUser(userId)
+
+        const firstName = user.firstName ?? ""
+        const lastName = user.lastName ?? ""
+        const imageUrl = user.imageUrl ?? ""
+
+        const body: CreateCoursePayload = await req.json()
+        const { title, slug } = body
 
         const course = await prisma.course.create({
             data: {
-                userID: userId,
-                title: courseName,
-                slug: slug
+                userId,
+                title,
+                slug,
+
+                createdBy: {
+                    connectOrCreate: {
+                        where: {
+                            userId
+                        },
+
+                        create: {
+                            userId,
+                            firstName,
+                            lastName,
+                            imageUrl
+                        }
+                    }
+                }
             }
         })
 
