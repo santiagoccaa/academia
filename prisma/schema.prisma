@@ -29,8 +29,7 @@ model Course {
   purchases Purchase[]
   feedback  FeedbackCourse[]
 
-  userAuthorId String
-  createdBy    CourseAuthor @relation(fields: [userAuthorId], references: [id], onDelete: Cascade)
+  courseAuthor CourseAuthor @relation(fields: [userId], references: [userId], onDelete: Cascade)
 
   createdAt DateTime @default(now())
   updateAt  DateTime @updatedAt

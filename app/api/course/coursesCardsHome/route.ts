@@ -35,6 +35,13 @@ export async function GET(
                     select: {
                         stars: true
                     }
+                },
+                courseAuthor: {
+                    select: {
+                        firstName: true,
+                        lastName: true,
+                        imageUrl: true
+                    }
                 }
             }
         })
@@ -44,8 +51,10 @@ export async function GET(
                 ? course.feedback.reduce((acc, f) => acc + f.stars, 0) / course.feedback.length
                 : 0
 
+            const { feedback, ...courseRestFeedback } = course
+
             return {
-                ...course,
+                ...courseRestFeedback,
                 avgStars: Math.round(avgStars * 10) / 10
             }
         })

@@ -33,6 +33,13 @@ export const coursesCardHome = async (): Promise<CoursesCardHome[] | null> => {
                     select: {
                         stars: true
                     }
+                },
+                courseAuthor: {
+                    select: {
+                        firstName: true,
+                        lastName: true,
+                        imageUrl: true
+                    }
                 }
             }
         })

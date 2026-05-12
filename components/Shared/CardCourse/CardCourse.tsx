@@ -12,8 +12,8 @@ export const CardCourse = (course: CoursesCardHome) => {
 
     const t = useTranslations()
 
-    const { _count, userId, imageUrl, category, description, slug, createdAt, title, price, avgStars } = course
-
+    const { _count, imageUrl, category, description, slug, createdAt, title, price, avgStars, courseAuthor } = course
+    const { firstName, lastName } = courseAuthor
 
     return (
         <Link href={`/academy/courses/${slug}`} className="group">
@@ -52,11 +52,11 @@ export const CardCourse = (course: CoursesCardHome) => {
                 <CardFooter className="justify-between items-end">
                     <div className="flex items-center gap-2">
                         <div className="w-10 aspect-square bg-red-500 rounded-full relative overflow-hidden">
-                            {/* <Image src={user.imageUrl} fill alt={user.firstName || 'teacher'} /> */}
+                            <Image src={courseAuthor.imageUrl} fill alt={firstName || 'teacher'} />
                         </div>
                         <div className="flex flex-col">
-                            {/* <span className="text-xs font-bold text-gray-800 capitalize">{user.firstName}</span> */}
-                            {/* <span className="text-xs font-bold text-gray-800 capitalize">{user.lastName}</span> */}
+                            <span className="text-xs font-bold text-gray-800 capitalize">{firstName}</span>
+                            <span className="text-xs font-bold text-gray-800 capitalize">{lastName}</span>
                         </div>
                     </div>
                     {/* { ? (
