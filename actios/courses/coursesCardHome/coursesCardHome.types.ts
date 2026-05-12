@@ -17,9 +17,11 @@ export type CoursesCardHome = Prisma.CourseGetPayload<{
                 feedback: true
             }
         }
-        feedback: {
+        courseAuthor: {
             select: {
-                stars: true
+                firstName: true,
+                lastName: true
+                imageUrl: true
             }
         }
     }

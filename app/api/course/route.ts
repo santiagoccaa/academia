@@ -24,11 +24,10 @@ export async function POST(req: Request) {
 
         const course = await prisma.course.create({
             data: {
-                userId,
                 title,
                 slug,
 
-                createdBy: {
+                courseAuthor : {
                     connectOrCreate: {
                         where: {
                             userId
