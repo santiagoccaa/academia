@@ -1,12 +1,17 @@
 import { CoursesCardHome } from "@/actios/courses"
+import { getIsPurchasedCourse } from "@/actios/getIsPurchasedCourse"
 import prisma from "@/lib/prisma"
 import { apiResponse, ApiResponse } from "@/types/apiResponse/types"
+import { auth } from "@clerk/nextjs/server"
 import { NextResponse } from "next/server"
 
 export async function GET(
     req: Request
 ): Promise<NextResponse<ApiResponse<CoursesCardHome[]>>> {
     try {
+
+        const { userId } = await auth()
+
         const courses = await prisma.course.findMany({
             take: 9,
             where: {
@@ -46,18 +51,35 @@ export async function GET(
             }
         })
 
-        const coursesWithAvg = courses.map(course => {
-            const avgStars = course.feedback.length > 0
-                ? course.feedback.reduce((acc, f) => acc + f.stars, 0) / course.feedback.length
-                : 0
+        const coursesWithAvg = await Promise.all(
+            courses.map(async (course) => {
+                const avgStars = course.feedback.length > 0
+                    ? course.feedback.reduce((acc, f) => acc + f.stars, 0) / course.feedback.length
+                    : 0
 
-            const { feedback, ...courseRestFeedback } = course
+                const { feedback, ...courseRestFeedback } = course
 
-            return {
-                ...courseRestFeedback,
-                avgStars: Math.round(avgStars * 10) / 10
-            }
-        })
+                let purchaseCourse = false
+
+                if (userId) {
+                    purchaseCourse = await getIsPurchasedCourse(
+                        userId,
+                        course.id,
+                        course.userId
+                    )
+                }
+
+                const courseCompletedInformation = {
+                    ...courseRestFeedback,
+                    purchaseCourse
+                }
+
+                return {
+                    ...courseCompletedInformation,
+                    avgStars: Math.round(avgStars * 10) / 10
+                }
+            })
+        )
 
         return apiResponse<CoursesCardHome[]>({
             data: coursesWithAvg,
@@ -65,9 +87,12 @@ export async function GET(
             status: 200
         })
     } catch (error) {
+        console.log("[GET HOME COURSES]",error);
+        
         return apiResponse<CoursesCardHome[]>({
             data: null,
             message: "Internal server error",
+            error: error,
             status: 500
         }, { status: 500 })
     }

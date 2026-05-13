@@ -7,5 +7,6 @@ export function apiResponse<T>(body: ApiResponse<T>, init?: ResponseInit) {
 export interface ApiResponse<T> {
     data: T | null,
     message: string,
+    error?: unknown,
     status: number
 }

@@ -12,7 +12,7 @@ export const CardCourse = (course: CoursesCardHome) => {
 
     const t = useTranslations()
 
-    const { _count, imageUrl, category, description, slug, createdAt, title, price, avgStars, courseAuthor } = course
+    const { _count, imageUrl, category, description, slug, createdAt, title, price, avgStars, courseAuthor, purchaseCourse } = course
     const { firstName, lastName } = courseAuthor
 
     return (
@@ -59,12 +59,11 @@ export const CardCourse = (course: CoursesCardHome) => {
                             <span className="text-xs font-bold text-gray-800 capitalize">{lastName}</span>
                         </div>
                     </div>
-                    {/* { ? (
+                    {purchaseCourse ? (
                         <h3 className="bg-accent text-primary font-semibold text-xs p-1 rounded-md">{t('cardCourse.message')}</h3>
                     ) : (
                         <h3 className="text-xl font-bold text-primary">{!price ? t('common.free') : formatPrice(price)}</h3>
-                    )} */}
-                    <h3 className="text-xl font-bold text-primary">{!price ? t('common.free') : formatPrice(price)}</h3>
+                    )}
                 </CardFooter>
             </Card>
         </Link>
