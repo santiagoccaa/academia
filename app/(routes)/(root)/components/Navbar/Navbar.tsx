@@ -114,7 +114,7 @@ export const Navbar = () => {
 
                         <SignedIn>
                             <Button asChild>
-                                <Link href={"/academy/courses"}>
+                                <Link href={"/academy"}>
                                     Academy
                                     <ArrowRight />
                                 </Link>

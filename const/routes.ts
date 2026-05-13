@@ -7,7 +7,7 @@ export const SUBSCRIPTION = '/subscription'
 
 // Academy pages
 
-export const COURSES = "/academy/courses"
+export const COURSES = "/academy"
 export const MY_COURSES = "/academy/my-courses"
 export const ORDERS = "/academy/orders"
 export const CERTIFICATES = "/academy/certificates"
