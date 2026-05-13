@@ -62,7 +62,7 @@ export const CardCourse = (course: CoursesCardHome) => {
                     {purchaseCourse ? (
                         <h3 className="bg-accent text-primary font-semibold text-xs p-1 rounded-md">{t('cardCourse.message')}</h3>
                     ) : (
-                        <h3 className="text-xl font-bold text-primary">{!price ? t('common.free') : formatPrice(price)}</h3>
+                        <h3 className="text-xl font-bold text-primary capitalize">{!price ? t('common.free') : price === "Gratis" ? t('common.free') : formatPrice(price)}</h3>
                     )}
                 </CardFooter>
             </Card>
