@@ -3,7 +3,8 @@
 import prisma from "@/lib/prisma"
 import { CoursesCardHome } from "./coursesCardHome.types"
 
-export const coursesCardHome = async (): Promise<CoursesCardHome[] | null> => {
+// TODO: add typado
+export const coursesCardHome = async () => {
     try {
         const courses = await prisma.course.findMany({
             take: 9,

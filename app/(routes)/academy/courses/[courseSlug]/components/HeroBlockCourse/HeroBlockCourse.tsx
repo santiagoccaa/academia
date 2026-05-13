@@ -32,7 +32,7 @@ export const HeroBlockCourse = ({ course, purchase }: HeroBlockCourseProps) => {
         </div>
 
         {!purchase && <h2 className='text-xl font-semibold mb-4'>{!price ? t('common.free') : formatPrice(price)}</h2>}
-        <PurchaseButtons purchase={purchase} slug={slug} chapters={chapters} price={price} id={id} userId={userId} />
+        <PurchaseButtons purchase={purchase} slug={slug} chapters={chapters} price={price} id={id} userIdCourse={userId} />
       </div>
 
       <Image
