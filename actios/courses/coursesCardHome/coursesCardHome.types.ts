@@ -26,5 +26,6 @@ export type CoursesCardHome = Prisma.CourseGetPayload<{
         }
     }
 }> & {
-    avgStars: number
+    avgStars: number,
+    purchaseCourse: boolean
 }

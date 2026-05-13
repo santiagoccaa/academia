@@ -4,9 +4,9 @@ import { ListCourses } from "@/components/Shared"
 export default async function CoursesPage() {
 
   const listCourses = await getHomeCourses()
-  
+
   return (
-    <div> 
+    <div>
       <ListCourses courses={listCourses} title="academy.allCourses" />
     </div>
   )

@@ -28,7 +28,10 @@ export const ListCourses = ({ courses, title }: ListCoursesProps) => {
                     {courses && courses.length > 0 ? (
                         <div className='grid grid-cols-1 lg:grid-cols-3 2xl:grid-cols-4 gap-3 mt-4'>
                             {courses.map((course, index) => (
-                                <CardCourse key={index} {...course} />
+                                // <CardCourse key={index} {...course} />
+                                <div key={index}>
+                                    {course.title}
+                                </div>
                             ))}
                         </div>
                     ) : (
