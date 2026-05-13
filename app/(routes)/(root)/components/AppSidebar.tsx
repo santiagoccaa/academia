@@ -16,7 +16,7 @@ import {
 } from "@/components/ui/sidebar"
 import Link from "next/link"
 import { routes, routesTeacher } from "./appSidebar.data"
-import { ArrowBigUpDash, CodeXml } from "lucide-react"
+import { CodeXml } from "lucide-react"
 import { useUser } from "@clerk/nextjs"
 import { useTranslations } from "next-intl"
 

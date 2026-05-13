@@ -65,7 +65,7 @@ export const Hero = () => {
 
                                     <SignedIn>
                                         <Button className="bg-accent text-primary hover:text-white transition-colors duration-300" size="lg" asChild>
-                                            <Link href={"/academy/courses"}>
+                                            <Link href={"/academy"}>
                                                 Academy
                                             </Link>
                                         </Button>
@@ -73,7 +73,7 @@ export const Hero = () => {
 
                                     <SignedOut>
                                         <Button className="bg-accent text-primary hover:text-white transition-colors duration-300" size="lg" asChild>
-                                            <Link href={"/academy/courses"}>
+                                            <Link href={"/academy"}>
                                                 {t('buttons.freeTrial')}
                                             </Link>
                                         </Button>
